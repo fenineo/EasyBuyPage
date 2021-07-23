@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/regist.css" />
     <!--[if IE 6]>
     <script src="js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -26,6 +27,7 @@
     <script type="text/javascript" src="js/bban.js"></script>
     <script type="text/javascript" src="js/hban.js"></script>
     <script type="text/javascript" src="js/tban.js"></script>
+    <script type="text/javascript" src="js/regist.js"></script>
     
 	<script type="text/javascript" src="js/lrscroll_1.js"></script>
     
@@ -53,7 +55,7 @@
 	<div class="regist">
     	<div class="log_img"><img src="images/l_img.png" width="611" height="425" /></div>
 		<div class="reg_c">
-        	<form>
+        	<form onsubmit="return sub()">
             <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
               <tr height="50" valign="top">
               	<td width="95">&nbsp;</td>
@@ -63,47 +65,44 @@
                 </td>
               </tr>
               <tr height="50">
-                <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
-                <td><input type="text" value="" class="l_user" /></td>
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;登陆用户名 &nbsp;</td>
+                <td><input type="text" value="" class="l_user" id="loginName" required="required" />
+                    <br/><span class="prompt"></span></td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;密码 &nbsp;</td>
-                <td><input type="password" value="" class="l_pwd" /></td>
+                <td><input type="password" value="" class="l_pwd" id="pwd" required="required" />
+                  <br/><span class="prompt"></span></td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;确认密码 &nbsp;</td>
-                <td><input type="password" value="" class="l_pwd" /></td>
+                <td><input type="password" value="" class="l_pwd" id="verifyPwd" required="required" />
+                    <br/><span class="prompt"></span></td>
               </tr>
               <tr height="50">
-                <td align="right"><font color="#ff4e00">*</font>&nbsp;邮箱 &nbsp;</td>
-                <td><input type="text" value="" class="l_email" /></td>
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;真实姓名 &nbsp;</td>
+                <td><input type="text" value="" class="l_user" id="userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" />
+                    <br/><span class="prompt"></span></td>
               </tr>
               <tr height="50">
-                <td align="right"><font color="#ff4e00">*</font>&nbsp;手机 &nbsp;</td>
-                <td><input type="text" value="" class="l_tel" /></td>
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;性别 &nbsp;</td>
+                <td><input id="man" type="radio" checked="checked" name="sex" value="1" />男
+                    &nbsp;&nbsp;<input id="woman" type="radio"  name="sex" value="0" />女</td>
               </tr>
               <tr height="50">
-                <td align="right">邀请人会员名 &nbsp;</td>
-                <td><input type="text" value="" class="l_mem" /></td>
+                <td align="right">&nbsp;身份证号 &nbsp;</td>
+                <td><input type="text" value="" class="l_num" id="identityCode" />
+                    <br/><span class="prompt"></span></td>
               </tr>
               <tr height="50">
-                <td align="right">邀请人ID号 &nbsp;</td>
-                <td><input type="text" value="" class="l_num" /></td>
+                <td align="right">&nbsp;邮箱 &nbsp;</td>
+                <td><input type="text" value="" class="l_email" id="email" />
+                    <br/><span class="prompt"></span></td>
               </tr>
               <tr height="50">
-                <td align="right"> <font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
-                <td>
-                    <input type="text" value="" class="l_ipt" />
-                    <a href="#" style="font-size:12px; font-family:'宋体';">换一张</a>
-                </td>
-              </tr>
-              <tr>
-              	<td>&nbsp;</td>
-                <td style="font-size:12px; padding-top:20px;">
-                	<span style="font-family:'宋体';" class="fl">
-                    	<label class="r_rad"><input type="checkbox" /></label><label class="r_txt">我已阅读并接受《用户协议》</label>
-                    </span>
-                </td>
+                <td align="right">&nbsp;手机 &nbsp;</td>
+                <td><input type="text" value="" class="l_tel" id="mobile" />
+                    <br/><span class="prompt"></span></td>
               </tr>
               <tr height="60">
               	<td>&nbsp;</td>

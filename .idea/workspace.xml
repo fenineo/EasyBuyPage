@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Head.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Links.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Links.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Regist.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vcLf0uufXqm8Sr5j7KjiH6Ym0F" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="" />
+      <created>1626856529610</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626856529610</updated>
+      <workItem from="1626856530985" duration="5230000" />
+      <workItem from="1626918519715" duration="1892000" />
+      <workItem from="1626920611355" duration="3000" />
+      <workItem from="1626920668325" duration="256000" />
+      <workItem from="1626921491775" duration="2750000" />
+      <workItem from="1626934163488" duration="3561000" />
+      <workItem from="1626938268363" duration="96000" />
+      <workItem from="1626938376434" duration="2000" />
+      <workItem from="1626938889775" duration="13000" />
+      <workItem from="1626939040071" duration="84000" />
+      <workItem from="1626942068567" duration="464000" />
+      <workItem from="1626942674895" duration="729000" />
+      <workItem from="1626948970034" duration="2480000" />
+      <workItem from="1626953699973" duration="173000" />
+      <workItem from="1626963556380" duration="3773000" />
+      <workItem from="1626998990831" duration="1147000" />
+      <workItem from="1627003053195" duration="819000" />
+      <workItem from="1627010602998" duration="184000" />
+      <workItem from="1627021034577" duration="56000" />
+      <workItem from="1627023888521" duration="3534000" />
+      <workItem from="1627028909493" duration="3910000" />
+      <workItem from="1627033017909" duration="2527000" />
+      <workItem from="1627036649306" duration="1024000" />
+      <workItem from="1627038687390" duration="684000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="267" y="294" key="FileChooserDialogImpl" timestamp="1626856538744">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="267" y="294" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1626856538744" />
+  </component>
+</project>

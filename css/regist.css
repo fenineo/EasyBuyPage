@@ -1,0 +1,5 @@
+/* 验证错误时，提示文字的样式 */
+.prompt{
+    color: red;
+    display: none;
+}
