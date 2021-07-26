@@ -1,6 +1,6 @@
 $(document).ready(
     $.ajax({
-        url:"/easybuy/getNewsDesc",
+        url:"/easybuy/News/getNewsDesc",
         dataType: "json",
         success: function(result){
             var abc="<li><a href=\"#\">"+result[0].title+"</a></li>\n" +
