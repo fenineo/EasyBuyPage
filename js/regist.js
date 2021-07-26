@@ -28,7 +28,6 @@ function sub(){
         var identityCode = $("#identityCode").val();
         var email = $("#email").val();
         var mobile = $("#mobile").val();
-        alert(loginName+password+userName+sex+identityCode+email+mobile);
         $.ajax({
             url:"/easybuy/user/register",
             type:"post",
