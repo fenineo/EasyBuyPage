@@ -195,7 +195,7 @@ jQuery(document).on("click",".delete",function name() {
             "</tr>/n"+
             "<tr valign="+"top"+">/n"+
                 "<td class="+"tx_l"+">新闻内容</td>/n"+
-                "<td><textarea class="+"tx_txt"+" value="+result.content+"></textarea></td>/n"+
+                "<td><textarea class="+"tx_txt"+" name="+result.content+">"+result.content+"</textarea></td>/n"+
             "</tr>/n"+
             "<tr height="+"70"+">/n"+
                 "<td colspan="+"2"+" align="+"center"+">"+
