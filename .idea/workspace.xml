@@ -20,13 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/indexProduct.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/productInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Links.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Links.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Money_Charge.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money_Charge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Regist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/regist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/regist.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/regist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +101,11 @@
       <workItem from="1627182813161" duration="5961000" />
       <workItem from="1627208479765" duration="155000" />
       <workItem from="1627260375820" duration="89000" />
+      <workItem from="1627262892373" duration="7628000" />
+      <workItem from="1627280511413" duration="2021000" />
+      <workItem from="1627282810175" duration="3274000" />
+      <workItem from="1627287486702" duration="1484000" />
+      <workItem from="1627290579445" duration="4325000" />
     </task>
     <servers />
   </component>
@@ -125,5 +129,16 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="267" y="294" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1626856538744" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/productInfo.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
