@@ -7,6 +7,18 @@ var index = 0;
 $(function (){
     userList(1);
 
+    // $.ajax({
+    //     url:"/easybuy/user/loginInfo",
+    //     type:"post",
+    //     data:{"token":token},
+    //     dataType:"JSON",
+    //     success:function(result){
+    //         alert("id"+result.id);
+    //         alert("loginName"+result.loginName);
+    //         alert("type"+result.type);
+    //     }
+    // });
+
     $(".loginName").blur(function (){
         var loginName = $(this).val();
         var idName = $(this).attr("id");
