@@ -32,6 +32,7 @@
 
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/productInfo.js"></script>
+    <script type="text/javascript" src="js/shopping.js"></script>
     
 <title>尤洪</title>
 </head>
@@ -171,35 +172,11 @@
         </form>                      
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
-    <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
-        <div class="car_bg">
-       		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
-            <!--End 购物车未登录 End-->
-            <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-            </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
-            <!--End 购物车已登录 End-->
-        </div>
+    <!--购物车页面-->
+    <div id="shopping" class="i_car">
+
     </div>
+
 </div>
 <!--End Header End--> 
 <!--Begin Menu Begin-->
@@ -531,11 +508,11 @@
             </div>
             <div class="des_join">
             	<div class="j_nums">
-                	<input type="text" value="1" name="" class="n_ipt" />
+                	<input type="text" id="number" value="1" name="" class="n_ipt" />
                     <input type="button" value="" onclick="addUpdate(jq(this));" class="n_btn_1" />
                     <input type="button" value="" onclick="jianUpdate(jq(this));" class="n_btn_2" />   
                 </div>
-                <span class="fl"><a onclick="ShowDiv_1('MyDiv1','fade1')"><img src="images/j_car.png" /></a></span>
+                <span class="fl"><a href="javascript:void (0)" productId="0" class="addShopping"><img src="images/j_car.png" /></a></span>
             </div>            
         </div>    
         
@@ -782,7 +759,27 @@
             
         </div>
     </div>
-    
+
+    <!--Begin 弹出层-登陆提示 Begin-->
+    <div class="black_overlay fide"></div>
+    <div class="white_content toLogin">
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" id="close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
+                    <tr height="50" valign="bottom">
+                        <td>&nbsp;</td>
+                        <td style="font-size: 18px">您还未登陆，请先<a href="Login.html" style="color: red;font-size: 20px">&nbsp;&nbsp;登陆</a></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <!--End 弹出层-登陆提示 End-->
     
     <!--Begin 弹出层-收藏成功 Begin-->
     <div id="fade" class="black_overlay"></div>
@@ -822,17 +819,16 @@
             </div>
             <div class="notice_c">
            		
-                <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
                   <tr valign="top">
                     <td width="40"><img src="images/suc.png" /></td>
                     <td>
                     	<span style="color:#3e3e3e; font-size:18px; font-weight:bold;">宝贝已成功添加到购物车</span><br />
-                    	购物车共有1种宝贝（3件） &nbsp; &nbsp; 合计：1120元
                     </td>
                   </tr>
                   <tr height="50" valign="bottom">
                   	<td>&nbsp;</td>
-                    <td><a href="#" class="b_sure">去购物车结算</a><a href="#" class="b_buy">继续购物</a></td>
+                    <td><a href="BuyCar.html" class="b_sure">去购物车结算</a><a href="Index.html" class="b_buy">继续购物</a></td>
                   </tr>
                 </table>
                     
