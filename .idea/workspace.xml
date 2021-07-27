@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/indexProduct.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/productInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/brandList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/shopping.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BrandList.html" beforeDir="false" afterPath="$PROJECT_DIR$/BrandList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Head.html" beforeDir="false" afterPath="$PROJECT_DIR$/Head.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/classification.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/classification.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/productInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/productInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +40,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -52,6 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -106,6 +113,11 @@
       <workItem from="1627282810175" duration="3274000" />
       <workItem from="1627287486702" duration="1484000" />
       <workItem from="1627290579445" duration="4325000" />
+      <workItem from="1627298452036" duration="75000" />
+      <workItem from="1627309396242" duration="9000" />
+      <workItem from="1627310442838" duration="3227000" />
+      <workItem from="1627344753717" duration="4010000" />
+      <workItem from="1627349299778" duration="22352000" />
     </task>
     <servers />
   </component>
@@ -129,16 +141,5 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="267" y="294" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1626856538744" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/productInfo.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

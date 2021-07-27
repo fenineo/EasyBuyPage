@@ -1312,12 +1312,12 @@ table.choice tr td.td_a a:hover, table.choice tr td.td_a a.now{
 .l_history ul li .img{
 	width:185px; height:162px; overflow:hidden; margin-top:10px;
 }
-/*.l_history ul li .img img{
+.l_history ul li .img img{
 	-webkit-transition:all .5s; -moz-transition:all .5s; -o-transform:all .5s; -ms-transform:all .5s; transition:all .5s;
 }
-.l_history ul li:hover .img img{	
+.l_history ul li:hover .img img{
 	-moz-transform:scale(1.1,1.1); -webkit-transform:scale(1.1,1.1); -o-transform:scale(1.1,1.1); -ms-transform:scale(1.1,1.1); transform:scale(1.1,1.1);
-}*/
+}
 .l_history ul li .name{
 	height:25px; line-height:25px; overflow:hidden; font-size:14px; text-align:center; margin-top:5px;
 }
@@ -1363,7 +1363,7 @@ ul.cate_list li{
 	width:232px; height:316px; overflow:hidden; float:left; display:inline; margin:0 5px;
 }
 ul.cate_list li:hover{
-	background-color:#FFF; -webkit-box-shadow:0 0 5px #e0e0e0; -moz-box-shadow:0 0 5px #e0e0e0; box-shadow:0 0 5px #e0e0e0;  
+	background-color:#FFF; -webkit-box-shadow:0 0 5px #e0e0e0; -moz-box-shadow:0 0 5px #e0e0e0; box-shadow:0 0 5px #e0e0e0;
 }
 ul.cate_list li .img{
 	width:208px; height:185px; overflow:hidden; margin-top:5px;
@@ -1384,23 +1384,23 @@ ul.cate_list li .carbg{
 	width:209px; height:30px; overflow:hidden; font-family:"宋体"; margin-top:15px;
 }
 ul.cate_list li .carbg a.ss{
-	width:68px; height:28px; line-height:28px; overflow:hidden; background:url(../images/heart.png) no-repeat 10px center; color:#888888; text-indent:33px; float:left; display:inline; margin-right:-1px; border:1px solid #cccccc;
+	width:78px; height:28px; line-height:28px; overflow:hidden; background:url(../images/heart.png) no-repeat 10px center; color:#888888; text-indent:33px; float:left; display:inline; margin-right:-1px; border:1px solid #cccccc;
 }
 ul.cate_list li .carbg a.ss:hover{
 	color:#888888; background:url(../images/heart_h.png) no-repeat 10px center;
 }
-ul.cate_list li:hover .carbg a.ss{
-	color:#888888; background:url(../images/heart_h.png) no-repeat 10px center;
-}
+/*ul.cate_list li:hover .carbg a.ss{*/
+/*	color:#888888; background:url(../images/heart_h.png) no-repeat 10px center;*/
+/*}*/
 ul.cate_list li .carbg a.j_car{
-	width:138px; height:28px; line-height:28px; overflow:hidden; background:url(../images/cars.png) no-repeat 24px center; color:#ff4e00; text-indent:47px; float:left; display:inline; margin-right:-1px; border:1px solid #cccccc;
+	width:128px; height:28px; line-height:28px; overflow:hidden; background:url(../images/cars.png) no-repeat 24px center; color:#ff4e00; text-indent:47px; float:left; display:inline; margin-right:-1px; border:1px solid #cccccc;
 }
 ul.cate_list li .carbg a.j_car:hover{
 	color:#FFF; background:url(../images/cars_h.png) no-repeat 24px center; background-color:#ff4e00; border:1px solid #ff4e00;
 }
-ul.cate_list li:hover .carbg a.j_car{
-	color:#FFF; background:url(../images/cars_h.png) no-repeat 24px center; background-color:#ff4e00; border:1px solid #ff4e00;
-}
+/*ul.cate_list li:hover .carbg a.j_car{*/
+/*	color:#FFF; background:url(../images/cars_h.png) no-repeat 24px center; background-color:#ff4e00; border:1px solid #ff4e00;*/
+/*}*/
 
 .pages{
 	overflow:hidden; color:#888888; padding:20px 10px; text-align:right; font-size:16px; font-family:"宋体"; margin-top:20px;
