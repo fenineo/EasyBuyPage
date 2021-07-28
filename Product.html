@@ -761,21 +761,19 @@
     </div>
 
     <!--Begin 弹出层-登陆提示 Begin-->
-    <div class="black_overlay fide"></div>
-    <div class="white_content toLogin">
+    <div id="fade3" class="black_overlay"></div>
+    <div id="MyDiv3" class="white_content">
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" id="close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
+                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
             </div>
             <div class="notice_c">
-
                 <table border="0" align="center" cellspacing="0" cellpadding="0">
                     <tr height="50" valign="bottom">
                         <td>&nbsp;</td>
                         <td style="font-size: 18px">您还未登陆，请先<a href="Login.html" style="color: red;font-size: 20px">&nbsp;&nbsp;登陆</a></td>
                     </tr>
                 </table>
-
             </div>
         </div>
     </div>
@@ -786,7 +784,7 @@
     <div id="MyDiv" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="images/close.gif" /></span>
+                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
             </div>
             <div class="notice_c">
            		
@@ -815,7 +813,7 @@
     <div id="MyDiv1" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="images/close.gif" /></span>
+                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
             </div>
             <div class="notice_c">
            		
@@ -828,7 +826,7 @@
                   </tr>
                   <tr height="50" valign="bottom">
                   	<td>&nbsp;</td>
-                    <td><a href="BuyCar.html" class="b_sure">去购物车结算</a><a href="Index.html" class="b_buy">继续购物</a></td>
+                    <td><a href="BuyCar.html" class="b_sure">去购物车结算</a><a href="javascript:void(0);" class="b_buy">继续购物</a></td>
                   </tr>
                 </table>
                     
@@ -836,8 +834,6 @@
         </div>
     </div>    
     <!--End 弹出层-加入购物车 End-->
-    
-    
     
     <!--Begin Footer Begin -->
     <div class="b_btm_bg bg_color">

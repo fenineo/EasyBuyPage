@@ -2,7 +2,7 @@ var pgIndex = 0;//当前页码
 var pageCount = 0;//总页数
 var list = null;
 jQuery(function(){
-    getAll(1);
+    getAll();
  })
 /**
  * 
@@ -63,7 +63,7 @@ function getAll(pageIndex) {
  
  /**
   * 
-  * 清除页面添加的标签的方法
+  * 页面跳转的方法
   */
   function clean() {
     jQuery("#selete").empty();
@@ -93,7 +93,7 @@ function findbyid(id){
             "<li>发布时间:"+result.createTime+"</li>\n"+      
             "</ul>"
             )
-            jQuery("#page").append("<input type='button' class='back'  value='返回'>")
+            jQuery("#pageBox").append("<input type='button' class='back'  value='返回'>")
         }
         
     })
@@ -110,8 +110,7 @@ function remove(id) {
             data:{"id":id},
             success: function(result){
                 alert("成功");
-                clean();
-                getAll();
+                window.location.href = "http://localhost:8888/Member_Money.html";
             }
             
         })
@@ -127,8 +126,7 @@ function addNews(title,content) {
         data:{"title":title,"content":content},
         success: function(result){
             alert("添加成功");
-            clean();
-            getAll();
+            window.location.href = "http://localhost:8888/Member_Money.html";
         }
         
     })
@@ -143,8 +141,7 @@ function modifyNews(id,title,content){
         data:{"id":id,"title":title,"content":content},
         success: function(result){
             alert("修改成功");
-            clean();
-            getAll();
+            window.location.href = "http://localhost:8888/Member_Money.html";
         }
         
     })
@@ -168,8 +165,7 @@ jQuery(document).on("click",".delete",function name() {
  * 详情返回的点击事件
  */
  jQuery(document).on("click",".back",function name() {
-    clean();
-    getAll();
+    window.location.href = "http://localhost:8888/Member_Money.html";
 })
 /**
  * 添加的点击事件
@@ -196,7 +192,7 @@ jQuery(document).on("click",".delete",function name() {
                 "</td>/n"+
             "</tr>"
     )
-    jQuery("#page").append("<input type='button' class='back'  value='返回'>")
+    jQuery("#page").append("<input type='button' class='back'  value='返回列表'>")
 })
 /**
   * 修改的点击事件
