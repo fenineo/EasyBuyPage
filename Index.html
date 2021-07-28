@@ -9,7 +9,9 @@
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
-    <![endif]-->    
+    <![endif]-->
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
      <script type="text/javascript" src="js/jquery-1.11.1.min_044d0927.js"></script> 
 	<script type="text/javascript" src="js/jquery.bxslider_e88acd1b.js"></script>
     <!-- <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script> -->
@@ -31,8 +33,8 @@
     <script type="text/javascript" src="js/classification.js"></script>
     
 	<script type="text/javascript" src="js/lrscroll_1.js"></script>
+    <script type="text/javascript" src="js/head.js"></script>
     <script type="text/javascript" src="js/news.js"></script>
-    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/indexProduct.js"></script>
     
 <title>首页</title>
@@ -118,7 +120,12 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+        	<span class="fl">你好
+                <span id="login_n">，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a></span>
+                <span id="login_y" style="display: none">&nbsp;<span id="loginName"></span>&nbsp;|&nbsp;<a href="Member.html">个人中心</a>&nbsp;|&nbsp;<a id="logout">注销</a></span>
+                &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+            </span>
+        	<span class="ss">
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>

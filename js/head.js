@@ -1,5 +1,6 @@
 $(function (){
     var token = localStorage.getItem("token");
+
     $.ajax({
         url:"/easybuy/user/loginInfo",
         type:"post",

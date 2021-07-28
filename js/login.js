@@ -9,7 +9,7 @@ function sub(){
         success:function(result){
             if(result.flag){
                 localStorage.setItem("token",result.token);
-                window.location.href = "index.html";
+                window.location.href = "Index.html";
             }else {
                 $("#prompt").text(result.prompt).show();
             }
