@@ -1,5 +1,5 @@
 jQuery(function(){
-	jQuery.get("http://localhost:8888/easybuy/productCategory/twocategoryLevel2Id","a=1",succ3,"json");
+	jQuery.get("/easybuy/productCategory/twocategoryLevel2Id","a=1",succ3,"json");
 	function succ3(list1) {
 		var i;
 		var u;

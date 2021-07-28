@@ -3,25 +3,16 @@ var pgIndex = 0;//当前页码
 var pageCount = 0;//总页数
 var list = null;
 var index = 0;
-
-
+var gaiID;
 $(function (){
     categorylist(1);
 
-    // $.ajax({
-    //     url:"/easybuy/user/loginInfo",
-    //     type:"post",
-    //     data:{"token":token},
-    //     dataType:"JSON",
-    //     success:function(result){
-    //         alert("id"+result.id);
-    //         alert("loginName"+result.loginName);
-    //         alert("type"+result.type);
-    //     }
-    // });
-    
 
-   
+    $("#add_cate").click(function (){
+        $("#right_head").nextAll().hide();
+        $("#add_box").show();
+    })
+
 });
 
 
@@ -102,25 +93,23 @@ function categorylist(pageIndex){
             pageBox += "<div class=\"page\" onclick=\"page("+pageCount+")\">尾页</div>";
             $("#pageBox").append(pageBox);
             //动态绑定修改事件
-            // $(".modify_td").on("click",function (){
-            //     $("#right_head").nextAll().hide();
-            //     $("#modify_box").show();
-            //     index = $(this).parent().parent().index() - 1;
-            //     $("#modify_name").val(list[index].loginName);
-            //     $("#modify_parentId").val(list[index].parentId);parentId
-            //     $("#modify_identityCode").val(list[index].identityCode);
-            //     $("#modify_email").val(list[index].email);
-            //     $("#modify_mobile").val(list[index].mobile);
-            //     $("#modify_type").val(list[index].type);
-            // });
-            //动态绑定删除事件
-            // $(".remove_td").on("click",function (){
-            //     index = $(this).parent().parent().index() - 1;
-            //     var flag = confirm("确认要删除分类\""+list[index].name+"\"吗？")
-            //     if(flag){
-            //         removeUser(list[index].id);
-            //     }
-            // })
+            $(".modify_td").on("click",function (){
+                $("#right_head").nextAll().hide();
+                $("#modify_box").show();
+                index = $(this).parent().parent().index() - 1;
+                gaiID=index;
+                $("#modify_name").val(list[index].name);
+                $("#modify_parentId").val(list[index].parentId);
+                $("#modify_type").val(list[index].type);
+            });
+            // 动态绑定删除事件
+            $(".remove_td").on("click",function (){
+                index = $(this).parent().parent().index() - 1;
+                var flag = confirm("确认要删除分类\""+list[index].name+"\"吗？")
+                if(flag){
+                    removecate(list[index].id);
+                }
+            })
 
         }
     });
@@ -132,111 +121,81 @@ function page(pageIndex){
         $("#first_tr").nextAll("tr").remove();
         $("#pageBox").empty();
         categorylist(pageIndex);
-    }else{
-        $("#first_tr").nextAll("tr").remove();
-        $("#pageBox").empty();
     }
 }
 
-//添加用户
-// function add_sub(){
-//     var loginName = $("#add_loginName").val();
-//     var password = $("#add_pwd").val();
-//     var userName = $("#add_userName").val();
-//     var sex = $("input:radio:checked").val();
-//     var identityCode = $("#add_identityCode").val();
-//     var email = $("#add_email").val();
-//     var mobile = $("#add_mobile").val();
-//     var type = $("#add_type").val();
-//     if(loginName_v(loginName) && pwd_v(password) && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
-//         $.ajax({
-//             url:"/easybuy/user/userAdd",
-//             type:"post",
-//             data:{"token":token,"loginName":loginName,"password":password,"userName":userName,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
-//             dataType:"JSON",
-//             success:function(result){
-//                 if(result){
-//                     window.location.href = "/Member_Links.html";
-//                 }else {
-//                     alert("添加失败,请检查添加信息是否按要求填写。");
-//                 }
-//             }
-//         })
-//     }else{
-//         alert("请按要求填写添加信息！");
-//     }
-//     return false;
-// }
+// 添加分类
+function add_sub(){
+    var name = $("#add_name").val();
+    var parentId = $("#add_parentId").val();
+    var type = $("#add_type").val();
+    $.ajax({
+        url:"/easybuy/productCategory/addProductCategory",
+        type:"post",
+        data:{"name":name,"parentId":parentId,"type":type},
+        dataType:"JSON",
+        success:function(result){
+            if(result){
+                alert("添加成功");
+                clean();
+                categorylist();
+                window.location.href = "/Member_Commission.html";
+            }else {
+                alert("添加失败,请检查添加信息是否按要求填写。");
+            }
+        }
+    })
+}
 
 //修改用户
-// function modify_sub(){
-//     var name = $("#modify_name").val();
-//     var parentId = $("#modify_parentId").val();
-//     var identityCode = $("#modify_identityCode").val();
-//     var email = $("#modify_email").val();
-//     var mobile = $("#modify_mobile").val();
-//     var type = $("#modify_type").val();
-//     var flag = true;
-//     //判断登陆名是否修改，修改的登陆名是否重复
-//     if(name != list[index].name){
-//         flag = Name_v(name);
-//     }
-//     if(flag && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
-//         $.ajax({
-//             url:"/easybuy/user/userModify",
-//             type:"post",
-//             data:{"token":token,"id":list[index].id,"name":name,"parentId":parentId,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
-//             dataType:"JSON",
-//             success:function(result){
-//                 if(result){
-//                     window.location.href = "/Member_Commission.html";
-//                 }else {
-//                     alert("修改失败,请检查修改信息是否按要求填写。");
-//                 }
-//             }
-//         })
-//     }else{
-//         alert("请按要求填写修改信息！");
-//     }
-//     return false;
-// }
+function modify_sub(){
+    alert(gaiID);
+    var name = $("#modify_name").val();
+    var parentId = $("#modify_parentId").val();
+    var type = $("#modify_type").val();
+    $.ajax({
+        url:"/easybuy/productCategory/modifyProductCategory",
+        type:"post",
+        data:{"name":name,"parentId":parentId,"type":type},
+        dataType:"JSON",
+        success:function(result){
+            if(result){
+                alert("修改成功");
+                clean();
+                categorylist();
+                window.location.href = "/Member_Commission.html";
+            }else {
+                alert("修改失败,请检查修改信息是否按要求填写。");
+            }
+        }
+    })
+}
 
-//删除用户
-// function removeUser(id){
-//     var name = $("#modify_name").val();
-//     $.ajax({
-//         url:"/easybuy/productCategory/removeProductCategory",
-//         type:"post",
-//         data:{"token":token,"id":list[index].id},
-//         dataType:"JSON",
-//         success:function(result){
-//             if(result){
-//                 window.location.href = "/Member_Commission.html";
-//             }else {
-//                 alert("删除失败，权限不足");
-//             }
-//         }
-//     })
-//     return false;
-// }
-
-// // 用户名验证
-// function loginName_v(loginName){
-//     var flag=false;
-//     $.ajax({
-//         url:"/easybuy/user/existLoginName",
-//         type:"post",
-//         data:{"loginName":loginName},
-//         dataType:"JSON",
-//         async:false,
-//         success:function(result){
-//             flag = result;
-//         }
-//     });
-//     if(flag){
-//         $(".loginName").nextAll("span").text("用户名已存在").show();
-//     }else{
-//         $(".loginName").nextAll("span").hide();
-//     }
-//     return !flag;
-// }
+//删除分类
+function removecate(id){
+    var name = $("#modify_name").val();
+    $.ajax({
+        url:"/easybuy/productCategory/removeProductCategory",
+        type:"post",
+        data:{"id":list[index].id},
+        dataType:"JSON",
+        success:function(result){
+            if(result){
+                window.location.href = "/Member_Commission.html";
+            }else {
+                alert("删除失败，权限不足");
+            }
+        }
+    })
+    return false;
+}
+//
+// jQuery(document).on("click",".btn_tj",function name(){
+//     // var name = $("#modify_name").val();
+//     // var parentId = $("#modify_parentId").val();
+//     // var type = $("#modify_type").val();
+//     modify_sub();
+//     // alert(name);
+//     // alert(parentId);
+//     // alert(type);
+// })

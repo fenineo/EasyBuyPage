@@ -16,10 +16,9 @@
 
     <script type="text/javascript" src="js/select.js"></script>
 
-    <script type="text/javascript" src="js/categoryManage.js"></script>
-
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="js/adminVerify.js"></script>
+    <script type="text/javascript" src="js/categoryManage.js"></script>
+     <script type="text/javascript" src="js/adminVerify.js"></script>
 
     <style type="text/css">
         .prompt{
@@ -242,7 +241,7 @@
             <p id="right_head"></p>
             <div class="mem_tit">分类列表</div>
             <p align="right">
-                &nbsp; &nbsp; <a href="#" id="add_user" class="add_b">添加分类</a>
+                &nbsp; &nbsp; <a href="#" id="add_cate" class="add_b">添加分类</a>
             </p>
             <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
                 <tr id="first_tr">
@@ -256,52 +255,29 @@
             <div id="pageBox" class="pageBox">
             </div>
 
-            <div id="add_box" style="display: none;">
+              <div id="add_box" style="display: none;">
                 <div class="mem_tit">
-                  添加分类
+                    添加用户
                 </div>
                 <form onsubmit="return add_sub()">
                     <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td width="150" class="tx_l"><font color="#ff4e00">*</font>用户名</td>
-                            <td width="680"><input type="text" id="add_loginName" class="tx_ipt loginName" required="required" />
+                            <td class="tx_l">名称</td>
+                            <td><input type="text" id="add_name" class="tx_ipt name" required="required" /></td>
+                        </tr>
+
+                        <tr>
+                            <td class="tx_l">父级目录ID</td>
+                            <td><input type="text" id="add_parentId" class="tx_ipt parentId" />
                                 <br/><span class="prompt"></span></td>
                         </tr>
                         <tr>
-                            <td class="tx_l"><font color="#ff4e00">*</font>密码</td>
-                            <td><input type="text" id="add_pwd" class="tx_ipt pwd" required="required" />
-                                <br/><span class="prompt"></span></td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l"><font color="#ff4e00">*</font>真实姓名</td>
-                            <td><input type="text" id="add_userName" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" /></td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l"><font color="#ff4e00">*</font>性别</td>
-                            <td><input id="man" type="radio" checked="checked" name="sex" value="1" />男
-                                &nbsp;&nbsp;<input id="woman" type="radio"  name="sex" value="0" />女</td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l">身份证号</td>
-                            <td><input type="text" id="add_identityCode" class="tx_ipt identityCode" />
-                                <br/><span class="prompt"></span></td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l">邮箱</td>
-                            <td><input type="text" id="add_email" class="tx_ipt email" />
-                                <br/><span class="prompt"></span></td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l">手机</td>
-                            <td><input type="text" id="add_mobile" class="tx_ipt mobile" />
-                                <br/><span class="prompt"></span></td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l"><font color="#ff4e00">*</font>用户类型</td>
+                            <td class="tx_l">分类级别</td>
                             <td>
                                 <select id="add_type">
-                                    <option value="0">用户</option>
-                                    <option value="1">管理员</option>
+                                    <option value="1">一级分类</option>
+                                    <option value="2">二级分类</option>
+                                    <option value="3">三级分类</option>
                                 </select>
                             </td>
                         </tr>
@@ -313,30 +289,27 @@
                     </table>
                 </form>
             </div>
-            
+
+
             <div id="modify_box" style="display: none;">
                 <div class="mem_tit">
                     修改分类
                 </div>
                 <form onsubmit="return modify_sub()">
                     <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
+
                         <tr>
-                            <td width="150" class="tx_l"><font color="#ff4e00">*</font>选择</td>
-                            <td width="680"><input type="text" id="modify_loginName" class="tx_ipt loginName" required="required" />
-                                <br/><span class="prompt"></span></td>
-                        </tr>
-                        <tr>
-                            <td class="tx_l"><font color="#ff4e00">*</font>分类名称</td>
-                            <td><input type="text" id="modify_userName" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" /></td>
+                            <td class="tx_l">分类名称</td>
+                            <td><input type="text" id="modify_name" class="tx_ipt name" required="required" /></td>
                         </tr>
                         <tr>
                             <td class="tx_l">分类级别</td>
-                            <td><input type="text" id="modify_identityCode" class="tx_ipt identityCode" />
+                            <td><input type="text" id="modify_type" class="tx_ipt type" />
                                 <br/><span class="prompt"></span></td>
                         </tr>
                         <tr>
                             <td class="tx_l">父级分类</td>
-                            <td><input type="text" id="modify_email" class="tx_ipt email" />
+                            <td><input type="text" id="modify_parentId" class="tx_ipt parentId" />
                                 <br/><span class="prompt"></span></td>
                         </tr>
                         <tr height="70">
