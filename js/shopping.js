@@ -1,43 +1,31 @@
-var dom =
-    "<div class=\"car_t\">购物车 [ <span>3</span> ]</div>" +
-    "	<div class=\"car_bg\">" +
-    "		<!--Begin 购物车未登录 Begin-->" +
-    "		<div class=\"un_login\">还未登录！<a href=\"Login.html\" style=\"color:#ff4e00;\">马上登录</a> 查看购物车！</div>" +
-    "		<!--End 购物车未登录 End-->" +
-    "		<!--Begin 购物车已登录 Begin-->" +
-    "		<ul class=\"cars\">" +
-    "			<li>" +
-    "				<div class=\"img\"><a href=\"#\"><img src=\"images/car1.jpg\" width=\"58\" height=\"58\" /></a></div>" +
-    "				<div class=\"name\"><a href=\"#\">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>" +
-    "				<div class=\"price\"><font color=\"#ff4e00\">￥399</font> X1</div>" +
-    "			</li>" +
-    "		</ul>" +
-    "		<div class=\"price_sum\">共计&nbsp; <font color=\"#ff4e00\">￥</font><span>1058</span></div>" +
-    "		<div class=\"price_a\"><a href=\"#\">去购物车结算</a></div>" +
-    "		<!--End 购物车已登录 End-->" +
-    "</div>"
-
 var token = localStorage.getItem("token");
 var shoppingDom = "";
 var shoppingProduct = null;
 
 $(function (){
-    $("#close").click(function (){
-        $(".fide").hide();
-        $(".toLogin").hide();
+    //关闭登陆提示框
+    $(".close").click(function (){
+        var show_div = $(this).parent().parent().parent();
+        var bg_div = $(this).parent().parent().parent().prev();
+        closeDiv(show_div,bg_div);
     })
-
+    //为继续购物按钮绑定事件
+    $(".b_buy").click(function (){
+        $("#fade1").hide();
+        $("#MyDiv1").hide();
+    })
+    //为添加购物车按钮动态绑定事件
     $(".addShopping").on("click",function (){
         if (token != null){
             var productId = $(this).attr("productId");
             var number = $("#number").val();
             addShopping(token,productId,number);
         }else {
-            $(".fide").show();
-            $(".toLogin").show();
+            $("#fade3").show();
+            $("#MyDiv3").show();
         }
     })
-
+    //判断登陆状况，动态显示购物车
     if (token == null){
         shoppingDom =
             "<div class=\"car_t\">购物车</div>" +
@@ -107,10 +95,19 @@ function showShopping(shoppingProduct){
     }
     shoppingDom +=
         "		</ul>" +
-        "		<div class=\"price_sum\">共计&nbsp; <font color=\"#ff4e00\">￥</font><span>"+sum+"</span></div>" +
-        "		<div class=\"price_a\"><a href=\"#\">去购物车结算</a></div>" +
+        "		<div class=\"price_sum\">共计&nbsp; <font color=\"#ff4e00\">￥</font><span>"+sum+"</span></div>";
+    if (sum > 0){
+        shoppingDom +=
+        "		<div class=\"price_a\"><a href=\"BuyCar.html\">去购物车结算</a></div>";
+    }
+    shoppingDom +=
         "		<!--End 购物车已登录 End-->" +
         "</div>";
     $("#shopping").children().remove();
     $("#shopping").prepend(shoppingDom);
+}
+//隐藏提示框
+function closeDiv(show_div,bg_div){
+    $(show_div).hide();
+    $(bg_div).hide();
 }

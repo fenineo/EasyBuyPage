@@ -1,28 +1,17 @@
-// "<li>" +
-// "	<div class=\"img\"><a href=\"Product.html?id=1\"><img src=\"images/per_1.jpg\" width=\"210\" height=\"185\" /></a></div>" +
-// "	<div class=\"price\">" +
-// "		<font>￥<span>198.00</span></font> &nbsp; 库存：111" +
-// "	</div>" +
-// "	<div class=\"name\"><a href=\"Product.html?id=1\">香奈儿邂逅清新淡香水50ml</a></div>" +
-// "	<div class=\"carbg\">" +
-// "		<a href=\"#\" class=\"ss\">收藏</a>" +
-// "		<a href=\"javascript:void(0)\" productId=\"2\" class=\"j_car add_shopping\">加入购物车</a>" +
-// "	</div>" +
-// "</li>";
-
 var productDom = "";
 var token = localStorage.getItem("token");
 
 var categoryId = 0;
-var path = "";
-var productList = null;
-var index = 0;
-var totalCount = 0;
+var path = "";              //商品分类路径
+var productList = null;     //商品集合
+var index = 0;              //当前页数
+var totalCount = 0;         //总记录数
 
 
 $(function (){
+    //获取商品分类id
     var categoryId = window.location.search.substr(4);
-
+    //根据商品分类查询第一页商品
     productByCategory(1,categoryId);
 })
 
@@ -36,11 +25,12 @@ function productByCategory(pageIndex,categoryId){
         success:function(result){
             index = pageIndex;
             path = result.path;
-            $("#path").text(path);
+            $("#path").text(path);//设置商品分类路径
             totalCount = result.productPage.totalCount;
-            $("#totalCount").text(totalCount);
+            $("#totalCount").text(totalCount);//设置总记录数
 
             productList = result.productPage.list;
+            //遍历商品集合，拼接商品展示页面
             for (var i = 0;i < productList.length;i++){
                 productDom +=
                     "<li>" +
@@ -51,34 +41,15 @@ function productByCategory(pageIndex,categoryId){
                     "	<div class=\"name\"><a href=\"Product.html?id="+productList[i].id+"\">"+productList[i].name+"</a></div>" +
                     "	<div class=\"carbg\">" +
                     "		<a href=\"#\" class=\"ss\">收藏</a>" +
-                    "		<a href=\"javascript:void(0)\" productId=\""+productList[i].id+"\" class=\"j_car add_shopping\">加入购物车</a>" +
+                    "		<a href=\"javascript:void(0)\" productId=\""+productList[i].id+"\" class=\"j_car addShopping\">加入购物车</a>" +
                     "	</div>" +
                     "</li>";
             }
             $("#cate_list").append(productDom);
-
-            $(".add_shopping").on("click",function (){
-                var productId = $(this).attr("productId");
-                addShopping(productId);
-            })
+            //动态添加购物车的js，让其慢于商品页面加载，为添加购物车按钮动态绑定事件
+            var js =
+                "    <script type=\"text/javascript\" src=\"js/shopping.js\"></script>"
+            $("title").before(js);
         }
     })
 }
-
-function addShopping(productId){
-    $("#MyDiv1").show();
-    $("#fade1").show();
-    // if (token != null){
-    //     $("#close").click(function (){
-    //         $("#MyDiv1").hide();
-    //         $("#fade1").hide();
-    //     })
-    // }else {
-    //     $(".fide").show();
-    //     $(".toLogin").show();
-    //     $("#close").click(function (){
-    //         $(".fide").hide();
-    //         $(".toLogin").hide();
-    //     })
-    // }
-};

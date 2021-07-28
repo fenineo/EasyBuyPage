@@ -20,29 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Index.html.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Address.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Address.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Cash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Collect.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Collect.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Commission.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Commission.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Links.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Links.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Member.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Member.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Member_List.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Member_List.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Money.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Money_Charge.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money_Charge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Money_Pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money_Pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Msg.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Msg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Packet.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Packet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Results.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Results.html.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Safe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Safe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_User.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_User.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BrandList.html" beforeDir="false" afterPath="$PROJECT_DIR$/BrandList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuyCar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/brandList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/brandList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/num.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/num.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/shopping.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/shopping.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +118,7 @@
       <workItem from="1627349299778" duration="22352000" />
       <workItem from="1627380956697" duration="658000" />
       <workItem from="1627394276845" duration="6884000" />
+      <workItem from="1627431011187" duration="28949000" />
     </task>
     <servers />
   </component>
@@ -160,5 +146,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1627397682437" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1627432747378">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1627432747378" />
   </component>
 </project>

@@ -9,7 +9,8 @@
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
-    
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>    
                 
@@ -20,10 +21,12 @@
     </script>     
     
     <script type="text/javascript" src="js/shade.js"></script>
-    
+    <script type="text/javascript" src="js/shopping.js"></script>
+    <script type="text/javascript" src="js/buyCar.js"></script>
+
 <title>尤洪</title>
 </head>
-<body>  
+<body>
 <!--Begin Header Begin-->
 <div class="soubg">
 	<div class="sou">
@@ -159,34 +162,9 @@
         </form>                      
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
-    <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
-        <div class="car_bg">
-       		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
-            <!--End 购物车未登录 End-->
-            <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-            </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
-            <!--End 购物车已登录 End-->
-        </div>
+    <!--购物车页面-->
+    <div id="shopping" class="i_car">
+
     </div>
 </div>
 <!--End Header End--> 
@@ -462,84 +440,20 @@
     	<table border="0" class="car_tab" style="width:1200px; margin-bottom:50px;" cellspacing="0" cellpadding="0">
           <tr>
             <td class="car_th" width="490">商品名称</td>
-            <td class="car_th" width="140">属性</td>
-            <td class="car_th" width="150">购买数量</td>
-            <td class="car_th" width="130">小计</td>
-            <td class="car_th" width="140">返还积分</td>
-            <td class="car_th" width="150">操作</td>
+<!--            <td class="car_th" width="140">单价</td>-->
+<!--            <td class="car_th" width="150">购买数量</td>-->
+<!--            <td class="car_th" width="130">小计</td>-->
+              <td class="car_th" width="180">单价</td>
+              <td class="car_th" width="200">购买数量</td>
+              <td class="car_th" width="180">小计</td>
+<!--            <td class="car_th" width="140">返还积分</td>-->
+              <td class="car_th" width="150">操作</td>
           </tr>
-          <tr>
-            <td>
-            	<div class="c_s_img"><img src="images/c_1.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a onclick="ShowDiv('MyDiv','fade')">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr class="car_tr">
-            <td>
-            	<div class="c_s_img"><img src="images/c_2.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr>
-            <td>
-            	<div class="c_s_img"><img src="images/c_3.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr class="car_tr">
-            <td>
-            	<div class="c_s_img"><img src="images/c_4.jpg" width="73" height="73" /></div>
-                Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-            </td>
-            <td align="center">颜色：灰色</td>
-            <td align="center">
-            	<div class="c_num">
-                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
-                	<input type="text" value="1" name="" class="car_ipt" />  
-                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
-                </div>
-            </td>
-            <td align="center" style="color:#ff4e00;">￥620.00</td>
-            <td align="center">26R</td>
-            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
-          </tr>
-          <tr height="70">
+
+          <tr height="70" id="productEnd">
           	<td colspan="6" style="font-family:'Microsoft YaHei'; border-bottom:0;">
-            	<label class="r_rad"><input type="checkbox" name="clear" checked="checked" /></label><label class="r_txt">清空购物车</label>
-                <span class="fr">商品总价：<b style="font-size:22px; color:#ff4e00;">￥2899</b></span>
+<!--            	<label class="r_rad"><input type="checkbox" name="clear" checked="checked" /></label><label class="r_txt">清空购物车</label>-->
+                <span class="fr">商品总价：<b id="sumPrice" style="font-size:22px; color:#ff4e00;">￥0</b></span>
             </td>
           </tr>
           <tr valign="top" height="150">
