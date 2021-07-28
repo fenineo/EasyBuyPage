@@ -11,16 +11,15 @@
     <![endif]-->
     
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>    
-                
 	<script type="text/javascript" src="js/n_nav.js"></script>   
-    
     <script type="text/javascript" src="js/select.js"></script>
-    
+    <script type="text/javascript" src="js/ress.js"></script>
     <script type="text/javascript" src="js/num.js">
     	var jq = jQuery.noConflict();
     </script>     
-    
+    <script type="text/javascript" src="js/BuyCar_Two.js"></script>
     <script type="text/javascript" src="js/shade.js"></script>
     
 <title>尤洪</title>
@@ -510,38 +509,19 @@
               </tr>
             </table>
             
-            <div class="two_t">
-            	<span class="fr"><a href="#">修改</a></span>收货人信息
+            <div class="two_t" id="select">
+            	收货人信息
             </div>
-            <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="p_td" width="160">商品名称</td>
-                <td width="395">海贼王</td>
-                <td class="p_td" width="160">电子邮件</td>
-                <td width="395">12345678@qq.com</td>
-              </tr>
-              <tr>
-                <td class="p_td">详细信息</td>
-                <td>四川省成都市武侯区</td>
-                <td class="p_td">邮政编码</td>
-                <td>6011111</td>
-              </tr>
-              <tr>
-                <td class="p_td">电话</td>
-                <td></td>
-                <td class="p_td">手机</td>
-                <td>18600002222</td>
-              </tr>
-              <tr>
-                <td class="p_td">标志建筑</td>
-                <td></td>
-                <td class="p_td">最佳送货时间</td>
-                <td></td>
-              </tr>
-            </table>
+            <div class="two_t" id="aaa">
+            	<a href="#" id="add"><img src="images/add_ad.gif" /></a>
+            </div>
+            <div class="two_t" id="bbb">
+                <input type="button" value="查询所有地址" id="selectOther">
+            </div>
+            
 
             
-            <div class="two_t">
+            <!-- <div class="two_t">
             	配送方式
             </div>
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
@@ -687,10 +667,10 @@
                     <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">与店主协商</label>
                 </td>
               </tr>
-            </table>
+            </table> -->
             
             <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
-              <tr>
+              <!-- <tr>
                 <td align="right">
                 	该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font color="#ff4e00">￥0.00</font> 的红包 <br />
                     商品总价: <font color="#ff4e00">￥1815.00</font>  + 配送费用: <font color="#ff4e00">￥15.00</font>
@@ -700,7 +680,7 @@
                 <td align="right">
                 	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥2899</span></b>
                 </td>
-              </tr>
+              </tr> -->
               <tr height="70">
                 <td align="right"><a href="#"><img src="images/btn_sure.gif" /></a></td>
               </tr>

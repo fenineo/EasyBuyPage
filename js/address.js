@@ -8,6 +8,7 @@ jQuery(function(){
   */
 function get(){
     var token = localStorage.getItem("token");
+    $("#add").show();
     $.ajax({
      url:"/easybuy/user/loginInfo",
      dataType: "json",
@@ -32,7 +33,7 @@ function findByUserId(userId){
                for(var i=0;i<result.length;i++){
                 $("#select").after(
                     "<div class="+"address"+">"+
-                            "<div class="+"a_close"+"><a href="+"#"+"><img src="+"images/a_close.png"+" /></a></div>"+
+                            "<div class="+"a_close"+"><a href="+"#"+" name="+result[i].id+" class='delete'><img src="+"images/a_close.png"+" /></a></div>"+
                             "<table border="+"0"+" class="+"add_t"+" align="+"center"+" style="+"width:98%; margin:10px auto;"+" cellspacing="+"0"+" cellpadding="+"0"+">"+
                               "<tr>"+
                                 "<td align="+"right"+" width="+"80"+">收货人姓名：</td>"+
@@ -58,7 +59,6 @@ function findByUserId(userId){
                             "<p align="+"right"+">"+
                                 "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='isDefault'>设为默认</a>&nbsp; &nbsp; &nbsp; &nbsp; "+
                                 "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='update'>编辑</a>&nbsp; &nbsp; &nbsp; &nbsp; "+
-                                "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='delete'>删除</a>&nbsp; &nbsp; &nbsp; &nbsp;"+
                             "</p>"+
                         "</div>"
                     )
@@ -71,39 +71,52 @@ function findByUserId(userId){
  * 添加地址得点击事件
  */
 $(document).on("click","#add",function name(){
-    $("#aaa").after(
-        "<table border="+"0"+" class="+"add_tab"+" style="+"width:930px;"+"  cellspacing="+"0"+" cellpadding="+"0"+">"+
-              "<tr>"+
-                "<td width="+"135"+" align="+"right"+">配送地区</td>"+
-                "<td colspan="+"3"+" style="+"font-family:'宋体';"+">"+
-                    "<select name="+"sheng"+" id="+"sheng"+"></select>"+
-                    "<select name="+"shi"+" id="+"shi"+"></select>"+
-                    "<select name="+"qu"+" id="+"qu"+"></select>"+
-                    "（必填）"+
-                "</td>"+
-              "</tr>"+
-              "<tr>"+
-                "<td align="+"right"+">收货人姓名</td>"+
-                "<td style="+"font-family:'宋体'; "+"><input type="+"text"+"  class="+"add_consignee"+" id="+"add_consignee"+"/>（必填）</td>"+
-                "<td align="+"right"+">电子邮箱</td>"+
-                "<td style="+"font-family:'宋体';"+"><input type="+"text"+" class="+"add_email"+" id="+"add_email"+"/>（必填）</td>"+
-              "</tr>"+
-              "<tr>"+
-                "<td align="+"right"+">详细地址</td>"+
-                "<td style="+"font-family:'宋体';"+"><input type="+"text"+" class="+"add_xaddress"+" id="+"add_xaddress"+"/>（必填）</td>"+
-                "<td align="+"right"+">手机</td>"+
-                "<td style="+"font-family:'宋体';"+"><input type="+"number"+" class="+"add_phone"+"/ id="+"add_phone"+">（必填）</td>"+
-              "</tr>"+
-            "</table>"+
-           	"<p align="+"right"+" class="+"aa"+">"+
-            	"<a href="+"#"+" class="+"back"+">返回</a>&nbsp; &nbsp; <a href="+"#"+" class="+"add_b"+"  id="+"addAffirm"+">确认添加</a>"+
-            "</p>" 
-            
-
-    )
-    if($("select[name='sheng']").length>0){
-        new PCAS("sheng","shi","qu","","","");
+  $.ajax({
+    url:"/easybuy/UserAddress/findByUserId",
+    dataType: "json",
+    data:{"userId":userId},
+    success: function(result){
+      if(result.length<3){
+        clean();
+        $("#aaa").after(
+            "<table border="+"0"+" class="+"add_tab"+" style="+"width:930px;"+"  cellspacing="+"0"+" cellpadding="+"0"+">"+
+                  "<tr>"+
+                    "<td width="+"135"+" align="+"right"+">配送地区</td>"+
+                    "<td colspan="+"3"+" style="+"font-family:'宋体';"+">"+
+                        "<select name="+"sheng"+" id="+"sheng"+"></select>"+
+                        "<select name="+"shi"+" id="+"shi"+"></select>"+
+                        "<select name="+"qu"+" id="+"qu"+"></select>"+
+                        "（必填）"+
+                    "</td>"+
+                  "</tr>"+
+                  "<tr>"+
+                    "<td align="+"right"+">收货人姓名</td>"+
+                    "<td style="+"font-family:'宋体'; "+"><input type="+"text"+"  class="+"add_consignee"+" id="+"add_consignee"+"/>（必填）</td>"+
+                    "<td align="+"right"+">电子邮箱</td>"+
+                    "<td style="+"font-family:'宋体';"+"><input type="+"text"+" class="+"add_email"+" id="+"add_email"+"/>（必填）</td>"+
+                  "</tr>"+
+                  "<tr>"+
+                    "<td align="+"right"+">详细地址</td>"+
+                    "<td style="+"font-family:'宋体';"+"><input type="+"text"+" class="+"add_xaddress"+" id="+"add_xaddress"+"/>（必填）</td>"+
+                    "<td align="+"right"+">手机</td>"+
+                    "<td style="+"font-family:'宋体';"+"><input type="+"number"+" class="+"add_phone"+"/ id="+"add_phone"+">（必填）</td>"+
+                  "</tr>"+
+                "</table>"+
+                 "<p align="+"right"+" class="+"aa"+">"+
+                  "<a href="+"#"+" class="+"back"+">返回</a>&nbsp; &nbsp; <a href="+"#"+" class="+"add_b"+"  id="+"addAffirm"+">确认添加</a>"+
+                "</p>" 
+                
+    
+        )
+        if($("select[name='sheng']").length>0){
+            new PCAS("sheng","shi","qu","","","");
+        }
+      }else{
+        alert("超过数量，请删除后再添加");
+      }
     }
+  })
+    
 })
 /**
  * 确认添加得方法
@@ -191,11 +204,13 @@ function remove(id){
   jQuery(".add_tab").remove();
   jQuery(".address").remove();
   jQuery(".aa").remove();
+  $("#add").hide();
 }
 /**
  * 编辑地址的点击事件
  */
  $(document).on("click",".update",function name(){
+   clean();
   var id=jQuery(this).attr("name");
   jQuery.ajax({
     url:"/easybuy/UserAddress/findById",
