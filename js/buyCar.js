@@ -1,6 +1,10 @@
 var token = localStorage.getItem("token");
 var shoppingProduct = null;//商品集合
 var productId = 0;
+var pageIndex = 1;//当前页
+var pageSize = 5;//页容量
+var pageCount = 0;//总页数
+var totalCount = 0;//总记录数
 
 $(function (){
     if(token == null){
@@ -17,6 +21,13 @@ $(function (){
     $(".b_buy").click(function (){
         $("#fade").hide();
         $("#MyDiv").hide();
+    })
+    $("#toPay").click(function (){
+        if (shoppingProduct == null || shoppingProduct.length < 1){
+            alert("购物车还是空的，先去添加喜欢的宝贝吧。")
+        }else {
+            window.location.href = "BuyCar_Two.html";
+        }
     })
 });
 
@@ -38,24 +49,22 @@ function numberVerify(number,dom){
     }
     subtotal(number,dom);
 }
-//计算商品小计和总价
+//计算商品小计
 function subtotal(number,dom){
     var _productId = $(dom).attr("productId");
     modifyShopping(token,_productId,number);
-
+    //计算小计并展示到页面
     var price = parseFloat($(dom).parent().parent().prev().text().replace("￥",""));
     var subtol = toDecimal2(numMulti(price,number));
     $(dom).parent().parent().next().text("￥"+subtol);
-    sum();
 }
 //计算商品总价
-function sum(){
+function sum(shoppingProduct){
     var sumPrice = 0;//总价
-    $(".subtotal").each(function (){
-        subtol = parseFloat($(this).text().replace("￥",""));
-        sumPrice = toDecimal2(numAdd(sumPrice,subtol));
-    })
-    $("#sumPrice").text("￥"+sumPrice);
+    for (var i = 0;i < shoppingProduct.length;i++){
+        sumPrice += numMulti(shoppingProduct[i].price,shoppingProduct[i].stock);
+    }
+    $("#sumPrice").text("￥"+toDecimal2(sumPrice));
 }
 //查询购物车
 function findShoppingProduct(){
@@ -101,11 +110,8 @@ function showShoppingProduct(shoppingProduct){
             "		</tr>";
     }
     $("#productEnd").before(shoppingDom);
-    sum();
 
-    //为购物车删除商品按钮动态绑定事件
-    // $(".removeShopping").on("click",function (){
-    // })
+    sum(shoppingProduct);
     //为减号按钮动态绑定事件
     $(".car_btn_1").on("click",function (){
         var number = $(this).next().val();
@@ -123,6 +129,8 @@ function showShoppingProduct(shoppingProduct){
         var number = $(this).val();
         numberVerify(number,$(this));
     })
+
+    showShopping(shoppingProduct);
 }
 //修改购物车中商品的数量
 function modifyShopping(token,productId,number){
@@ -136,12 +144,13 @@ function modifyShopping(token,productId,number){
         },
         success:function(result){
             shoppingProduct = result.shoppingProduct;
+            sum(shoppingProduct);
+            showShopping(shoppingProduct);
         }
     });
 }
 //删除购物车中的商品
 function removeShopping(token,productId){
-    alert(productId)
     $.ajax({
         url:"/easybuy/product/removeShopping",
         type:"post",

@@ -21,6 +21,7 @@
     </script>     
     <script type="text/javascript" src="js/BuyCar_Two.js"></script>
     <script type="text/javascript" src="js/shade.js"></script>
+    <script type="text/javascript" src="js/shopping.js"></script>
     
 <title>尤洪</title>
 </head>
@@ -160,34 +161,9 @@
         </form>                      
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
-    <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
-        <div class="car_bg">
-       		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
-            <!--End 购物车未登录 End-->
-            <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-            </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
-            <!--End 购物车已登录 End-->
-        </div>
+    <!--购物车页面-->
+    <div id="shopping" class="i_car">
+
     </div>
 </div>
 <!--End Header End--> 
@@ -462,49 +438,18 @@
     <div class="content mar_20">
     	<div class="two_bg">
         	<div class="two_t">
-            	<span class="fr"><a href="#">修改</a></span>商品列表
+            	<span class="fr"><a href="BuyCar.html">修改</a></span>商品列表
             </div>
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
+              <tr id="productBegin">
                 <td class="car_th" width="550">商品名称</td>
-                <td class="car_th" width="140">属性</td>
-                <td class="car_th" width="150">购买数量</td>
-                <td class="car_th" width="130">小计</td>
-                <td class="car_th" width="140">返还积分</td>
+                <td class="car_th" width="190">单价</td>
+                <td class="car_th" width="190">购买数量</td>
+                <td class="car_th" width="180">小计</td>
               </tr>
+
               <tr>
-                <td>
-                    <div class="c_s_img"><img src="images/c_1.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr class="car_tr">
-                <td>
-                    <div class="c_s_img"><img src="images/c_2.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr>
-                <td>
-                    <div class="c_s_img"><img src="images/c_3.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr>
-                <td colspan="5" align="right" style="font-family:'Microsoft YaHei';">
-                    商品总价：￥1899.00 ； 返还积分 56R  
+                <td colspan="5" class="sum" align="right" style="font-family:'Microsoft YaHei';">
                 </td>
               </tr>
             </table>
@@ -520,169 +465,171 @@
             </div>
             
 
-            
-            <!-- <div class="two_t">
-            	配送方式
+            <div>
+<!--                <div class="two_t">-->
+<!--                    配送方式-->
+<!--                </div>-->
+<!--                <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">-->
+<!--                    <tr>-->
+<!--                        <td class="car_th" width="80"></td>-->
+<!--                        <td class="car_th" width="200">名称</td>-->
+<!--                        <td class="car_th" width="370">订购描述</td>-->
+<!--                        <td class="car_th" width="150">费用</td>-->
+<!--                        <td class="car_th" width="135">免费额度</td>-->
+<!--                        <td class="car_th" width="175">保价费用</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center"><input type="checkbox" name="ch" checked="checked" /></td>-->
+<!--                        <td align="center" style="font-size:14px;"><b>申通快递</b></td>-->
+<!--                        <td>江、浙、沪地区首重为15元/KG，其他地区18元/KG，续重均为5-6元/KG， 云南地区为8元</td>-->
+<!--                        <td align="center">￥15.00</td>-->
+<!--                        <td align="center">￥0.00</td>-->
+<!--                        <td align="center">不支持保价</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center"><input type="checkbox" name="ch" /></td>-->
+<!--                        <td align="center" style="font-size:14px;"><b>城际快递</b></td>-->
+<!--                        <td>运费固定</td>-->
+<!--                        <td align="center">￥15.00</td>-->
+<!--                        <td align="center">￥0.00</td>-->
+<!--                        <td align="center">不支持保价</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center"><input type="checkbox" name="ch" /></td>-->
+<!--                        <td align="center" style="font-size:14px;"><b>邮局平邮</b></td>-->
+<!--                        <td>运费固定</td>-->
+<!--                        <td align="center">￥15.00</td>-->
+<!--                        <td align="center">￥0.00</td>-->
+<!--                        <td align="center">不支持保价</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td colspan="6">-->
+<!--                            <span class="fr"><label class="r_rad"><input type="checkbox" name="baojia" /></label><label class="r_txt">配送是否需要保价</label></span>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
             </div>
-            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="car_th" width="80"></td>
-                <td class="car_th" width="200">名称</td>
-                <td class="car_th" width="370">订购描述</td>
-                <td class="car_th" width="150">费用</td>
-                <td class="car_th" width="135">免费额度</td>
-                <td class="car_th" width="175">保价费用</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="ch" checked="checked" /></td>
-                <td align="center" style="font-size:14px;"><b>申通快递</b></td>
-                <td>江、浙、沪地区首重为15元/KG，其他地区18元/KG，续重均为5-6元/KG， 云南地区为8元</td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center">不支持保价</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="ch" /></td>
-                <td align="center" style="font-size:14px;"><b>城际快递</b></td>
-                <td>运费固定</td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center">不支持保价</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="ch" /></td>
-                <td align="center" style="font-size:14px;"><b>邮局平邮</b></td>
-                <td>运费固定</td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center">不支持保价</td>
-              </tr>
-              <tr>
-              	<td colspan="6">
-                	<span class="fr"><label class="r_rad"><input type="checkbox" name="baojia" /></label><label class="r_txt">配送是否需要保价</label></span>
-                </td>
-              </tr>
-            </table> 
             
             <div class="two_t">
             	支付方式
             </div>
             <ul class="pay">
-                <li class="checked">余额支付<div class="ch_img"></div></li>
-                <li>银行亏款/转账<div class="ch_img"></div></li>
-                <li>货到付款<div class="ch_img"></div></li>
-                <li>支付宝<div class="ch_img"></div></li>
+                <li class="checked">支付宝<div class="ch_img"></div></li>
             </ul>
-            
-            <div class="two_t">
-            	商品包装
+
+            <div>
+<!--                <div class="two_t">-->
+<!--                    商品包装-->
+<!--                </div>-->
+<!--                <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">-->
+<!--                    <tr>-->
+<!--                        <td class="car_th" width="80"></td>-->
+<!--                        <td class="car_th" width="490">名称</td>-->
+<!--                        <td class="car_th" width="180">费用</td>-->
+<!--                        <td class="car_th" width="180">免费额度</td>-->
+<!--                        <td class="car_th" width="180">图片</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center"><input type="checkbox" name="pack" checked="checked" /></td>-->
+<!--                        <td><b style="font-size:14px;">不要包装</b></td>-->
+<!--                        <td align="center">￥15.00</td>-->
+<!--                        <td align="center">￥0.00</td>-->
+<!--                        <td align="center"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center"><input type="checkbox" name="pack" /></td>-->
+<!--                        <td><b style="font-size:14px;">精品包装</b></td>-->
+<!--                        <td align="center">￥15.00</td>-->
+<!--                        <td align="center">￥0.00</td>-->
+<!--                        <td align="center"><a href="#" style="color:#ff4e00;">查看</a></td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                -->
+<!--                <div class="two_t">-->
+<!--                    祝福贺卡-->
+<!--                </div>-->
+<!--                <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">-->
+<!--                    <tr>-->
+<!--                        <td class="car_th" width="80"></td>-->
+<!--                        <td class="car_th" width="490">名称</td>-->
+<!--                        <td class="car_th" width="180">费用</td>-->
+<!--                        <td class="car_th" width="180">免费额度</td>-->
+<!--                        <td class="car_th" width="180">图片</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center"><input type="checkbox" name="wish" checked="checked" /></td>-->
+<!--                        <td><b style="font-size:14px;">不要贺卡</b></td>-->
+<!--                        <td align="center">￥15.00</td>-->
+<!--                        <td align="center">￥0.00</td>-->
+<!--                        <td align="center"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="center" style="border-bottom:0; padding-bottom:0;"><input type="checkbox" name="wish" /></td>-->
+<!--                        <td style="border-bottom:0; padding-bottom:0;"><b style="font-size:14px;">祝福贺卡</b></td>-->
+<!--                        <td align="center" style="border-bottom:0; padding-bottom:0;">￥15.00</td>-->
+<!--                        <td align="center" style="border-bottom:0; padding-bottom:0;">￥0.00</td>-->
+<!--                        <td align="center" style="border-bottom:0; padding-bottom:0;"><a href="#" style="color:#ff4e00;">查看</a></td>-->
+<!--                    </tr>-->
+<!--                    <tr valign="top">-->
+<!--                        <td align="center"></td>-->
+<!--                        <td colspan="4">-->
+<!--                            <span class="fl"><b style="font-size:14px;">祝福语：</b></span>-->
+<!--                            <span class="fl"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></span>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+
+<!--                <div class="two_t">-->
+<!--                    其他信息-->
+<!--                </div>-->
+<!--                <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">-->
+<!--                    <tr>-->
+<!--                        <td width="145" align="right" style="padding-right:0;"><b style="font-size:14px;">使用红包：</b></td>-->
+<!--                        <td>-->
+<!--                            <span class="fl" style="margin-left:50px; margin-right:10px;">选择已有红包</span>-->
+<!--                            <select class="jj" name="city">-->
+<!--                                <option value="0" selected="selected">请选择</option>-->
+<!--                                <option value="1">50元</option>-->
+<!--                                <option value="2">30元</option>-->
+<!--                                <option value="3">20元</option>-->
+<!--                                <option value="4">10元</option>-->
+<!--                            </select>-->
+<!--                            <span class="fl" style="margin-left:50px; margin-right:10px;">或者输入红包序列号</span>-->
+<!--                            <span class="fl"><input type="text" value="" class="c_ipt" style="width:220px;" />-->
+<!--                    <span class="fr" style="margin-left:10px;"><input type="submit" value="验证红包" class="btn_tj" /></span>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr valign="top">-->
+<!--                        <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单附言：</b></td>-->
+<!--                        <td style="padding-left:0;"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td align="right" style="padding-right:0;"><b style="font-size:14px;">缺货处理：</b></td>-->
+<!--                        <td>-->
+<!--                            <label class="r_rad"><input type="checkbox" name="none" checked="checked" /></label><label class="r_txt" style="margin-right:50px;">等待所有商品备齐后再发</label>-->
+<!--                            <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">取下订单</label>-->
+<!--                            <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">与店主协商</label>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
             </div>
-            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="car_th" width="80"></td>
-                <td class="car_th" width="490">名称</td>
-                <td class="car_th" width="180">费用</td>
-                <td class="car_th" width="180">免费额度</td>
-                <td class="car_th" width="180">图片</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="pack" checked="checked" /></td>
-                <td><b style="font-size:14px;">不要包装</b></td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center"></td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="pack" /></td>
-                <td><b style="font-size:14px;">精品包装</b></td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center"><a href="#" style="color:#ff4e00;">查看</a></td>
-              </tr>
-            </table> 
             
-            <div class="two_t">
-            	祝福贺卡
-            </div>
-            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="car_th" width="80"></td>
-                <td class="car_th" width="490">名称</td>
-                <td class="car_th" width="180">费用</td>
-                <td class="car_th" width="180">免费额度</td>
-                <td class="car_th" width="180">图片</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="wish" checked="checked" /></td>
-                <td><b style="font-size:14px;">不要贺卡</b></td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center"></td>
-              </tr>
-              <tr>
-              	<td align="center" style="border-bottom:0; padding-bottom:0;"><input type="checkbox" name="wish" /></td>
-                <td style="border-bottom:0; padding-bottom:0;"><b style="font-size:14px;">祝福贺卡</b></td>
-                <td align="center" style="border-bottom:0; padding-bottom:0;">￥15.00</td>
-                <td align="center" style="border-bottom:0; padding-bottom:0;">￥0.00</td>
-                <td align="center" style="border-bottom:0; padding-bottom:0;"><a href="#" style="color:#ff4e00;">查看</a></td>
-              </tr>
-              <tr valign="top">
-              	<td align="center"></td>
-                <td colspan="4">
-                	<span class="fl"><b style="font-size:14px;">祝福语：</b></span>
-                    <span class="fl"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></span>
-                </td>
-              </tr>
-            </table> 
-            
-            <div class="two_t">
-            	其他信息
-            </div>
-            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="145" align="right" style="padding-right:0;"><b style="font-size:14px;">使用红包：</b></td>
-                <td>
-                	<span class="fl" style="margin-left:50px; margin-right:10px;">选择已有红包</span>
-                    <select class="jj" name="city">
-                      <option value="0" selected="selected">请选择</option>
-                      <option value="1">50元</option>
-                      <option value="2">30元</option>
-                      <option value="3">20元</option>
-                      <option value="4">10元</option>
-                    </select>
-                    <span class="fl" style="margin-left:50px; margin-right:10px;">或者输入红包序列号</span>
-                    <span class="fl"><input type="text" value="" class="c_ipt" style="width:220px;" />
-                    <span class="fr" style="margin-left:10px;"><input type="submit" value="验证红包" class="btn_tj" /></span>
-                </td>
-			  </tr>
-              <tr valign="top">
-                <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单附言：</b></td>
-                <td style="padding-left:0;"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></td>
-              </tr>
-              <tr>
-              	<td align="right" style="padding-right:0;"><b style="font-size:14px;">缺货处理：</b></td>
-                <td>
-                	<label class="r_rad"><input type="checkbox" name="none" checked="checked" /></label><label class="r_txt" style="margin-right:50px;">等待所有商品备齐后再发</label>
-                    <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">取下订单</label>
-                    <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">与店主协商</label>
-                </td>
-              </tr>
-            </table> -->
+
             
             <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
-              <!-- <tr>
+              <tr>
                 <td align="right">
-                	该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font color="#ff4e00">￥0.00</font> 的红包 <br />
-                    商品总价: <font color="#ff4e00">￥1815.00</font>  + 配送费用: <font color="#ff4e00">￥15.00</font>
+<!--                	该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font color="#ff4e00">￥0.00</font> 的红包 <br />-->
+                    <font class="sum" color="#ff4e00"></font>  + 配送费用: <font color="#ff4e00">￥15.00</font>
                 </td>
               </tr>
               <tr height="70">
                 <td align="right">
-                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥2899</span></b>
+                	<b style="font-size:14px;">应付款金额：<span id="amountPayable" style="font-size:22px; color:#ff4e00;"></span></b>
                 </td>
-              </tr> -->
+              </tr>
               <tr height="70">
-                <td align="right"><a href="#"><img src="images/btn_sure.gif" /></a></td>
+                <td align="right"><a href="#" id="toPay"><img src="images/btn_sure.gif" /></a></td>
               </tr>
             </table>
 

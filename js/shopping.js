@@ -79,18 +79,6 @@ function findShopping(token){
     })
 }
 
-$.ajax({
-    url:"/easybuy/product/findShopping",
-    type:"post",
-    data:{"token":token},
-    dataType:"JSON",
-    beforeSend:function (XMLHttpRequest){
-        XMLHttpRequest.setRequestHeader("token",token);
-    },
-    success:function(result){
-    }
-})
-
 //展示购物车
 function showShopping(shoppingProduct){
     var sum = 0;
@@ -100,9 +88,9 @@ function showShopping(shoppingProduct){
         "		<!--Begin 购物车已登录 Begin-->" +
         "		<ul class=\"cars\">";
     for (var i = 0;i < shoppingProduct.length;i++){
-        if (i == 4){
-            break;
-        }
+        // if (i == 4){
+        //     break;
+        // }
         shoppingDom +=
         "			<li>" +
         "				<div class=\"img\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\"><img src=\"images/car1.jpg\" width=\"58\" height=\"58\" /></a></div>" +
