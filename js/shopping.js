@@ -48,6 +48,9 @@ function addShopping(token,productId,number){
         type:"post",
         data:{"token":token,"productId":productId,"number":number},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             shoppingProduct = result.shoppingProduct;
             showShopping(shoppingProduct);
@@ -66,12 +69,27 @@ function findShopping(token){
         type:"post",
         data:{"token":token},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             shoppingProduct = result;
             showShopping(shoppingProduct);
         }
     })
 }
+
+$.ajax({
+    url:"/easybuy/product/findShopping",
+    type:"post",
+    data:{"token":token},
+    dataType:"JSON",
+    beforeSend:function (XMLHttpRequest){
+        XMLHttpRequest.setRequestHeader("token",token);
+    },
+    success:function(result){
+    }
+})
 
 //展示购物车
 function showShopping(shoppingProduct){

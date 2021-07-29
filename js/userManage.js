@@ -7,18 +7,6 @@ var index = 0;
 $(function (){
     userList(1);
 
-    // $.ajax({
-    //     url:"/easybuy/user/loginInfo",
-    //     type:"post",
-    //     data:{"token":token},
-    //     dataType:"JSON",
-    //     success:function(result){
-    //         alert("id"+result.id);
-    //         alert("loginName"+result.loginName);
-    //         alert("type"+result.type);
-    //     }
-    // });
-
     $(".loginName").blur(function (){
         var loginName = $(this).val();
         var idName = $(this).attr("id");
@@ -60,6 +48,9 @@ function userList(pageIndex){
         type:"post",
         data:{"pageIndex":pageIndex},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             pageCount = result.pageCount;
             pgIndex = result.pageIndex;
@@ -158,6 +149,9 @@ function add_sub(){
             type:"post",
             data:{"token":token,"loginName":loginName,"password":password,"userName":userName,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             dataType:"JSON",
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
             success:function(result){
                 if(result){
                     window.location.href = "/Member_Links.html";
@@ -191,6 +185,9 @@ function modify_sub(){
             type:"post",
             data:{"token":token,"id":list[index].id,"loginName":loginName,"userName":userName,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             dataType:"JSON",
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
             success:function(result){
                 if(result){
                     window.location.href = "/Member_Links.html";
@@ -213,6 +210,9 @@ function removeUser(id){
         type:"post",
         data:{"token":token,"id":list[index].id},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             if(result){
                 window.location.href = "/Member_Links.html";
@@ -228,7 +228,7 @@ function removeUser(id){
 function loginName_v(loginName){
     var flag=false;
     $.ajax({
-        url:"/easybuy/user/existLoginName",
+        url:"/easybuy/user/tourist/existLoginName",
         type:"post",
         data:{"loginName":loginName},
         dataType:"JSON",

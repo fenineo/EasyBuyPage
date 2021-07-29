@@ -2,7 +2,7 @@ function sub(){
     var loginName = $("#loginName").val();
     var password = $("#password").val();
     $.ajax({
-        url:"/easybuy/user/login",
+        url:"/easybuy/user/tourist/login",
         type:"post",
         data:{"loginName":loginName,"password":password},
         dataType:"JSON",

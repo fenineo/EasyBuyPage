@@ -20,14 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrandList.html" beforeDir="false" afterPath="$PROJECT_DIR$/BrandList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuyCar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/adminVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/adminVerify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/brandList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/brandList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/num.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/num.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/buyCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/indexProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/indexProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loginTypeVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loginTypeVerify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/productInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/productInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/regist.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/regist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/shopping.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/shopping.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -119,6 +123,7 @@
       <workItem from="1627380956697" duration="658000" />
       <workItem from="1627394276845" duration="6884000" />
       <workItem from="1627431011187" duration="28949000" />
+      <workItem from="1627478223006" duration="6606000" />
     </task>
     <servers />
   </component>

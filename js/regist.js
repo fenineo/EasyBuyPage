@@ -29,7 +29,7 @@ function sub(){
         var email = $("#email").val();
         var mobile = $("#mobile").val();
         $.ajax({
-            url:"/easybuy/user/register",
+            url:"/easybuy/user/tourist/register",
             type:"post",
             data:{"loginName":loginName,"password":password,"userName":userName,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile},
             dataType:"JSON",
@@ -52,7 +52,7 @@ function loginName_v(){
     var flag=false;
     var loginName = $("#loginName").val();
     $.ajax({
-        url:"/easybuy/user/existLoginName",
+        url:"/easybuy/user/tourist/existLoginName",
         type:"post",
         data:{"loginName":loginName},
         dataType:"JSON",
@@ -145,19 +145,3 @@ function mobile_v(){
     $("#mobile").nextAll("span").hide();
     return true
 }
-
-//格式验证通用方法  obj：当前input对象 reg:正则表达式 remind:提醒语句
-// function verify(obj,reg,remind){
-//     var parm = $(obj).val();
-//     if(!reg.test(parm)){
-//         if(parm == "" || parm == null){
-//             $(obj).nextAll("span").hide();
-//             return true;
-//         }
-//         $(obj).nextAll("span").text(remind).show();
-//         return false;
-//     }
-//
-//     $(obj).nextAll("span").hide();
-//     return true;
-// }

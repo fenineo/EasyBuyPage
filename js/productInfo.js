@@ -7,7 +7,7 @@ $(function (){
     $(".addShopping").attr("productId",productId);
 
     $.ajax({
-        url:"/easybuy/product/productInfo",
+        url:"/easybuy/product/tourist/productInfo",
         type:"post",
         data:{"id":productId},
         dataType:"JSON",

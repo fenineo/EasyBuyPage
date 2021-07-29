@@ -17,6 +17,9 @@ $(function (){
         type:"post",
         data:{"token":token},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             flag = result.flag;
             typeLv = result.type;
