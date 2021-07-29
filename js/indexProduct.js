@@ -5,10 +5,9 @@ var categoryThreeList = null;//商品三级分类集合
 var productList = null;//商品集合
 
 $(function (){
-    // $("#product_end").before(dom);
 
     $.ajax({
-        url:"/easybuy/product/productList",
+        url:"/easybuy/product/tourist/productList",
         type:"post",
         dataType:"JSON",
         success:function(result){
@@ -98,8 +97,4 @@ $(function (){
             $("#product_begin").after(productDom);
         }
     })
-
-    // $("a").click(function (){
-    //     window.location.href = "Product.html?id=1";
-    // })
 });

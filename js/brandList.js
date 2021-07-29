@@ -1,5 +1,5 @@
-var productDom = "";
 var token = localStorage.getItem("token");
+var productDom = "";
 
 var categoryId = 0;
 var path = "";              //商品分类路径
@@ -18,7 +18,7 @@ $(function (){
 //根据商品分类分页查询商品
 function productByCategory(pageIndex,categoryId){
     $.ajax({
-        url:"/easybuy/product/productInfoBycategory",
+        url:"/easybuy/product/tourist/productInfoBycategory",
         type:"post",
         data:{"pageIndex":pageIndex,"pageSize":20,"categoryId":categoryId},
         dataType:"JSON",

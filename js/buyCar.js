@@ -7,115 +7,19 @@ $(function (){
         //没有登陆，踢回首页
         window.location.href = "Index.html";
     }
+    //查询购物车
     findShoppingProduct();
-
+    //确认删除按钮点击事件
     $(".b_sure").click(function (){
-        //购物车删除商品
-        removeShopping(token,productId);
+        removeShopping(token,productId);//购物车删除商品
     })
+    //取消删除按钮点击事件
     $(".b_buy").click(function (){
         $("#fade").hide();
         $("#MyDiv").hide();
     })
 });
 
-//修改购物车中商品的数量
-function modifyShopping(token,productId,number){
-    $.ajax({
-        url:"/easybuy/product/modifyShopping",
-        type:"post",
-        data:{"token":token,"productId":productId,"number":number},
-        dataType:"JSON",
-        success:function(result){
-            shoppingProduct = result.shoppingProduct;
-        }
-    });
-}
-//删除购物车中的商品
-function removeShopping(token,productId){
-    alert(productId)
-    $.ajax({
-        url:"/easybuy/product/removeShopping",
-        type:"post",
-        data:{"token":token,"productId":productId},
-        dataType:"JSON",
-        success:function(result){
-            if (result.flag){
-                shoppingProduct = result.shoppingProduct;
-                $("#fade").hide();
-                $("#MyDiv").hide();
-                $("#productEnd").prevAll(".product_tr").remove();
-                showShoppingProduct(shoppingProduct);
-            }else {
-                alert("删除失败");
-            }
-        }
-    });
-}
-//查询购物车
-function findShoppingProduct(){
-    $.ajax({
-        url:"/easybuy/product/findShopping",
-        type:"post",
-        data:{"token":token},
-        dataType:"JSON",
-        success:function(result){
-            shoppingProduct = result;
-            showShoppingProduct(shoppingProduct)
-        }
-    })
-}
-// 展示购物车
-function showShoppingProduct(shoppingProduct){
-    var shoppingDom = "";
-    for (var i = 0;i<shoppingProduct.length;i++){
-        shoppingDom +=
-            "		<tr class=\"product_tr\">" +
-            "			<td>" +
-            "				<div class=\"c_s_img\"><img src=\"images/c_1.jpg\" width=\"73\" height=\"73\" /></div>" +
-            "					"+shoppingProduct[i].name+"" +
-            "			</td>" +
-            "			<td align=\"center\" id=\"abc\">￥"+shoppingProduct[i].price+"</td>" +
-            "			<td align=\"center\">" +
-            "				<div class=\"c_num\">" +
-            "					<input type=\"button\" class=\"car_btn_1\" />" +
-            "					<input type=\"text\" productId=\""+shoppingProduct[i].id+"\" value=\""+shoppingProduct[i].stock+"\" class=\"car_ipt number\" />" +
-            "					<input type=\"button\" class=\"car_btn_2\" />" +
-            "				</div>" +
-            "			</td>" +
-            "			<td align=\"center\" class=\"subtotal\" style=\"color:#ff4e00;\">￥"+(shoppingProduct[i].price*shoppingProduct[i].stock)+"</td>" +
-            "			<td align=\"center\"><a onclick='abc("+shoppingProduct[i].id+")' class=\"removeShopping\">删除</a></td>" +
-            "		</tr>";
-    }
-    $("#productEnd").before(shoppingDom);
-    sum();
-
-    //为购物车删除商品按钮动态绑定事件
-    // $(".removeShopping").on("click",function (){
-    // })
-    //为减号按钮动态绑定事件
-    $(".car_btn_1").on("click",function (){
-        var number = $(this).next().val();
-        number--;
-        numberVerify(number,$(this).next());
-    });
-    //为加号按钮动态绑定事件
-    $(".car_btn_2").on("click",function (){
-        var number = $(this).prev().val();
-        number++;
-        numberVerify(number,$(this).prev());
-    });
-    //为数量框动态绑定value值变化事件
-    $(".number").on("input propertychange",function (){
-        var number = $(this).val();
-        numberVerify(number,$(this));
-    })
-}
-function abc(id){
-    productId = id
-    $("#fade").show();
-    $("#MyDiv").show();
-}
 //购买数量验证
 function numberVerify(number,dom){
     if (!isNaN(number)){
@@ -153,6 +57,119 @@ function sum(){
     })
     $("#sumPrice").text("￥"+sumPrice);
 }
+//查询购物车
+function findShoppingProduct(){
+    $.ajax({
+        url:"/easybuy/product/findShopping",
+        type:"post",
+        data:{"token":token},
+        dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            shoppingProduct = result;
+            showShoppingProduct(shoppingProduct)
+        }
+    })
+}
+// 展示购物车
+function showShoppingProduct(shoppingProduct){
+    var shoppingDom = "";
+    for (var i = 0;i<shoppingProduct.length;i++){
+        var productId = shoppingProduct[i].id;
+        var productName = shoppingProduct[i].name;
+        var productPrice = shoppingProduct[i].price;
+        var productStock = shoppingProduct[i].stock;
+        var subtol = toDecimal2(numMulti(productPrice,productStock));
+        shoppingDom +=
+            "		<tr class=\"product_tr\">" +
+            "			<td>" +
+            "				<div class=\"c_s_img\"><img src=\"images/c_1.jpg\" width=\"73\" height=\"73\" /></div>" +
+            "					"+productName+"" +
+            "			</td>" +
+            "			<td align=\"center\" id=\"abc\">￥"+productPrice+"</td>" +
+            "			<td align=\"center\">" +
+            "				<div class=\"c_num\">" +
+            "					<input type=\"button\" class=\"car_btn_1\" />" +
+            "					<input type=\"text\" productId=\""+productId+"\" value=\""+productStock+"\" class=\"car_ipt number\" />" +
+            "					<input type=\"button\" class=\"car_btn_2\" />" +
+            "				</div>" +
+            "			</td>" +
+            "			<td align=\"center\" class=\"subtotal\" style=\"color:#ff4e00;\">￥"+subtol+"</td>" +
+            "			<td align=\"center\"><a onclick=\"removeClick("+productId+")\" class=\"removeShopping\">删除</a></td>" +
+            "		</tr>";
+    }
+    $("#productEnd").before(shoppingDom);
+    sum();
+
+    //为购物车删除商品按钮动态绑定事件
+    // $(".removeShopping").on("click",function (){
+    // })
+    //为减号按钮动态绑定事件
+    $(".car_btn_1").on("click",function (){
+        var number = $(this).next().val();
+        number--;
+        numberVerify(number,$(this).next());
+    });
+    //为加号按钮动态绑定事件
+    $(".car_btn_2").on("click",function (){
+        var number = $(this).prev().val();
+        number++;
+        numberVerify(number,$(this).prev());
+    });
+    //为数量框动态绑定value值变化事件
+    $(".number").on("input propertychange",function (){
+        var number = $(this).val();
+        numberVerify(number,$(this));
+    })
+}
+//修改购物车中商品的数量
+function modifyShopping(token,productId,number){
+    $.ajax({
+        url:"/easybuy/product/modifyShopping",
+        type:"post",
+        data:{"token":token,"productId":productId,"number":number},
+        dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            shoppingProduct = result.shoppingProduct;
+        }
+    });
+}
+//删除购物车中的商品
+function removeShopping(token,productId){
+    alert(productId)
+    $.ajax({
+        url:"/easybuy/product/removeShopping",
+        type:"post",
+        data:{"token":token,"productId":productId},
+        dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            if (result.flag){
+                shoppingProduct = result.shoppingProduct;
+                $("#fade").hide();
+                $("#MyDiv").hide();
+                $("#productEnd").prevAll(".product_tr").remove();
+                showShoppingProduct(shoppingProduct);
+            }else {
+                alert("删除失败");
+            }
+        }
+    });
+}
+//删除按钮点击事件
+function removeClick(id){
+    productId = id
+    $("#fade").show();
+    $("#MyDiv").show();
+}
+
 
 //强制保留2位小数，如：2，会在2后面补上00.即2.00
 function toDecimal2(x) {
