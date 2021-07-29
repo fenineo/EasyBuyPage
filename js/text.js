@@ -11,9 +11,12 @@ jQuery(function(){
  */
 function getAll(pageIndex) {
     jQuery.ajax({
-        url:"/easybuy/News/getPageNews",
+        url:"/easybuy/News/tourist/getPageNews",
         dataType: "json",
         data:{"pageIndex":pageIndex},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success: function(result){
             pageCount = result.pageCount;
             pgIndex = result.pageIndex;
@@ -21,7 +24,7 @@ function getAll(pageIndex) {
             //新闻列表拼接
             var newsTable = "";
             for(var i = 0;i < list.length;i++){
-                if(list[i].title)
+                
                 newsTable +=
                 "<tr>"+
                 "   <td width="+"50%"+" class='look' name="+list[i].id+">"+list[i].title+"</td>"+
@@ -82,9 +85,12 @@ function page(pageIndex){
  */
 function findbyid(id){
     jQuery.ajax({
-        url:"/easybuy/News/findById",
+        url:"/easybuy/News/tourist/findById",
         dataType: "json",
         data:{"id":id},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success: function(result){
             jQuery("#selete").append(
             "<ul >\n"+
@@ -105,9 +111,12 @@ function remove(id) {
     var flag=confirm("确定要删除吗");
     if(flag){
         jQuery.ajax({
-            url:"/easybuy/News/removeNews",
+            url:"/easybuy/News/tourist/removeNews",
             dataType: "json",
             data:{"id":id},
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
             success: function(result){
                 alert("成功");
                 window.location.href = "http://localhost:8888/Member_Money.html";
@@ -121,9 +130,12 @@ function remove(id) {
  */
 function addNews(title,content) {
     jQuery.ajax({
-        url:"/easybuy/News/addNews",
+        url:"/easybuy/News/tourist/addNews",
         dataType: "json",
         data:{"title":title,"content":content},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success: function(result){
             alert("添加成功");
             window.location.href = "http://localhost:8888/Member_Money.html";
@@ -136,9 +148,12 @@ function addNews(title,content) {
  */
 function modifyNews(id,title,content){
     jQuery.ajax({
-        url:"/easybuy/News/modifyNews",
+        url:"/easybuy/News/tourist/modifyNews",
         dataType: "json",
         data:{"id":id,"title":title,"content":content},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success: function(result){
             alert("修改成功");
             window.location.href = "http://localhost:8888/Member_Money.html";
@@ -165,7 +180,7 @@ jQuery(document).on("click",".delete",function name() {
  * 详情返回的点击事件
  */
  jQuery(document).on("click",".back",function name() {
-    window.location.href = "http://localhost:8888/Member_Money.html";
+    window.location.href = "/Member_Money.html";
 })
 /**
  * 添加的点击事件
@@ -201,9 +216,12 @@ jQuery(document).on("click",".delete",function name() {
     clean();
     var id=jQuery(this).attr("name");
     jQuery.ajax({
-        url:"/easybuy/News/findById",
+        url:"/easybuy/News/tourist/findById",
         dataType: "json",
         data:{"id":id},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success: function(result){
             jQuery("#selete").append(
             "<tr>/n"+
