@@ -1,15 +1,83 @@
+var token = localStorage.getItem("token");
 var userId=0;
 var falg=false;
 var isDefaultId;
+var shoppingProduct = null;
+var sum = 0;//总价
+
 $(function(){
+    if (token == null){
+        window.location.href = "Index.html";
+    }
+
     $("#bbb").hide();
     get();
- })
+
+    //查询购物车并展示
+    shoppingShow();
+    $("#toPay").click(function (){
+
+    })
+ });
+
+//查询购物车并展示
+function shoppingShow(){
+    $.ajax({
+        url:"/easybuy/product/findShopping",
+        type:"post",
+        data:{"token":token},
+        dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            shoppingProduct = result;
+            sum = 0;
+            var productDom = "";
+            for (var i = 0;i < shoppingProduct.length;i++){
+                productDom +=
+                    "              <tr>" +
+                    "                <td>" +
+                    "                    <div class=\"c_s_img\"><img src=\"images/c_1.jpg\" width=\"73\" height=\"73\" /></div>" +
+                    "                    "+shoppingProduct[i].name+"" +
+                    "                </td>" +
+                    "                <td align=\"center\">"+shoppingProduct[i].price+"</td>" +
+                    "                <td align=\"center\">"+shoppingProduct[i].stock+"</td>" +
+                    "                <td align=\"center\" style=\"color:#ff4e00;\">"+(shoppingProduct[i].price*shoppingProduct[i].stock)+"</td>" +
+                    "              </tr>";
+                sum += (shoppingProduct[i].price*shoppingProduct[i].stock)
+            }
+            $("#productBegin").after(productDom);
+            $(".sum").text("商品总价：￥"+sum);
+            $("#amountPayable").text(sum+15);
+        }
+    })
+}
+
+//请求支付宝支付
+function toAlipay(){
+    var subject = 0;
+    var orderNo = 0;
+    var amount = 0;
+    var userAddress = 0;
+    if (false){
+        $.ajax({
+            url:"/easybuy/product/",
+            type:"post",
+            data:{"subject":subject,"orderNo":orderNo,"amount":amount},
+            dataType:"JSON",
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
+            success:function(result){
+            }
+        })
+    }
+}
  /**
   * 根据token拿用户id并且执行查询方法
   */
 function get(){
-    var token = localStorage.getItem("token");
     $("#add").show();
     $.ajax({
      url:"/easybuy/user/loginInfo",
