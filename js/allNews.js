@@ -18,7 +18,7 @@ jQuery(function(){
  */
 function getAll(pageIndex) {
     jQuery.ajax({
-        url:"/easybuy/News/getPageNews",
+        url:"/easybuy/News/tourist/getPageNews",
         dataType: "json",
         data:{"pageIndex":pageIndex},
         success: function(result){
@@ -88,7 +88,7 @@ function page(pageIndex){
  */
 function findbyid(id){
     jQuery.ajax({
-        url:"/easybuy/News/findById",
+        url:"/easybuy/News/tourist/findById",
         dataType: "json",
         data:{"id":id},
         success: function(result){
