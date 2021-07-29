@@ -16,6 +16,17 @@ $(function (){
 });
 
 
+// jQuery(function(){
+//     var newsId = window.location.search.substr(4);
+//     if(newsId!=""){
+//         clean();
+//         findbyid(newsId);
+//     }else{
+//         categorylist(1);
+//     }
+//  })
+
+
 
 
 //查询分类集合
@@ -25,6 +36,9 @@ function categorylist(pageIndex){
         type:"post",
         data:{"pageIndex":pageIndex},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             pageCount = result.categorypage.pageCount;
             pgIndex = result.categorypage.pageIndex;
@@ -59,7 +73,7 @@ function categorylist(pageIndex){
                 "<td>"+list[i].name+"</td>"+
                 "<td>"+list[i].type +"</td>"+
                 "<td>"+father+"</td>"+
-                "<td><a class=\"modify_td\">修改</a></td>"+
+                "<td><a class=\"modify_td\" name="+list[i].id+">修改</a></td>"+
                 "<td><a class=\"remove_td\">删除</a></td>"+
                 "</tr>"
             }
@@ -94,13 +108,18 @@ function categorylist(pageIndex){
             $("#pageBox").append(pageBox);
             //动态绑定修改事件
             $(".modify_td").on("click",function (){
+                var id=jQuery(this).attr("name");
                 $("#right_head").nextAll().hide();
                 $("#modify_box").show();
                 index = $(this).parent().parent().index() - 1;
-                gaiID=index;
                 $("#modify_name").val(list[index].name);
+                // alert(list[index].name);
+                $("#modify_name").attr('name',id);
+                // alert(id);
                 $("#modify_parentId").val(list[index].parentId);
+                // alert(list[index].parentId);
                 $("#modify_type").val(list[index].type);
+                // alert(list[index].type);
             });
             // 动态绑定删除事件
             $(".remove_td").on("click",function (){
@@ -134,6 +153,9 @@ function add_sub(){
         type:"post",
         data:{"name":name,"parentId":parentId,"type":type},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             if(result){
                 alert("添加成功");
@@ -148,22 +170,26 @@ function add_sub(){
 }
 
 //修改用户
-function modify_sub(){
-    alert(gaiID);
+function modify_sub(id){
+    var id=jQuery("#modify_name").attr("name");
     var name = $("#modify_name").val();
     var parentId = $("#modify_parentId").val();
     var type = $("#modify_type").val();
+    // alert(parentId);
     $.ajax({
         url:"/easybuy/productCategory/modifyProductCategory",
         type:"post",
-        data:{"name":name,"parentId":parentId,"type":type},
+        data:{"id":id,"name":name,"parentId":parentId,"type":type},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             if(result){
                 alert("修改成功");
                 clean();
                 categorylist();
-                window.location.href = "/Member_Commission.html";
+                // window.location.href = "/Member_Commission.html";
             }else {
                 alert("修改失败,请检查修改信息是否按要求填写。");
             }
@@ -179,6 +205,9 @@ function removecate(id){
         type:"post",
         data:{"id":list[index].id},
         dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
         success:function(result){
             if(result){
                 window.location.href = "/Member_Commission.html";
@@ -189,13 +218,29 @@ function removecate(id){
     })
     return false;
 }
-//
-// jQuery(document).on("click",".btn_tj",function name(){
-//     // var name = $("#modify_name").val();
-//     // var parentId = $("#modify_parentId").val();
-//     // var type = $("#modify_type").val();
+
+//查询详情
+function findbyid(id){
+    jQuery.ajax({
+        url:"/easybuy/productCategory/findById",
+        dataType: "json",
+        data:{"id":id},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success: function(result){
+            list = result.categorypage.list;
+            for (var k;k<list.length;k++) {
+               var ordid = list[k].id;
+                
+            }
+        }
+        
+    })
+}
+// jQuery(document).on("click",".btn_tj",function name() {
 //     modify_sub();
-//     // alert(name);
-//     // alert(parentId);
-//     // alert(type);
 // })
+$(".btn_tj").click(function(){
+    modify_sub();
+})
