@@ -6,6 +6,7 @@ var index = 0;
 var gaiID;
 $(function (){
     categorylist(1);
+    productlive1();
 
 
     $("#add_cate").click(function (){
@@ -113,13 +114,9 @@ function categorylist(pageIndex){
                 $("#modify_box").show();
                 index = $(this).parent().parent().index() - 1;
                 $("#modify_name").val(list[index].name);
-                // alert(list[index].name);
                 $("#modify_name").attr('name',id);
-                // alert(id);
                 $("#modify_parentId").val(list[index].parentId);
-                // alert(list[index].parentId);
                 $("#modify_type").val(list[index].type);
-                // alert(list[index].type);
             });
             // 动态绑定删除事件
             $(".remove_td").on("click",function (){
@@ -144,6 +141,74 @@ function page(pageIndex){
 }
 
 // 添加分类
+// function add_sub(){
+//     var name = $("#add_name").val();
+//     var parentId = $("#add_parentId").val();
+//     var type = $("#add_type").val();
+//     $.ajax({
+//         url:"/easybuy/productCategory/addProductCategory",
+//         type:"post",
+//         data:{"name":name,"parentId":parentId,"type":type},
+//         dataType:"JSON",
+//         beforeSend:function (XMLHttpRequest){
+//             XMLHttpRequest.setRequestHeader("token",token);
+//         },
+//         success:function(result){
+//             if(result){
+//                 alert("添加成功");
+//                 clean();
+//                 // categorylist();
+//                 window.location.href = "/Member_Commission.html";
+//             }else {
+//                 alert("添加失败,请检查添加信息是否按要求填写。");
+//             }
+//         }
+//     })
+// }
+
+//
+function productlive2(){
+    var option2 = jQuery('#modify_type')
+}
+
+
+function productlive1(){
+
+    // var option = jQuery('#type option:selected').val();
+    var option = jQuery('#modify_type').val();
+    alert(option);
+    if (option==1){
+        jQuery(".add_type").hide();
+        jQuery("#productCategoryLevel").empty();
+    }else {
+        jQuery(".add_type").show();
+    }
+    if (option==2){
+        jQuery.ajax({
+            url:"/easybuy/productCategory/onecategoryLevel2",
+            success:function (data){
+                jQuery("#productCategoryLevel").empty()
+                jQuery.each(data.list, function (index, list) {
+                    jQuery("#productCategoryLevel").append('<option value="'+list.parentId+'">'+list.name+'</option>')
+                })
+            }
+        })
+    }
+
+    if (option==3){
+        jQuery.ajax({
+            url:"/easybuy/productCategory/onecategoryLevel3",
+            success:function (data){
+                jQuery("#productCategoryLevel").empty()
+                jQuery.each(data.list, function (index, list) {
+                    jQuery("#productCategoryLevel").append('<option value="'+list.parentId+'">'+list.name+'</option>')
+                })
+            }
+        })
+    }
+}
+
+//添加分类
 function add_sub(){
     var name = $("#add_name").val();
     var parentId = $("#add_parentId").val();
@@ -160,7 +225,7 @@ function add_sub(){
             if(result){
                 alert("添加成功");
                 clean();
-                categorylist();
+                // categorylist();
                 window.location.href = "/Member_Commission.html";
             }else {
                 alert("添加失败,请检查添加信息是否按要求填写。");
@@ -168,6 +233,7 @@ function add_sub(){
         }
     })
 }
+
 
 //修改用户
 function modify_sub(id){
@@ -188,8 +254,8 @@ function modify_sub(id){
             if(result){
                 alert("修改成功");
                 clean();
-                categorylist();
-                // window.location.href = "/Member_Commission.html";
+                // categorylist();
+                window.location.href = "/Member_Commission.html";
             }else {
                 alert("修改失败,请检查修改信息是否按要求填写。");
             }
