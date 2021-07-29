@@ -24,7 +24,7 @@ function getAll(pageIndex) {
             //新闻列表拼接
             var newsTable = "";
             for(var i = 0;i < list.length;i++){
-                if(list[i].title)
+                
                 newsTable +=
                 "<tr>"+
                 "   <td width="+"50%"+" class='look' name="+list[i].id+">"+list[i].title+"</td>"+
