@@ -237,19 +237,18 @@
       <div class="n_add">
       <h2>商品列表</h2>
       <p align="right">
-        &nbsp; &nbsp; <a href="#" id="addNews" class="add_b">添加商品</a>
+        &nbsp; &nbsp; <a href="#" id="addProduct" class="add_b">添加商品</a>
     </p>
-      <!-- <table id="selete" table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
+      <table id="selete" table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
         <tr id="first_tr">
-          <td width="25%">商品名称</td>
-          <td width="25%">商品图片</td>
+          <td width="30%">商品名称</td>
+          <td width="30%">商品图片</td>
           <td width="10%">库存</td>
           <td width="10%">价格</td>
-          <td width="10%">状态</td>
           <td width="20%">操作</td>
       </tr>
-      </table> -->
-      <form onsubmit="return add_sub()">
+      </table>
+      <form id="jia">
         <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="150" class="tx_l"><font color="#ff4e00">*</font>商品名</td>
@@ -263,7 +262,7 @@
             </tr>
             <tr>
                 <td class="tx_l"><font color="#ff4e00">*</font>库存</td>
-                <td><input type="text" id="shopStock" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" /></td>
+                <td><input type="number" id="shopStock" class="tx_ipt userName" maxlength="5"  required="required" /></td>
             </tr>
             <tr>
               <td class="tx_l"><font color="#ff4e00">*</font>图片</td>
@@ -273,20 +272,27 @@
             <td class="tx_l"><font color="#ff4e00">*</font>一级分类</td>
             <td><select id="yi" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="yicha()">
               <option>请选择</option>
-              <select</td>
+              </td>
         </tr>
         <tr>
           <td class="tx_l"><font color="#ff4e00">*</font>二级分类</td>
           <td><select id="er" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required"  onchange="ercha()">
             <option>请选择</option>
-            <select</td>
+            </td>
       </tr>
       <tr>
         <td class="tx_l"><font color="#ff4e00">*</font>三级分类</td>
-        <td><select id="san" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required"  onchange="sancha()">
+        <td><select id="san" class="tx_ipt userName" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required"  >
           <option>请选择</option>
-          <select</td>
+          </td>
     </tr>
+    <tr height="70" id="abc">
+      <td colspan="2" align="center">
+          <input type="button" value="确认添加" class="btn_tj" id="tian"/>
+      </td>
+    </tr>
+  </table>
+</form>
       <div id="pageBox" class="pageBox">
       </div>
     </div>

@@ -7,11 +7,14 @@ var map2= null;
 var map3= null;
 jQuery(function(){
     getAll();
-    getone();
+    $("#jia").hide();
  })
+ /**
+  * 分页查询
+  */
  function getAll(pageIndex) {
     jQuery.ajax({
-        url:"/easybuy/products/tourist/getPageProduct",
+        url:"/easybuy/products/getPageProduct",
         dataType: "json",
         data:{"pageIndex":pageIndex},
         beforeSend:function (XMLHttpRequest){
@@ -28,7 +31,6 @@ jQuery(function(){
                 "   <td width="+"25%"+" class='look' name="+list[i].id+"><img src="+"27A1789ED5764D82A5506DF3DC3933F9.jpg"+"/></td>"+
                 "   <td width="+"10%"+" class='look' name="+list[i].id+">"+list[i].price+"</td>"+
                 "   <td width="+"10%"+">"+list[i].stock+"</td>"+
-                "   <td width="+"10%"+">"+(list[i].isDelete == 0 ? "已上架":"未上架")+"</td>"+
                 "<td width="+"20%"+"><input type='button' class='update' name="+list[i].id+" value='修改'>&nbsp;&nbsp;<input type='button' class='delete' name="+list[i].id+" value='下架'></td>\n"+
                 "</tr>";
             }
@@ -69,23 +71,10 @@ function page(pageIndex){
         getAll(pageIndex);
     }
 }
-$(document).on("click","#addNews",function name(){
-    var formData = new FormData();
-        formData.append("pic",document.getElementById("upfile").files[0]);
-        alert(formData);
-        $.ajax({
-            type: "POST", // 数据提交类型
-            url: "", // 发送地址
-            data: formData, //发送数据
-            async: true, // 是否异步
-            processData: false, //processData 默认为false，当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
-            contentType: false //
-        });
-})
 $(document).on("click","#jiao",function name(){
     var formData=$("#dsa").val();
     $.ajax({
-        url:"/easybuy/products/tourist/addProduct",
+        url:"/easybuy/products/addProduct",
         data:{"formData":formData},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -95,14 +84,20 @@ $(document).on("click","#jiao",function name(){
         }
     })
 })
-function yicha(){
-    $("#er option").after(
-        "<option>男</option>"
-    )
+
+/**
+ * 页面方法
+ */
+function clean(){
+    $("#selete").remove();
+    $("#pageBox").remove();
 }
+/**
+ * 分级查询
+ */
 function getone(){
     $.ajax({
-        url: "/easybuy/products/tourist/getCategoryLevel", // 发送地址
+        url: "/easybuy/products/getCategoryLevel",
         data: "json", //发送数据
         dataType : "json",
         beforeSend:function (XMLHttpRequest){
@@ -113,10 +108,160 @@ function getone(){
             map2=result.two;
             map3=result.three;
             var typeOne="";
-            for(var i=0;i<result.one.length;i++){
-                typeOne+="<option>"+result.one[i].name+"</option>"
+            for(var i=0;i<map1.length;i++){
+                typeOne+="<option value="+map1[i].id+">"+map1[i].name+"</option>"
             }
             $("#yi option").after(typeOne);
         }
     })
 }
+/**
+ * 选完一级分类后二级分类的展示
+ */
+function yicha(){
+    $("#er option").nextAll("option").remove();
+    var id=$("#yi").val();
+    var typetwo="";
+    for(var i=0;i<map2.length;i++){
+        if(map2[i].parentId==id){
+            typetwo+="<option value="+map2[i].id+">"+map2[i].name+"</option>"   
+        }
+    }
+    $("#er option").after(typetwo);   
+}
+/**
+ *  选完二级分类后三级分类的展示
+ */
+function ercha(){
+    $("#san option").nextAll("option").remove();
+    var id=$("#er").val();
+    var typethree="";
+    for(var i=0;i<map3.length;i++){
+        if(map3[i].parentId==id){
+            typethree+="<option value="+map3[i].id+">"+map3[i].name+"</option>"   
+        }
+    }
+    $("#san option").after(typethree);
+}
+/**
+ * 添加商品的点击事件
+ */
+jQuery(document).on("click","#addProduct",function name(){
+    getone();
+    clean();
+    $("#jia").show();
+    $("#addProduct").hide();
+})  
+/**
+ * 确认添加的点击事件
+ */
+ jQuery(document).on("click","#tian",function name(){
+    var name=$("#shopName").val();
+    var price=$("#shopPrice").val();
+    var stock=$("#shopStock").val();
+    var fileName=$("#shopFileName").val();
+    var categoryLevel1Id=$("#yi").val();
+    var categoryLevel2Id=$("#er").val();
+    var categoryLevel3Id=$("#san").val();
+    if(name!="" && price!="" && stock!="" && fileName!="" && categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
+        $.ajax({
+        url:"/easybuy/products/addProduct",
+        dataType: "text",
+        data:{"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success: function(result){
+            alert("成功");
+            window.location.href = "/Member_Safe.html";
+        }
+        })
+    }else{
+        alert("请填写所有必选项");
+    }
+}) 
+/**
+ * 修改的点击事件
+ */
+ $(document).on("click",".update",function name(){
+    var id=$(this).attr("name");
+    alert(id);
+    $("#gai").attr("name",id);
+    getone();
+    clean();
+    $("#jia").show();
+    $("#addProduct").hide();
+    $("#abc").hide();
+    var a="<tr height=\"70\" id=\"abc\">" +
+    "      <td colspan=\"2\" align=\"center\">" +
+    "          <input type=\"button\" value=\"确认修改\" class=\"btn_tj\" id=\"gai\"/>" +
+    "      </td>" +
+    "    </tr>";
+    $(".mem_tab").after(a);
+    $("#gai").attr("name",id);
+    $.ajax({
+        url:"/easybuy/products/getPById",
+        dataType: "json",
+        data:{"id":id,},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success: function(result){
+            var categoryLevel1Id="";
+            var categoryLevel2Id="";
+            var categoryLevel3Id="";
+            for(var i=0;i<map1.length;i++){
+                if(map1[i].id==result.categoryLevel1Id){
+                    categoryLevel1Id=map1[i].id
+                }
+            }
+            for(var i=0;i<map2.length;i++){
+                if(map2[i].id==result.categoryLevel2Id){
+                    categoryLevel2Id=map2[i].id
+                }
+            }
+            for(var i=0;i<map3.length;i++){
+                if(map3[i].id==result.categoryLevel3Id){
+                    categoryLevel3Id=map3[i].id
+                }
+            }
+            $("#yi").first("option").val(categoryLevel1Id);
+            yicha();
+            $("#er").first("option").val(categoryLevel2Id);
+            ercha();
+            $("#san").first("option").val(categoryLevel3Id);
+            $("#shopName").val(result.name);
+            $("#shopPrice").val(result.price);
+            $("#shopStock").val(result.stock);
+        }
+        })
+    })
+ /**
+  * 确认修改的点击事件
+  */
+ $(document).on("click","#gai",function name(){
+     var id=$("#gai").attr("name");
+     var name=$("#shopName").val();
+    var price=$("#shopPrice").val();
+    var stock=$("#shopStock").val();
+    var fileName=$("#shopFileName").val();
+    var categoryLevel1Id=$("#yi").val();
+    var categoryLevel2Id=$("#er").val();
+    var categoryLevel3Id=$("#san").val();
+     if(name!="" && price!="" && stock!="" && fileName!="" && categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
+        $.ajax({
+        url:"/easybuy/products/modifyProduct",
+        dataType: "text",
+        data:{"id":id,"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success: function(result){
+            alert("修改成功");
+            window.location.href = "/Member_Safe.html";
+        }
+        })
+    }else{
+        alert("请填写所有必选项");
+    }
+ })

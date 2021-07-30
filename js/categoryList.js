@@ -1,36 +1,29 @@
-var token = localStorage.getItem("token");
-var productDom = "";
-
-var categoryId = 0;
-var path = "";              //商品分类路径
-var productList = null;     //商品集合
-var index = 0;              //当前页数
-var totalCount = 0;         //总记录数
-
+var index = 0;
+var productList = null;
+var productDom =
+    "";
 
 $(function (){
-    //获取商品分类id
-    var categoryId = window.location.search.substr(4);
-    //根据商品分类查询第一页商品
-    productByCategory(1,categoryId);
-})
+    var name = window.location.search.substr(6)
+    //解码字符串，获取中文参数
+    name = decodeURI(name);
+    findPageByName(1,name)
+});
 
-//根据商品分类分页查询商品
-function productByCategory(pageIndex,categoryId){
+function findPageByName(pageIndex,name){
     $.ajax({
-        url:"/easybuy/product/tourist/productInfoBycategory",
+        url:"/easybuy/product/tourist/productInfoByName",
         type:"post",
-        data:{"pageIndex":pageIndex,"pageSize":20,"categoryId":categoryId},
+        data:{"pageIndex":pageIndex,"pageSize":20,"name":name},
         dataType:"JSON",
         success:function(result){
             index = pageIndex;
             var pageCount = result.productPage.pageCount;
-            path = result.path;
-            $("#path").text(path);//设置商品分类路径
+
             totalCount = result.productPage.totalCount;
             $("#totalCount").text(totalCount);//设置总记录数
 
-            productList = result.productPage.list;
+            productList = result.productPage.list;//保存商品集合
             if (productList.length > 0){
                 //遍历商品集合，拼接商品展示页面
                 for (var i = 0;i < productList.length;i++){
@@ -38,7 +31,7 @@ function productByCategory(pageIndex,categoryId){
                     if(productList[i].isDelete == 0){
                         productDom +=
                             "<li>" +
-                            "	<div class=\"img\"><a href=\"Product.html?id="+productList[i].id+"\"><img src=\"images/per_1.jpg\" width=\"210\" height=\"185\" /></a></div>" +
+                            "	<div class=\"img\"><a href=\"Product.html?id="+productList[i].id+"\"><img src=\"images/per_3.jpg\" width=\"210\" height=\"185\" /></a></div>" +
                             "	<div class=\"price\">" +
                             "		<font>￥<span>"+productList[i].price+"</span></font> &nbsp; 库存："+productList[i].stock+"" +
                             "	</div>" +
@@ -90,7 +83,7 @@ function productByCategory(pageIndex,categoryId){
         }
     })
 }
-
+//分页查询
 function page(pageIndex){
     if(pageIndex != pgIndex){
         $("#cate_list").empty();

@@ -71,15 +71,17 @@ $(function (){
                 for (var k = 0;k < productList.length;k++){
                     if (count == 6){break;}
                     if (productList[k].categoryLevel1Id == categoryOneList[i].id){
-                        productDom +=
-                            "            <li>" +
-                            "                <div class=\"name\"><a href=\"Product.html?id="+productList[k].id+"\">"+productList[k].name+"</a></div>" +
-                            "                <div class=\"price\">" +
-                            "                <font>￥<span>"+productList[k].price+"</span></font> &nbsp; 库存："+productList[k].stock +
-                            "                </div>" +
-                            "                <div class=\"img\"><a href=\"Product.html?id="+productList[k].id+"\"><img src=\"images/fre_1.jpg\" width=\"185\" height=\"155\" /></a></div>" +
-                            "            </li>";
-                        count++;
+                        if(productList[k].isDelete == 0){
+                            productDom +=
+                                "            <li>" +
+                                "                <div class=\"name\"><a href=\"Product.html?id="+productList[k].id+"\">"+productList[k].name+"</a></div>" +
+                                "                <div class=\"price\">" +
+                                "                <font>￥<span>"+productList[k].price+"</span></font> &nbsp; 库存："+productList[k].stock +
+                                "                </div>" +
+                                "                <div class=\"img\"><a href=\"Product.html?id="+productList[k].id+"\"><img src=\"images/fre_1.jpg\" width=\"185\" height=\"155\" /></a></div>" +
+                                "            </li>";
+                            count++;
+                        }
                     }
                 }
                 productDom +=
@@ -98,3 +100,12 @@ $(function (){
         }
     })
 });
+
+function sub(){
+    var name = $("#search").val();
+    var url = "CategoryList.html?name="+name;
+    //编码字符串，接收时解码可以获取中文参数
+    var searchUrl = encodeURI(url)
+    window.location.href = searchUrl;
+    return false;
+}
