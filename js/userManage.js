@@ -66,9 +66,14 @@ function userList(pageIndex){
                 "   <td>"+list[i].userName+"</td>"+
                 "   <td>"+(list[i].sex == 1 ? "男":"女")+"</td>"+
                 "   <td>"+(list[i].type == 1 ? "管理员":"用户")+"</td>"+
-                "   <td><a class=\"modify_td\">修改</a></td>"+
-                "   <td><a class=\"remove_td\">删除</a></td>"+
-                "</tr>"
+                "   <td><a class=\"modify_td\">修改</a></td>";
+                if(list[i].type == 1){
+                    userTable +=
+                    "   <td></td>";
+                }else {
+                    userTable +=
+                    "   <td><a class=\"remove_td\">删除</a></td>";
+                }
             }
             $("#first_tr").after(userTable);
 
