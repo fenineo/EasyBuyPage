@@ -119,7 +119,7 @@ function remove(id) {
             },
             success: function(result){
                 alert("成功");
-                window.location.href = "http://localhost:8888/Member_Money.html";
+                window.location.href = "/Member_Money.html";
             }
             
         })
@@ -138,7 +138,7 @@ function addNews(title,content) {
         },
         success: function(result){
             alert("添加成功");
-            window.location.href = "http://localhost:8888/Member_Money.html";
+            window.location.href = "/Member_Money.html";
         }
         
     })
