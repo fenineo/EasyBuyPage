@@ -3,31 +3,24 @@ var pgIndex = 0;//当前页码
 var pageCount = 0;//总页数
 var list = null;
 var index = 0;
+var map1= null;
+var map2= null;
+var map3= null;
 var gaiID;
 $(function (){
     categorylist(1);
-    productlive1();
 
 
-    $("#add_cate").click(function (){
-        $("#right_head").nextAll().hide();
-        $("#add_box").show();
-    })
 
 });
 
 
-// jQuery(function(){
-//     var newsId = window.location.search.substr(4);
-//     if(newsId!=""){
-//         clean();
-//         findbyid(newsId);
-//     }else{
-//         categorylist(1);
-//     }
-//  })
+$(document).on("click","#add_cate",function name(){
+    $("#right_head").nextAll().hide();
+    $("#add_box").show();
 
-
+    getone1();
+})
 
 
 //查询分类集合
@@ -127,6 +120,7 @@ function categorylist(pageIndex){
                 }
             })
 
+
         }
     });
 }
@@ -140,79 +134,14 @@ function page(pageIndex){
     }
 }
 
-// 添加分类
-// function add_sub(){
-//     var name = $("#add_name").val();
-//     var parentId = $("#add_parentId").val();
-//     var type = $("#add_type").val();
-//     $.ajax({
-//         url:"/easybuy/productCategory/addProductCategory",
-//         type:"post",
-//         data:{"name":name,"parentId":parentId,"type":type},
-//         dataType:"JSON",
-//         beforeSend:function (XMLHttpRequest){
-//             XMLHttpRequest.setRequestHeader("token",token);
-//         },
-//         success:function(result){
-//             if(result){
-//                 alert("添加成功");
-//                 clean();
-//                 // categorylist();
-//                 window.location.href = "/Member_Commission.html";
-//             }else {
-//                 alert("添加失败,请检查添加信息是否按要求填写。");
-//             }
-//         }
-//     })
-// }
-
-//
-function productlive2(){
-    var option2 = jQuery('#modify_type')
-}
 
 
-function productlive1(){
-
-    // var option = jQuery('#type option:selected').val();
-    var option = jQuery('#modify_type').val();
-    alert(option);
-    if (option==1){
-        jQuery(".add_type").hide();
-        jQuery("#productCategoryLevel").empty();
-    }else {
-        jQuery(".add_type").show();
-    }
-    if (option==2){
-        jQuery.ajax({
-            url:"/easybuy/productCategory/onecategoryLevel2",
-            success:function (data){
-                jQuery("#productCategoryLevel").empty()
-                jQuery.each(data.list, function (index, list) {
-                    jQuery("#productCategoryLevel").append('<option value="'+list.parentId+'">'+list.name+'</option>')
-                })
-            }
-        })
-    }
-
-    if (option==3){
-        jQuery.ajax({
-            url:"/easybuy/productCategory/onecategoryLevel3",
-            success:function (data){
-                jQuery("#productCategoryLevel").empty()
-                jQuery.each(data.list, function (index, list) {
-                    jQuery("#productCategoryLevel").append('<option value="'+list.parentId+'">'+list.name+'</option>')
-                })
-            }
-        })
-    }
-}
 
 //添加分类
 function add_sub(){
-    var name = $("#add_name").val();
-    var parentId = $("#add_parentId").val();
-    var type = $("#add_type").val();
+    var name = $("#addname").val();
+    var parentId = $("#addparentId").val();
+    var type = $("#addtype").val();
     $.ajax({
         url:"/easybuy/productCategory/addProductCategory",
         type:"post",
@@ -285,28 +214,31 @@ function removecate(id){
     return false;
 }
 
-//查询详情
-function findbyid(id){
-    jQuery.ajax({
-        url:"/easybuy/productCategory/findById",
-        dataType: "json",
-        data:{"id":id},
-        beforeSend:function (XMLHttpRequest){
-            XMLHttpRequest.setRequestHeader("token",token);
-        },
-        success: function(result){
-            list = result.categorypage.list;
-            for (var k;k<list.length;k++) {
-               var ordid = list[k].id;
-                
-            }
-        }
-        
-    })
-}
-// jQuery(document).on("click",".btn_tj",function name() {
-//     modify_sub();
-// })
+//修改提交点击事件
 $(".btn_tj").click(function(){
     modify_sub();
 })
+
+$(document).on("click","#add_cate",function name(){
+    $("#right_head").nextAll().hide();
+    $("#add_box").show();
+    var name=$("#addname").val();
+    alert(name);
+})
+
+
+function getone2(){
+    var id=$("#addtype").val();
+    alert(id);
+}
+
+
+function add(id){
+    if(id==1){
+        var type1=$("#addtype");
+    }else if(id==2){
+
+    }else if(id==3){
+
+    }
+}
