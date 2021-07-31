@@ -107,6 +107,9 @@ function get(){
      url:"/easybuy/user/loginInfo",
      dataType: "json",
      data:{"token":token},
+     beforeSend:function (XMLHttpRequest){
+      XMLHttpRequest.setRequestHeader("token",token);
+  },
      success: function(result){
         userId=result.id;
         findByUserId(userId);
@@ -121,6 +124,9 @@ function findByUserId(userId){
         url:"/easybuy/UserAddress/findByUserId",
         dataType: "json",
         data:{"userId":userId},
+        beforeSend:function (XMLHttpRequest){
+          XMLHttpRequest.setRequestHeader("token",token);
+      },
         success: function(result){
             for(var i=0;i<result.length;i++){
                 if(result[i].isDefault=="1"){
@@ -209,7 +215,11 @@ function selectAll(result){
       url:"/easybuy/UserAddress/findByUserId",
       dataType: "json",
       data:{"userId":userId},
+      beforeSend:function (XMLHttpRequest){
+        XMLHttpRequest.setRequestHeader("token",token);
+    },
       success: function(result){
+        alert(result);
         if(result.length<3){
           clean();
           $("#aaa").after(
@@ -272,6 +282,9 @@ $(document).on("click","#addAffirm",function name(){
             url:"/easybuy/UserAddress/addUserAddress",
             dataType: "text",
             data:{"userId":userId,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
+            beforeSend:function (XMLHttpRequest){
+              XMLHttpRequest.setRequestHeader("token",token);
+          },
             success: function(result){
               alert("添加成功");
               clean();
@@ -334,6 +347,9 @@ function remove(id){
             url:"/easybuy/UserAddress/removeUserAddress",
             dataType: "text",
             data:{"id":id},
+            beforeSend:function (XMLHttpRequest){
+              XMLHttpRequest.setRequestHeader("token",token);
+          },
             success: function(result){
               alert("删除成功");
               clean();
@@ -353,6 +369,9 @@ function remove(id){
      url:"/easybuy/UserAddress/findById",
      dataType: "json",
      data:{"id":id},
+     beforeSend:function (XMLHttpRequest){
+      XMLHttpRequest.setRequestHeader("token",token);
+  },
      success: function(result){
            $("#aaa").after(
                "<table border="+"0"+" class="+"add_tab"+" style="+"width:930px;"+"  cellspacing="+"0"+" cellpadding="+"0"+">"+
@@ -408,6 +427,9 @@ function remove(id){
            url:"/easybuy/UserAddress/modifyUserAddress",
            dataType: "text",
            data:{"id":id,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
+           beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
            success: function(result){
             alert("修改成功");
             clean();
@@ -431,6 +453,9 @@ function remove(id){
         url:"/easybuy/UserAddress/findByUserId",
         dataType: "json",
         data:{"userId":userId},
+        beforeSend:function (XMLHttpRequest){
+          XMLHttpRequest.setRequestHeader("token",token);
+      },
         success: function(result){
             selectAll(result);
         }})

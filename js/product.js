@@ -28,7 +28,7 @@ jQuery(function(){
             for(var i=0;i<list.length;i++){
                 Product +="<tr>"+
                 "   <td width="+"25%"+" class='look' name="+list[i].id+">"+list[i].name+"</td>"+
-                "   <td width="+"25%"+" class='look' name="+list[i].id+"><img src="+"27A1789ED5764D82A5506DF3DC3933F9.jpg"+"/></td>"+
+                "   <td width="+"25%"+" class='look' name="+list[i].id+"><img src='/img/"+list[i].fileName+"' width="+80+" height="+50+"/></td>"+
                 "   <td width="+"10%"+" class='look' name="+list[i].id+">"+list[i].price+"</td>"+
                 "   <td width="+"10%"+">"+list[i].stock+"</td>"+
                 "<td width="+"20%"+"><input type='button' class='update' name="+list[i].id+" value='修改'>&nbsp;&nbsp;<input type='button' class='delete' name="+list[i].id+" value='下架'></td>\n"+
@@ -147,7 +147,8 @@ function ercha(){
  * 添加商品的点击事件
  */
 jQuery(document).on("click","#addProduct",function name(){
-    getone();
+    alert("123");
+    getone();   
     clean();
     $("#jia").show();
     $("#addProduct").hide();
@@ -166,14 +167,24 @@ jQuery(document).on("click","#addProduct",function name(){
     if(name!="" && price!="" && stock!="" && fileName!="" && categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
         $.ajax({
         url:"/easybuy/products/addProduct",
-        dataType: "text",
-        data:{"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
+        type: "POST",
+        cache: false,
+        data: new FormData(jQuery('#jia')[0]),   //关键，将表单元素封装成FormData对象
+            processData: false,        //关键
+            contentType: false,        //关键
+        dataType: "json",
+        // data:{"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success: function(result){
-            alert("成功");
-            window.location.href = "/Member_Safe.html";
+            alert(result);
+            if (result == true) {
+                alert("操作成功")
+                window.location.href = "/Member_Safe.html";
+            } else {
+                alert("操作失败")
+            }
         }
         })
     }else{
@@ -185,7 +196,6 @@ jQuery(document).on("click","#addProduct",function name(){
  */
  $(document).on("click",".update",function name(){
     var id=$(this).attr("name");
-    alert(id);
     $("#gai").attr("name",id);
     getone();
     clean();
@@ -198,7 +208,9 @@ jQuery(document).on("click","#addProduct",function name(){
     "      </td>" +
     "    </tr>";
     $(".mem_tab").after(a);
-    $("#gai").attr("name",id);
+    var categoryLevel1Id="";
+    var categoryLevel2Id="";
+    var categoryLevel3Id="";
     $.ajax({
         url:"/easybuy/products/getPById",
         dataType: "json",
@@ -207,9 +219,6 @@ jQuery(document).on("click","#addProduct",function name(){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success: function(result){
-            var categoryLevel1Id="";
-            var categoryLevel2Id="";
-            var categoryLevel3Id="";
             for(var i=0;i<map1.length;i++){
                 if(map1[i].id==result.categoryLevel1Id){
                     categoryLevel1Id=map1[i].id
@@ -240,8 +249,8 @@ jQuery(document).on("click","#addProduct",function name(){
   * 确认修改的点击事件
   */
  $(document).on("click","#gai",function name(){
-     var id=$("#gai").attr("name");
-     var name=$("#shopName").val();
+    var id=$("#gai").attr("name");
+    var name=$("#shopName").val();
     var price=$("#shopPrice").val();
     var stock=$("#shopStock").val();
     var fileName=$("#shopFileName").val();
@@ -265,3 +274,22 @@ jQuery(document).on("click","#addProduct",function name(){
         alert("请填写所有必选项");
     }
  })
+ /**
+  * 删除的点击事件
+  */
+  $(document).on("click",".delete",function name(){
+    var id=$(this).attr("name");
+    alert(id);
+    $.ajax({
+        url:"/easybuy/products/removeProduct",
+        dataType: "text",
+        data:{"id":id},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success: function(result){
+            alert("下架成功");
+            window.location.href = "/Member_Safe.html";
+        }
+        })
+  })
