@@ -268,7 +268,16 @@
                         </tr>
                         <tr>
                             <td class="tx_l">分类级别</td>
-                            <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required">
+                            <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="change()">
+                                <option>请选择</option>
+                                <option value="1">一级分类</option>
+                                <option value="2">二级分类</option>
+                                <option value="3">三级分类</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td class="tx_l">分类级别</td>
+                            <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="change()">
                                 <option>请选择</option>
                                 <option value="1">一级分类</option>
                                 <option value="2">二级分类</option>
@@ -304,32 +313,11 @@
                             <td class="tx_l">分类名称</td>
                             <td><input type="text" id="modify_name" class="tx_ipt name" required="required" /></td>
                         </tr>
-                        <tr>
-                            <td class="tx_l">分类级别</td>
-                            <td>
-                                <select id="modify_type">
-                                    <option value="1">一级分类</option>
-                                    <option value="2">二级分类</option>
-                                    <option value="3">三级分类</option>
-                                </select>
-                            </td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <td class="tx_l">分类级别</td>-->
-<!--                            <td><input type="text" id="modify_type" class="tx_ipt type" />-->
-<!--                                <br/><span class="prompt"></span></td>-->
-<!--                        </tr>-->
-                        <tr>
-                            <td class="tx_l">父级分类</td>
-                            <td><input type="text" id="modify_parentId" class="tx_ipt parentId" />
-                                <br/><span class="prompt"></span>
-                            </td>
 
-                        </tr>
-
+                        
                         <tr height="70">
                             <td colspan="2" align="center">
-                                <input type="submit" value="修改信息" class="btn_tj" />
+                                <input type="button" value="修改信息" class="btn_tj" />
                             </td>
                         </tr>
                     </table>

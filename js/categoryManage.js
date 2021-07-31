@@ -10,17 +10,14 @@ var gaiID;
 $(function (){
     categorylist(1);
 
+    
+    //修改提交点击事件
+    $(".btn_tj").click(function(){
+        modify_sub();
+    })
 
 
 });
-
-
-$(document).on("click","#add_cate",function name(){
-    $("#right_head").nextAll().hide();
-    $("#add_box").show();
-
-    getone1();
-})
 
 
 //查询分类集合
@@ -73,6 +70,9 @@ function categorylist(pageIndex){
             }
             $("#first_tr").after(categoryTable);
 
+
+
+            
             //分页框拼接
             var pageBox = "<div class=\"page\" onclick=\"page(1)\">首页</div>";
             if(result.pageIndex>1){
@@ -164,17 +164,16 @@ function add_sub(){
 }
 
 
-//修改用户
-function modify_sub(id){
+//修改分类
+function modify_sub(){
     var id=jQuery("#modify_name").attr("name");
     var name = $("#modify_name").val();
-    var parentId = $("#modify_parentId").val();
-    var type = $("#modify_type").val();
-    // alert(parentId);
+    // var parentId = $("#modify_parentId").val();
+    // var type = $("#modify_type").val();
     $.ajax({
         url:"/easybuy/productCategory/modifyProductCategory",
         type:"post",
-        data:{"id":id,"name":name,"parentId":parentId,"type":type},
+        data:{"id":id,"name":name},
         dataType:"JSON",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -182,7 +181,6 @@ function modify_sub(id){
         success:function(result){
             if(result){
                 alert("修改成功");
-                clean();
                 // categorylist();
                 window.location.href = "/Member_Commission.html";
             }else {
@@ -219,26 +217,34 @@ $(".btn_tj").click(function(){
     modify_sub();
 })
 
+
+//点击添加分类事件
 $(document).on("click","#add_cate",function name(){
     $("#right_head").nextAll().hide();
     $("#add_box").show();
-    var name=$("#addname").val();
-    alert(name);
+    var type=$("#addtype").val();
 })
 
+//点击分类事件
+// function change(){
+//     var option = jQuery('#addtype option:selected').val();
+//     alert(option);
+//     if (option==1){
+//         jQuery("#category1").hide();
+//         jQuery("#productCategoryLevel").empty();
+//     }else {
+//         jQuery("#category1").show();
+//     }
 
-function getone2(){
-    var id=$("#addtype").val();
-    alert(id);
-}
-
-
-function add(id){
-    if(id==1){
-        var type1=$("#addtype");
-    }else if(id==2){
-
-    }else if(id==3){
-
-    }
-}
+//     if (option==2){
+//         jQuery.ajax({
+//             url:"/easybuy/productCategory/onecategoryLevel2",
+//             success:function (data){
+//                 jQuery("#productCategoryLevel").empty()
+//                 jQuery.each(data.list, function (index, list) {
+//                     jQuery("#productCategoryLevel").append('<option value="'+list.id+'">'+list.name+'</option>')
+//                 })
+//             }
+//         })
+//     }
+// }
