@@ -7,10 +7,6 @@ var pageCount = 0;//总页数
 var totalCount = 0;//总记录数
 
 $(function (){
-    if(token == null){
-        //没有登陆，踢回首页
-        window.location.href = "Index.html";
-    }
     //查询购物车
     findShoppingProduct();
     //确认删除按钮点击事件

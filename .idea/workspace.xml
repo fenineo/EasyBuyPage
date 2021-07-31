@@ -20,14 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/categoryList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrandList.html" beforeDir="false" afterPath="$PROJECT_DIR$/BrandList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryList.html" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuyCar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuyCar_Three.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar_Three.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuyCar_Two.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar_Two.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/brandList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/brandList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/indexProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/indexProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Address.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Address.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Collect.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Collect.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Commission.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Commission.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Links.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Links.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Money.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Msg.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Msg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Packet.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Packet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Safe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Safe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_User.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_User.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/BuyCar_Two.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/BuyCar_Two.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/adminVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/adminVerify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/buyCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loginTypeVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loginTypeVerify.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +136,8 @@
       <workItem from="1627517133720" duration="6874000" />
       <workItem from="1627539579626" duration="7120000" />
       <workItem from="1627603539606" duration="11393000" />
-      <workItem from="1627628831173" duration="3640000" />
+      <workItem from="1627628831173" duration="3641000" />
+      <workItem from="1627651616455" duration="5498000" />
     </task>
     <servers />
   </component>
@@ -162,7 +176,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/regist.js</url>
           <line>85</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

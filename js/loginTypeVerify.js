@@ -2,6 +2,7 @@ var token = localStorage.getItem("token");
 var flag = false;
 var typeLv = 0;
 
+//页面查看权限验证，非登陆用户不可查看
 $(function (){
     //后台管理模块默认隐藏
     $(".admin").hide();

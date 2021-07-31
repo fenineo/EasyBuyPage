@@ -6,21 +6,21 @@ var shoppingProduct = null;
 var sum = 0;//总价
 
 $(function(){
-    if (token == null){
-        window.location.href = "Index.html";
-    }
 
     $("#bbb").hide();
     get();
 
     //查询购物车并展示
     shoppingShow();
+    //点击确认订单，请求添加订单
     $("#toPay").click(function (){
-
+        var address = "鸟不拉屎村"    //用户地址
+        var sum = 100;           //总消费
+        addOrder(address,sum);
     })
  });
 
-//查询购物车并展示
+//根据token查询购物车并展示
 function shoppingShow(){
     $.ajax({
         url:"/easybuy/product/findShopping",
@@ -31,8 +31,11 @@ function shoppingShow(){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
+            //保存购物车中的商品集合
             shoppingProduct = result;
+            //存放总价的变量
             sum = 0;
+            //展示商品的节点
             var productDom = "";
             for (var i = 0;i < shoppingProduct.length;i++){
                 productDom +=
@@ -45,26 +48,47 @@ function shoppingShow(){
                     "                <td align=\"center\">"+shoppingProduct[i].stock+"</td>" +
                     "                <td align=\"center\" style=\"color:#ff4e00;\">"+(shoppingProduct[i].price*shoppingProduct[i].stock)+"</td>" +
                     "              </tr>";
+                //拼接商品节点的同时顺便计算总价
                 sum += (shoppingProduct[i].price*shoppingProduct[i].stock)
             }
+            //页面插入商品展示节点
             $("#productBegin").after(productDom);
+            //页面设置商品总价
             $(".sum").text("商品总价：￥"+sum);
+            //页面设置应付金额
             $("#amountPayable").text(sum+15);
         }
     })
 }
 
-//请求支付宝支付
-function toAlipay(){
-    var subject = 0;
-    var orderNo = 0;
-    var amount = 0;
+//请求添加订单
+function addOrder(address,sum){
+    $.ajax({
+        url:"/easybuy/order/addOrder",
+        type:"post",
+        data:{"token":token,"address":address,"sum":sum},
+        dataType:"JSON",
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            if (result.flag){
+                toAlipay(result.orderNumber);
+            }else {
+                alert("生成订单失败，请检查订单信息");
+            }
+        }
+    });
+}
+
+//请求支付宝支付,传入订单号参数
+function toAlipay(orderNumber){
     var userAddress = 0;
     if (false){
         $.ajax({
             url:"/easybuy/product/",
             type:"post",
-            data:{"subject":subject,"orderNo":orderNo,"amount":amount},
+            data:{"orderNumber":orderNumber},
             dataType:"JSON",
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);

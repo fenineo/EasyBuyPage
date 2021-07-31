@@ -2,6 +2,7 @@ var token = localStorage.getItem("token");
 var flag = false;
 var typeLv = 0;
 
+//页面查看权限验证，非管理员不能查看
 $(function (){
     //界面默认隐藏
     $(".m_left").hide();
@@ -12,6 +13,7 @@ $(function (){
         window.location.href = "Index.html";
     }
 
+    //根据token获得用户信息
     $.ajax({
         url:"/easybuy/user/loginInfo",
         type:"post",
