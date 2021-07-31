@@ -66,14 +66,13 @@ function addOrder(address,sum){
     $.ajax({
         url:"/easybuy/order/addOrder",
         type:"post",
-        data:{"token":token,"address":address,"sum":sum},
-        dataType:"JSON",
+        data:{"address":address,"sum":sum},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
             if (result.flag){
-                toAlipay(result.orderNumber);
+                window.location.href = "BuyCar_Three.html?id="+result.orderId;
             }else {
                 alert("生成订单失败，请检查订单信息");
             }
@@ -81,23 +80,6 @@ function addOrder(address,sum){
     });
 }
 
-//请求支付宝支付,传入订单号参数
-function toAlipay(orderNumber){
-    var userAddress = 0;
-    if (false){
-        $.ajax({
-            url:"/easybuy/product/",
-            type:"post",
-            data:{"orderNumber":orderNumber},
-            dataType:"JSON",
-            beforeSend:function (XMLHttpRequest){
-                XMLHttpRequest.setRequestHeader("token",token);
-            },
-            success:function(result){
-            }
-        })
-    }
-}
  /**
   * 根据token拿用户id并且执行查询方法
   */
