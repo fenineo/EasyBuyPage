@@ -66,14 +66,13 @@ function addOrder(address,sum){
     $.ajax({
         url:"/easybuy/order/addOrder",
         type:"post",
-        data:{"token":token,"address":address,"sum":sum},
-        dataType:"JSON",
+        data:{"address":address,"sum":sum},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
             if (result.flag){
-                toAlipay(result.orderNumber);
+                window.location.href = "BuyCar_Three.html?id="+result.orderId;
             }else {
                 alert("生成订单失败，请检查订单信息");
             }
@@ -81,23 +80,6 @@ function addOrder(address,sum){
     });
 }
 
-//请求支付宝支付,传入订单号参数
-function toAlipay(orderNumber){
-    var userAddress = 0;
-    if (false){
-        $.ajax({
-            url:"/easybuy/product/",
-            type:"post",
-            data:{"orderNumber":orderNumber},
-            dataType:"JSON",
-            beforeSend:function (XMLHttpRequest){
-                XMLHttpRequest.setRequestHeader("token",token);
-            },
-            success:function(result){
-            }
-        })
-    }
-}
  /**
   * 根据token拿用户id并且执行查询方法
   */
@@ -107,6 +89,9 @@ function get(){
      url:"/easybuy/user/loginInfo",
      dataType: "json",
      data:{"token":token},
+     beforeSend:function (XMLHttpRequest){
+      XMLHttpRequest.setRequestHeader("token",token);
+  },
      success: function(result){
         userId=result.id;
         findByUserId(userId);
@@ -121,6 +106,9 @@ function findByUserId(userId){
         url:"/easybuy/UserAddress/findByUserId",
         dataType: "json",
         data:{"userId":userId},
+        beforeSend:function (XMLHttpRequest){
+          XMLHttpRequest.setRequestHeader("token",token);
+      },
         success: function(result){
             for(var i=0;i<result.length;i++){
                 if(result[i].isDefault=="1"){
@@ -209,7 +197,11 @@ function selectAll(result){
       url:"/easybuy/UserAddress/findByUserId",
       dataType: "json",
       data:{"userId":userId},
+      beforeSend:function (XMLHttpRequest){
+        XMLHttpRequest.setRequestHeader("token",token);
+    },
       success: function(result){
+        alert(result);
         if(result.length<3){
           clean();
           $("#aaa").after(
@@ -272,6 +264,9 @@ $(document).on("click","#addAffirm",function name(){
             url:"/easybuy/UserAddress/addUserAddress",
             dataType: "text",
             data:{"userId":userId,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
+            beforeSend:function (XMLHttpRequest){
+              XMLHttpRequest.setRequestHeader("token",token);
+          },
             success: function(result){
               alert("添加成功");
               clean();
@@ -334,6 +329,9 @@ function remove(id){
             url:"/easybuy/UserAddress/removeUserAddress",
             dataType: "text",
             data:{"id":id},
+            beforeSend:function (XMLHttpRequest){
+              XMLHttpRequest.setRequestHeader("token",token);
+          },
             success: function(result){
               alert("删除成功");
               clean();
@@ -353,6 +351,9 @@ function remove(id){
      url:"/easybuy/UserAddress/findById",
      dataType: "json",
      data:{"id":id},
+     beforeSend:function (XMLHttpRequest){
+      XMLHttpRequest.setRequestHeader("token",token);
+  },
      success: function(result){
            $("#aaa").after(
                "<table border="+"0"+" class="+"add_tab"+" style="+"width:930px;"+"  cellspacing="+"0"+" cellpadding="+"0"+">"+
@@ -408,6 +409,9 @@ function remove(id){
            url:"/easybuy/UserAddress/modifyUserAddress",
            dataType: "text",
            data:{"id":id,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
+           beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
            success: function(result){
             alert("修改成功");
             clean();
@@ -431,6 +435,9 @@ function remove(id){
         url:"/easybuy/UserAddress/findByUserId",
         dataType: "json",
         data:{"userId":userId},
+        beforeSend:function (XMLHttpRequest){
+          XMLHttpRequest.setRequestHeader("token",token);
+      },
         success: function(result){
             selectAll(result);
         }})

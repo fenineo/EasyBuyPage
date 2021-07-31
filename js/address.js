@@ -28,7 +28,7 @@ function get(){
  */
 function findByUserId(userId){
     $.ajax({
-       url:"/easybuy/UserAddress/tourist/findByUserId",
+       url:"/easybuy/UserAddress/findByUserId",
        dataType: "json",
        data:{"userId":userId},
        beforeSend:function (XMLHttpRequest){
@@ -78,7 +78,7 @@ function findByUserId(userId){
  */
 $(document).on("click","#add",function name(){
   $.ajax({
-    url:"/easybuy/UserAddress/tourist/findByUserId",
+    url:"/easybuy/UserAddress/findByUserId",
     dataType: "json",
     data:{"userId":userId},
     beforeSend:function (XMLHttpRequest){
@@ -143,7 +143,7 @@ $(document).on("click","#addAffirm",function name(){
       if(email_v(email)){
         if(dianhua.length==11){
           $.ajax({
-            url:"/easybuy/UserAddress/tourist/addUserAddress",
+            url:"/easybuy/UserAddress/addUserAddress",
             dataType: "text",
             data:{"userId":userId,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
             beforeSend:function (XMLHttpRequest){
@@ -197,7 +197,7 @@ function remove(id){
     var flag=confirm("确定要删除吗");
     if(flag){
         jQuery.ajax({
-            url:"/easybuy/UserAddress/tourist/removeUserAddress",
+            url:"/easybuy/UserAddress/removeUserAddress",
             dataType: "text",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){
@@ -228,7 +228,7 @@ function remove(id){
    clean();
   var id=jQuery(this).attr("name");
   jQuery.ajax({
-    url:"/easybuy/UserAddress/tourist/findById",
+    url:"/easybuy/UserAddress/findById",
     dataType: "json",
     data:{"id":id},
     beforeSend:function (XMLHttpRequest){
@@ -286,7 +286,7 @@ function remove(id){
     if(email_v(email)){
       if(dianhua.length==11){
         $.ajax({
-          url:"/easybuy/UserAddress/tourist/modifyUserAddress",
+          url:"/easybuy/UserAddress/modifyUserAddress",
           dataType: "text",
           data:{"id":id,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
           beforeSend:function (XMLHttpRequest){
@@ -320,7 +320,7 @@ function remove(id){
     if(flag){
     var id=jQuery(this).attr("name");
     $.ajax({
-      url:"/easybuy/UserAddress/tourist/allisDefault",
+      url:"/easybuy/UserAddress/allisDefault",
       dataType: "text",
       data:{"userId":userId},
       beforeSend:function (XMLHttpRequest){
