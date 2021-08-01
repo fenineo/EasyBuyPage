@@ -12,8 +12,6 @@ $(function (){
         $.ajax({
             url:"/easybuy/user/loginInfo",
             type:"post",
-            data:{"token":token},
-            dataType:"JSON",
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
             },

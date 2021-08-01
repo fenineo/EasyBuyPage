@@ -1,6 +1,6 @@
 var token = localStorage.getItem("token");
 var shoppingProduct = null;//商品集合
-var productId = 0;
+var productId = 0;//删除商品id
 var pageIndex = 1;//当前页
 var pageSize = 5;//页容量
 var pageCount = 0;//总页数
@@ -11,7 +11,7 @@ $(function (){
     findShoppingProduct();
     //确认删除按钮点击事件
     $(".b_sure").click(function (){
-        removeShopping(token,productId);//购物车删除商品
+        removeShopping(productId);//购物车删除商品
     })
     //取消删除按钮点击事件
     $(".b_buy").click(function (){
@@ -48,7 +48,7 @@ function numberVerify(number,dom){
 //计算商品小计
 function subtotal(number,dom){
     var _productId = $(dom).attr("productId");
-    modifyShopping(token,_productId,number);
+    modifyShopping(_productId,number);
     //计算小计并展示到页面
     var price = parseFloat($(dom).parent().parent().prev().text().replace("￥",""));
     var subtol = toDecimal2(numMulti(price,number));
@@ -65,10 +65,8 @@ function sum(shoppingProduct){
 //查询购物车
 function findShoppingProduct(){
     $.ajax({
-        url:"/easybuy/product/findShopping",
+        url:"/easybuy/order/findShopping",
         type:"post",
-        data:{"token":token},
-        dataType:"JSON",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -125,16 +123,13 @@ function showShoppingProduct(shoppingProduct){
         var number = $(this).val();
         numberVerify(number,$(this));
     })
-
-    showShopping(shoppingProduct);
 }
 //修改购物车中商品的数量
-function modifyShopping(token,productId,number){
+function modifyShopping(productId,number){
     $.ajax({
-        url:"/easybuy/product/modifyShopping",
+        url:"/easybuy/order/modifyShopping",
         type:"post",
-        data:{"token":token,"productId":productId,"number":number},
-        dataType:"JSON",
+        data:{"productId":productId,"number":number},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -146,12 +141,11 @@ function modifyShopping(token,productId,number){
     });
 }
 //删除购物车中的商品
-function removeShopping(token,productId){
+function removeShopping(productId){
     $.ajax({
-        url:"/easybuy/product/removeShopping",
+        url:"/easybuy/order/removeShopping",
         type:"post",
-        data:{"token":token,"productId":productId},
-        dataType:"JSON",
+        data:{"productId":productId},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },

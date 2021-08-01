@@ -19,7 +19,7 @@ $(function (){
         if (token != null){
             var productId = $(this).attr("productId");
             var number = $("#number").val();
-            addShopping(token,productId,number);
+            addShopping(productId,number);
         }else {
             $("#fade3").show();
             $("#MyDiv3").show();
@@ -36,18 +36,17 @@ $(function (){
             "</div>";
         $("#shopping").append(shoppingDom);
     }else {
-        findShopping(token);
+        findShopping();
     }
 
 });
 
 //向购物车添加商品
-function addShopping(token,productId,number){
+function addShopping(productId,number){
     $.ajax({
-        url:"/easybuy/product/addShopping",
+        url:"/easybuy/order/addShopping",
         type:"post",
-        data:{"token":token,"productId":productId,"number":number},
-        dataType:"JSON",
+        data:{"productId":productId,"number":number},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -63,12 +62,10 @@ function addShopping(token,productId,number){
 }
 
 //查询购物车
-function findShopping(token){
+function findShopping(){
     $.ajax({
-        url:"/easybuy/product/findShopping",
+        url:"/easybuy/order/findShopping",
         type:"post",
-        data:{"token":token},
-        dataType:"JSON",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -80,7 +77,7 @@ function findShopping(token){
 }
 
 //展示购物车
-function showShopping(shoppingProduct){
+function showShopping(shoppingProduct) {
     var sum = 0;
     shoppingDom =
         "<div class=\"car_t\">购物车 [ <span>"+shoppingProduct.length+"</span> ]</div>" +
@@ -88,15 +85,12 @@ function showShopping(shoppingProduct){
         "		<!--Begin 购物车已登录 Begin-->" +
         "		<ul class=\"cars\">";
     for (var i = 0;i < shoppingProduct.length;i++){
-        // if (i == 4){
-        //     break;
-        // }
         shoppingDom +=
-        "			<li>" +
-        "				<div class=\"img\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\"><img src=\"images/car1.jpg\" width=\"58\" height=\"58\" /></a></div>" +
-        "				<div class=\"name\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\">"+shoppingProduct[i].name+"</a></div>" +
-        "				<div class=\"price\"><font color=\"#ff4e00\">￥"+shoppingProduct[i].price+"</font> X"+shoppingProduct[i].stock+"</div>" +
-        "			</li>";
+            "			<li>" +
+            "				<div class=\"img\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\"><img src=\"images/car1.jpg\" width=\"58\" height=\"58\" /></a></div>" +
+            "				<div class=\"name\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\">"+shoppingProduct[i].name+"</a></div>" +
+            "				<div class=\"price\"><font color=\"#ff4e00\">￥"+shoppingProduct[i].price+"</font> X"+shoppingProduct[i].stock+"</div>" +
+            "			</li>";
         sum += shoppingProduct[i].price*shoppingProduct[i].stock;
     }
     shoppingDom +=
@@ -104,16 +98,11 @@ function showShopping(shoppingProduct){
         "		<div class=\"price_sum\">共计&nbsp; <font color=\"#ff4e00\">￥</font><span>"+sum+"</span></div>";
     if (sum > 0){
         shoppingDom +=
-        "		<div class=\"price_a\"><a href=\"BuyCar.html\">去购物车结算</a></div>";
+            "		<div class=\"price_a\"><a href=\"BuyCar.html\">去购物车结算</a></div>";
     }
     shoppingDom +=
         "		<!--End 购物车已登录 End-->" +
         "</div>";
     $("#shopping").children().remove();
     $("#shopping").prepend(shoppingDom);
-}
-//隐藏提示框
-function closeDiv(show_div,bg_div){
-    $(show_div).hide();
-    $(bg_div).hide();
 }

@@ -108,6 +108,7 @@ function userList(pageIndex){
             $(".modify_td").on("click",function (){
                 $("#right_head").nextAll().hide();
                 $("#modify_box").show();
+                
                 index = $(this).parent().parent().index() - 1;
                 $("#modify_loginName").val(list[index].loginName);
                 $("#modify_userName").val(list[index].userName);
@@ -152,8 +153,7 @@ function add_sub(){
         $.ajax({
             url:"/easybuy/user/userAdd",
             type:"post",
-            data:{"token":token,"loginName":loginName,"password":password,"userName":userName,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
-            dataType:"JSON",
+            data:{"loginName":loginName,"password":password,"userName":userName,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
             },
@@ -188,8 +188,7 @@ function modify_sub(){
         $.ajax({
             url:"/easybuy/user/userModify",
             type:"post",
-            data:{"token":token,"id":list[index].id,"loginName":loginName,"userName":userName,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
-            dataType:"JSON",
+            data:{"id":list[index].id,"loginName":loginName,"userName":userName,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
             },
@@ -213,8 +212,7 @@ function removeUser(id){
     $.ajax({
         url:"/easybuy/user/userRemove",
         type:"post",
-        data:{"token":token,"id":list[index].id},
-        dataType:"JSON",
+        data:{"id":list[index].id},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -222,7 +220,7 @@ function removeUser(id){
             if(result){
                 window.location.href = "/Member_Links.html";
             }else {
-                alert("删除失败，权限不足");
+                alert("删除失败");
             }
         }
     })
@@ -236,7 +234,6 @@ function loginName_v(loginName){
         url:"/easybuy/user/tourist/existLoginName",
         type:"post",
         data:{"loginName":loginName},
-        dataType:"JSON",
         async:false,
         success:function(result){
             flag = result;

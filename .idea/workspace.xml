@@ -20,13 +20,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/buyCar_Three.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BuyCar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuyCar_Three.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar_Three.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuyCar_Two.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar_Two.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Address.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Address.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Cash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Collect.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Collect.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Commission.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Commission.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Links.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Links.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Member.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Member.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Member_List.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Member_List.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Money.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Money_Charge.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money_Charge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Money_Pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Money_Pay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Msg.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Msg.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Member_Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/BuyCar_Two.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/BuyCar_Two.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Packet.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Packet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Results.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Safe.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_Safe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_User.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_User.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/buyCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/shopping.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/shopping.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +143,9 @@
       <workItem from="1627691722226" duration="275000" />
       <workItem from="1627696275670" duration="954000" />
       <workItem from="1627711594003" duration="1683000" />
-      <workItem from="1627723674380" duration="998000" />
+      <workItem from="1627723674380" duration="1830000" />
+      <workItem from="1627737289210" duration="1222000" />
+      <workItem from="1627739042894" duration="6368000" />
     </task>
     <servers />
   </component>
