@@ -27,6 +27,7 @@ function toAlipay(orderId){
         }
     })
 }
+
 //根据订单id查询订单信息并展示到页面
 function findOrderInfo(orderId){
     $.ajax({

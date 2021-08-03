@@ -1,25 +1,37 @@
 var token = localStorage.getItem("token");
-var pgIndex = 0;//当前页码
-var pageCount = 0;//总页数
-var list = null;
-var index = 0;
+var pgIndex = 0;    //当前页码
+var list = null;    //分页查询到的用户集合
+var index = 0;      //当前被操作tr元素的索引
+
+//用户名正则
+var longinNameReg = /[a-zA-Z1-9]{1,16}$/;
+//密码正则
+var pwdReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/;
+//真实姓名正则
+var userNameReg = /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\.\s]{1,20})$/;
+//身份证正则
+var identityCodeReg = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+//Email正则
+var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+//手机号正则
+var phoneReg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
 
 $(function (){
+    //页面加载展示第一页
     userList(1);
 
-    $(".loginName").blur(function (){
+    //数据验证
+    $("#add_loginName").blur(function (){
         var loginName = $(this).val();
-        var idName = $(this).attr("id");
-        if(idName == "modify_loginName"){
-            if(loginName == list[index].loginName){
-                return false;
-            }
-        }
         loginName_v(loginName);
     })
     $(".pwd").blur(function (){
         var pwd = $(this).val();
         pwd_v(pwd);
+    })
+    $(".userName").blur(function (){
+        var userName = $(this).val();
+        userName_v(userName);
     })
     $(".identityCode").blur(function (){
         var identityCode = $(this).val();
@@ -34,11 +46,18 @@ $(function (){
         mobile_v(mobile);
     })
 
+    //用户添加按钮点击事件
     $("#add_user").click(function (){
         $("#right_head").nextAll().hide();
+        $("#return").show();
         $("#add_box").show();
     })
-
+    //返回按钮点击事件
+    $(".backPage").click(function (){
+        $("#right_head").nextAll().show();
+        $("#add_box").hide();
+        $("#modify_box").hide();
+    });
 });
 
 //查询用户集合
@@ -52,63 +71,59 @@ function userList(pageIndex){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
-            pageCount = result.pageCount;
-            pgIndex = result.pageIndex;
-            list = result.list;
+            pgIndex = result.userPage.pageIndex;
+            list = result.userPage.list;
+            var loginName = result.loginName;
 
-            //用户列表拼接
             var userTable = "";
-            for(var i = 0;i < list.length;i++){
-                if(list[i].loginName)
-                userTable +=
-                "<tr>"+
-                "   <td>"+list[i].loginName+"</td>"+
-                "   <td>"+list[i].userName+"</td>"+
-                "   <td>"+(list[i].sex == 1 ? "男":"女")+"</td>"+
-                "   <td>"+(list[i].type == 1 ? "管理员":"用户")+"</td>"+
-                "   <td><a class=\"modify_td\">修改</a></td>";
-                if(list[i].type == 1){
+            if(loginName == "admin"){
+                //操作人为超级管理员时用户列表拼接
+                for(var i = 0;i < list.length;i++){
                     userTable +=
-                    "   <td></td>";
-                }else {
+                        "<tr>"+
+                        "   <td>"+list[i].loginName+"</td>"+
+                        "   <td>"+list[i].userName+"</td>"+
+                        "   <td>"+(list[i].sex == 1 ? "男":"女")+"</td>"+
+                        "   <td>"+(list[i].type == 1 ? "管理员":"用户")+"</td>"+
+                        "   <td><a class=\"modify_td\">修改</a></td>";
+                    if(list[i].loginName == "admin"){
+                        userTable +=
+                            "   <td></td>";
+                    }else {
+                        userTable +=
+                            "   <td><a class=\"remove_td\">删除</a></td>";
+                    }
+                }
+            }else {
+                //操作人为普通管理员时用户列表拼接
+                for(var i = 0;i < list.length;i++){
                     userTable +=
-                    "   <td><a class=\"remove_td\">删除</a></td>";
+                        "<tr>"+
+                        "   <td>"+list[i].loginName+"</td>"+
+                        "   <td>"+list[i].userName+"</td>"+
+                        "   <td>"+(list[i].sex == 1 ? "男":"女")+"</td>"+
+                        "   <td>"+(list[i].type == 1 ? "管理员":"用户")+"</td>";
+                    if(list[i].type == 1){
+                        userTable +=
+                            "   <td></td>"+
+                            "   <td></td>";
+                    }else {
+                        userTable +=
+                            "   <td><a class=\"modify_td\">修改</a></td>"+
+                            "   <td><a class=\"remove_td\">删除</a></td>";
+                    }
                 }
             }
             $("#first_tr").after(userTable);
 
-            //分页框拼接
-            var pageBox = "<div class=\"page\" onclick=\"page(1)\">首页</div>";
-            if(result.pageIndex>1){
-                pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex-1)+")\">上一页</div>";
-            }
-            if(pageCount>5 && pageIndex>2){
-                for(var i = pageIndex-2;i<pageIndex+3;i++){
-                    if(i==pageIndex){
-                        pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }else{
-                        pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }
-                }
-            }else{
-                for(var i = 1;i<=pageCount;i++){
-                    if(i==pageIndex){
-                        pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }else{
-                        pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }
-                }
-            }
-            if(result.pageIndex<pageCount){
-                pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex+1)+")\">下一页</div>";
-            }
-            pageBox += "<div class=\"page\" onclick=\"page("+pageCount+")\">尾页</div>";
-            $("#pageBox").append(pageBox);
+            //引用pageBean.js的分页框展示方法
+            pageShow(result.userPage);
+
             //动态绑定修改事件
             $(".modify_td").on("click",function (){
                 $("#right_head").nextAll().hide();
                 $("#modify_box").show();
-                
+                //获取当前操作的tr元素索引
                 index = $(this).parent().parent().index() - 1;
                 $("#modify_loginName").val(list[index].loginName);
                 $("#modify_userName").val(list[index].userName);
@@ -149,7 +164,7 @@ function add_sub(){
     var email = $("#add_email").val();
     var mobile = $("#add_mobile").val();
     var type = $("#add_type").val();
-    if(loginName_v(loginName) && pwd_v(password) && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
+    if(loginName_v(loginName) && pwd_v(password) && userName_v(userName) && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
         $.ajax({
             url:"/easybuy/user/userAdd",
             type:"post",
@@ -173,22 +188,16 @@ function add_sub(){
 
 //修改用户
 function modify_sub(){
-    var loginName = $("#modify_loginName").val();
     var userName = $("#modify_userName").val();
     var identityCode = $("#modify_identityCode").val();
     var email = $("#modify_email").val();
     var mobile = $("#modify_mobile").val();
     var type = $("#modify_type").val();
-    var flag = true;
-    //判断登陆名是否修改，修改的登陆名是否重复
-    if(loginName != list[index].loginName){
-        flag = loginName_v(loginName);
-    }
-    if(flag && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
+    if(userName_v(userName) && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
         $.ajax({
             url:"/easybuy/user/userModify",
             type:"post",
-            data:{"id":list[index].id,"loginName":loginName,"userName":userName,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
+            data:{"id":list[index].id,"userName":userName,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
             },
@@ -229,29 +238,41 @@ function removeUser(id){
 
 // 用户名验证
 function loginName_v(loginName){
-    var flag=false;
+    var flag = false;
+    if(loginName == "" || loginName == null){
+        $("#add_loginName").nextAll("span").hide();
+        return flag;
+    }
+    if (!longinNameReg.test(loginName)){
+        $("#add_loginName").nextAll("span").text("用户名格式不正确").show();
+        return flag;
+    }
     $.ajax({
         url:"/easybuy/user/tourist/existLoginName",
         type:"post",
         data:{"loginName":loginName},
+        dataType:"JSON",
         async:false,
         success:function(result){
             flag = result;
         }
     });
     if(flag){
-        $(".loginName").nextAll("span").text("用户名已存在").show();
+        $("#add_loginName").nextAll("span").text("用户名已存在").show();
     }else{
-        $(".loginName").nextAll("span").hide();
+        $("#add_loginName").nextAll("span").hide();
     }
     return !flag;
 }
 
 //密码格式验证
 function pwd_v(pwd){
-    var pwdReg = /^\d{6}$/;
+    if(pwd == "" || pwd == null){
+        $(".pwd").nextAll("span").hide();
+        return false;
+    }
     if(!pwdReg.test(pwd)){
-        $(".pwd").nextAll("span").text("密码必须为6位整数").show();
+        $(".pwd").nextAll("span").text("密码格式不正确").show();
         return false;
     }
 
@@ -259,15 +280,30 @@ function pwd_v(pwd){
     return true;
 }
 
+//真实姓名验证
+function userName_v(userName){
+    var flag = false;
+    if(userName == "" || userName == null){
+        $(".userName").nextAll("span").hide();
+        return flag;
+    }
+    if(!userNameReg.test(userName)){
+        $(".userName").nextAll("span").text("真实姓名格式不正确").show();
+        return flag;
+    }
+
+    $(".userName").nextAll("span").hide();
+    return !flag;
+}
+
 //身份证号验证
 function identityCode_v(identityCode){
-    var numReg = /^\d{18}$/;
-    if(!numReg.test(identityCode)){
-        if(identityCode == "" || identityCode == null){
-            $(".identityCode").nextAll("span").hide();
-            return true;
-        }
-        $(".identityCode").nextAll("span").text("身份证号必须为18位整数").show();
+    if(identityCode == "" || identityCode == null){
+        $(".identityCode").nextAll("span").hide();
+        return true;
+    }
+    if(!identityCodeReg.test(identityCode)){
+        $(".identityCode").nextAll("span").text("身份证号格式不正确").show();
         return false;
     }
 
@@ -277,12 +313,11 @@ function identityCode_v(identityCode){
 
 //邮箱验证
 function email_v(email){
-    var emailReg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+    if(email == "" || email == null){
+        $(".email").nextAll("span").hide();
+        return true;
+    }
     if(!emailReg.test(email)){
-        if(email == "" || email == null){
-            $(".email").nextAll("span").hide();
-            return true;
-        }
         $(".email").nextAll("span").text("邮箱格式不正确").show();
         return false;
     }
@@ -293,13 +328,12 @@ function email_v(email){
 
 //手机号验证
 function mobile_v(mobile){
-    var telReg = /^\d{11}$/;
-    if(!telReg.test(mobile)){
-        if(mobile == "" || mobile == null){
-            $(".mobile").nextAll("span").hide();
-            return true;
-        }
-        $(".mobile").nextAll("span").text("手机号必须为11位").show();
+    if(mobile == "" || mobile == null){
+        $(".mobile").nextAll("span").hide();
+        return true;
+    }
+    if(!phoneReg.test(mobile)){
+        $(".mobile").nextAll("span").text("手机号格式不正确").show();
         return false;
     }
 
