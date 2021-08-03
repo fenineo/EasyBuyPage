@@ -195,8 +195,8 @@ jQuery(document).on("click","#addProduct",function name(){
  * 修改的点击事件
  */
  $(document).on("click",".update",function name(){
+     alert("abc");
     var id=$(this).attr("name");
-    $("#gai").attr("name",id);
     getone();
     clean();
     $("#jia").show();
@@ -208,6 +208,8 @@ jQuery(document).on("click","#addProduct",function name(){
     "      </td>" +
     "    </tr>";
     $(".mem_tab").after(a);
+    $("#cang").attr("value",id);
+    var cang=$("#cang").val();
     var categoryLevel1Id="";
     var categoryLevel2Id="";
     var categoryLevel3Id="";
@@ -259,17 +261,26 @@ jQuery(document).on("click","#addProduct",function name(){
     var categoryLevel3Id=$("#san").val();
      if(name!="" && price!="" && stock!="" && fileName!="" && categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
         $.ajax({
-        url:"/easybuy/products/modifyProduct",
-        dataType: "text",
-        data:{"id":id,"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
-        beforeSend:function (XMLHttpRequest){
-            XMLHttpRequest.setRequestHeader("token",token);
-        },
-        success: function(result){
-            alert("修改成功");
-            window.location.href = "/Member_Safe.html";
-        }
-        })
+            url:"/easybuy/products/modifyProduct",
+            type: "POST",
+            cache: false,
+            data: new FormData(jQuery('#jia')[0]),   //关键，将表单元素封装成FormData对象
+                processData: false,        //关键
+                contentType: false,        //关键
+            dataType: "json",
+            // data:{"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
+            success: function(result){
+                if (result == true) {
+                    alert("操作成功")
+                    window.location.href = "/Member_Safe.html";
+                } else {
+                    alert("操作失败")
+                }
+            }
+            })
     }else{
         alert("请填写所有必选项");
     }
