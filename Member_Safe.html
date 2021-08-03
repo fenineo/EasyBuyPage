@@ -219,6 +219,7 @@
           </table>
           <form id="jia" method="post" enctype="multipart/form-data">
             <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
+              <input type="hidden" name="id" value="" id="cang">
               <tr>
                 <td width="150" class="tx_l">
                   <font color="#ff4e00">*</font>商品名
@@ -246,7 +247,8 @@
                 <td class="tx_l">
                   <font color="#ff4e00">*</font>图片
                 </td>
-                <td><input type="file" id="shopFileName" class="tx_ipt userName" maxlength="5"
+                <td><img src="" width="80" height="50" id="picture">
+                  <input type="file" id="shopFileName" class="tx_ipt userName" maxlength="5"
                     onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" name="acth"/></td>
               </tr>
               <tr>

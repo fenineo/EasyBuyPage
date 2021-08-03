@@ -1,3 +1,4 @@
+//分类商品展示页js
 var token = localStorage.getItem("token");
 var productDom = "";
 
@@ -44,7 +45,7 @@ function productByCategory(pageIndex,categoryId){
                             "	</div>" +
                             "	<div class=\"name\"><a href=\"Product.html?id="+productList[i].id+"\">"+productList[i].name+"</a></div>" +
                             "	<div class=\"carbg\">" +
-                            "		<a href=\"#\" class=\"ss\">收藏</a>" +
+                            "		<a href=\"#\" productId=\""+productList[i].id+"\" class=\"ss addFavorite\">收藏</a>" +
                             "		<a href=\"javascript:void(0)\" productId=\""+productList[i].id+"\" class=\"j_car addShopping\">加入购物车</a>" +
                             "	</div>" +
                             "</li>";
@@ -83,6 +84,10 @@ function productByCategory(pageIndex,categoryId){
                 $("#nullProduct").show();
             }
 
+            //动态添加收藏夹的js，让其慢于商品页面加载，为添加收藏夹按钮动态绑定事件
+            var js =
+                "    <script type=\"text/javascript\" src=\"js/favorite.js\"></script>"
+            $("title").before(js);
             //动态添加购物车的js，让其慢于商品页面加载，为添加购物车按钮动态绑定事件
             var js =
                 "    <script type=\"text/javascript\" src=\"js/shopping.js\"></script>"

@@ -441,46 +441,13 @@
     <div class="content mar_20">
     	<div class="l_history">
         	<div class="his_t">
-            	<span class="fl">浏览历史</span>
-<!--                <span class="fr"><a href="#">清空</a></span>-->
+                <span class="fl favoHide" style="color:#888888; font-size:14px;"><a href="Login.html" style="color:#ff4e00; font-size:16px;">登陆</a>显示收藏夹</span>
+            	<span class="fl favoShow">收藏夹</span>
+                <span id="emptyFavo" class="fr"><a href="#">清空收藏夹</a></span>
             </div>
-<!--        	<ul>-->
-<!--            	<li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>368.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>768.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>680.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>368.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>368.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--        	</ul>-->
+            <!--收藏夹-->
+        	<ul id="favorite" class="favoShow" style="height: 783px; overflow:auto;">
+        	</ul>
         </div>
         <div class="l_list">
 <!--        	<table border="0" style="width:100%; margin-bottom:30px; border:1px solid #eaeaea;" cellspacing="0" cellpadding="0">-->
@@ -518,35 +485,10 @@
                 </ul>
                 <!--分页-->
                 <div class="pages">
-<!--                    <a href="#" class="p_pre">首页</a>-->
-<!--                    <a href="#" class="p_pre">上一页</a>-->
-<!--                    <a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>-->
-<!--                    <a href="#" class="p_pre">下一页</a>-->
-<!--                    <a href="#" class="p_pre">尾页</a>-->
                 </div>
             </div>
         </div>
     </div>
-
-
-    <!--Begin 弹出层-登陆提示 Begin-->
-    <div id="fade3" class="black_overlay"></div>
-    <div id="MyDiv3" class="white_content">
-        <div class="white_d">
-            <div class="notice_t">
-                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
-            </div>
-            <div class="notice_c">
-                <table border="0" align="center" cellspacing="0" cellpadding="0">
-                    <tr height="50" valign="bottom">
-                        <td>&nbsp;</td>
-                        <td style="font-size: 18px">您还未登陆，请先<a href="Login.html" style="color: red;font-size: 20px">&nbsp;&nbsp;登陆</a></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!--End 弹出层-登陆提示 End-->
 
     <!--Begin 弹出层-收藏成功 Begin-->
     <div id="fade" class="black_overlay"></div>
@@ -557,17 +499,16 @@
             </div>
             <div class="notice_c">
 
-                <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
                     <tr valign="top">
                         <td width="40"><img src="images/suc.png" /></td>
                         <td>
                             <span style="color:#3e3e3e; font-size:18px; font-weight:bold;">您已成功收藏该商品</span><br />
-                            <a href="#">查看我的关注 >></a>
                         </td>
                     </tr>
                     <tr height="50" valign="bottom">
                         <td>&nbsp;</td>
-                        <td><a href="#" class="b_sure">确定</a></td>
+                        <td><a href="#" id="favo_y" class="b_sure">确定</a></td>
                     </tr>
                 </table>
 
@@ -575,7 +516,6 @@
         </div>
     </div>
     <!--End 弹出层-收藏成功 End-->
-
 
     <!--Begin 弹出层-加入购物车 Begin-->
     <div id="fade1" class="black_overlay"></div>
@@ -603,7 +543,26 @@
         </div>
     </div>
     <!--End 弹出层-加入购物车 End-->
-    
+
+    <!--Begin 弹出层-登陆提示 Begin-->
+    <div id="fade3" class="black_overlay"></div>
+    <div id="MyDiv3" class="white_content">
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
+                    <tr height="50" valign="bottom">
+                        <td>&nbsp;</td>
+                        <td style="font-size: 18px">您还未登陆，请先<a href="Login.html" style="color: red;font-size: 20px">&nbsp;&nbsp;登陆</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--End 弹出层-登陆提示 End-->
+
     <!--Begin Footer Begin -->
     <div class="b_btm_bg bg_color">
         <div class="b_btm">

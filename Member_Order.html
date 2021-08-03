@@ -16,7 +16,21 @@
         
 	<script type="text/javascript" src="js/select.js"></script>
 
-<!--    <script type="text/javascript" src="js/loginTypeVerify.js"></script>-->
+    <script type="text/javascript" src="js/loginTypeVerify.js"></script>
+    <script type="text/javascript" src="js/member_order.js"></script>
+    <script type="text/javascript" src="js/pageBean.js"></script>
+
+    <style type="text/css">
+        .pcss{
+            background-color:#F0F0F0;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 20px;
+        }
+        .pcss span{
+            padding-left: 5%;
+        }
+    </style>
 
 <title>尤洪</title>
 </head>
@@ -192,27 +206,13 @@
         </div>
 		<div class="m_right">
             <p></p>
-            <div class="mem_tit">我的订单</div>
-            <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
-              <tr>
-                  <td></td>
-              </tr>
-                <tr>
-                <td width="20%">商品名称</td>
-                <td width="25%">商品图片</td>
-                <td width="15%">数量</td>
-                <td width="25%">价格</td>
-                <td width="15%">操作</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-            </table>
-            
+            <div id="myOrder" class="mem_tit">我的订单</div>
+
+
+            <!--分页展示框-->
+            <div id="pageBox" class="pageBox">
+
+            </div>
         </div>
     </div>
 	<!--End 用户中心 End--> 

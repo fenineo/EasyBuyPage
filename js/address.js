@@ -138,7 +138,7 @@ $(document).on("click","#addAffirm",function name(){
     var email=$(".add_email").val();
     var dianhua=$("#add_phone").val();
     var xaddress=$(".add_xaddress").val();
-    var address=sheng+shi+qu;
+    var address=sheng+","+shi+","+qu;
     if(address!="" && consignee!="" && email!="" && dianhua!="" && xaddress!="" && sheng!="" && shi!="" && qu!="市辖区"){
       if(email_v(email)){
         if(dianhua.length==11){
@@ -235,13 +235,16 @@ function remove(id){
       XMLHttpRequest.setRequestHeader("token",token);
   },
     success: function(result){
+          var ress=result.address;
+          var arr=ress.split(",");
           $("#aaa").after(
               "<table border="+"0"+" class="+"add_tab"+" style="+"width:930px;"+"  cellspacing="+"0"+" cellpadding="+"0"+">"+
                     "<tr>"+
                       "<td width="+"135"+" align="+"right"+">配送地区</td>"+
                       "<td colspan="+"3"+" style="+"font-family:'宋体';"+">"+
                           "<select name="+"sheng"+" id="+"sheng"+"></select>"+
-                          "<select name="+"shi"+" id="+"shi"+"></select>"+
+                          "<select name="+"shi"+" id="+"shi"+">"+
+                          "</select>"+
                           "<select name="+"qu"+" id="+"qu"+"></select>"+
                           "（必填）"+
                       "</td>"+
@@ -264,8 +267,13 @@ function remove(id){
                   "</p>" 
           )
           if($("select[name='sheng']").length>0){
-              new PCAS("sheng","shi","qu","","","");
-          }
+            new PCAS("sheng","shi","qu","","","");
+        }
+          $("#shi").empty();
+          $("#shi").append("<option value="+arr[1]+">"+arr[1]+"</option>");
+          $("#qu").empty();
+          $("#qu").append("<option value="+arr[2]+">"+arr[2]+"</option>");
+          $("#sheng").first("option").val(arr[0]);
     }  
 })
 })
@@ -281,7 +289,7 @@ function remove(id){
   var email=$(".add_email").val();
   var dianhua=$("#add_phone").val();
   var xaddress=$(".add_xaddress").val();
-  var address=sheng+shi+qu;
+  var address=sheng+","+shi+","+qu;
   if(address!="" && consignee!="" && email!="" && dianhua!="" && xaddress!="" && sheng!="" && shi!="" && qu!="市辖区"){
     if(email_v(email)){
       if(dianhua.length==11){
