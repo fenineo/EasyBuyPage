@@ -208,13 +208,13 @@
             </p>
             <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
                 <tr id="first_tr">
-                    <td width="20%">id</td>
                     <td width="20%">分类名称</td>
                     <td width="20%">分类级别</td>
                     <td width="20%">父级分类</td>
                     <td width="20%" colspan="2">操作</td>
                 </tr>
             </table>
+            
             <div id="pageBox" class="pageBox">
             </div>
 
@@ -222,40 +222,28 @@
                 <div class="mem_tit">
                     添加分类
                 </div>
-                <form onsubmit="return add_sub()">
+                <form>
 <!--                <form onsubmit="return getone()">-->
-                    <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
+                    <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0" id="zxc">
                         <tr>
                             <td class="tx_l">分类名称</td>
                             <td><input type="text" id="addname" class="txipt addname" />
                                 <br/><span class="prompt"></span></td>
+                                <div
+                                    id="tishi1"
+                                    style="color: red;display: inline-block;position: absolute;right: 36em;">名称不能为空
+                            </div>
                         </tr>
-                        <tr>
+                        <tr id="addflpj">
                             <td class="tx_l">分类级别</td>
-                            <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="change()">
-                                <option>请选择</option>
+                            <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="chang()">
+                                <option value="0">请选择</option>
                                 <option value="1">一级分类</option>
                                 <option value="2">二级分类</option>
                                 <option value="3">三级分类</option>
                             </select></td>
                         </tr>
-                        <tr>
-                            <td class="tx_l">分类级别</td>
-                            <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="change()">
-                                <option>请选择</option>
-                                <option value="1">一级分类</option>
-                                <option value="2">二级分类</option>
-                                <option value="3">三级分类</option>
-                            </select></td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <td class="tx_l">父级目录ID</td>-->
-<!--                            <td>-->
-<!--                                <select id="add_parentId">-->
-<!--                                    <option value="1">548</option>-->
-<!--                                </select>-->
-<!--                            </td>-->
-<!--                        </tr>-->
+                        
                         <tr height="70">
                             <td colspan="2" align="center">
                                 <input type="submit" value="确认添加" id="tjtj" />
@@ -273,15 +261,16 @@
                 <form onsubmit="return modify_sub()">
                     <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
 
-                        <tr>
+                        <tr id="modifyflpj">
                             <td class="tx_l">分类名称</td>
-                            <td><input type="text" id="modify_name" class="tx_ipt name" required="required" /></td>
-                        </tr>
-
-                        
+                            <td><input type="text" id="modify_name" class="tx_ipt name" required="required" />
+                                <input type="hidden" name="modifyparentId" value="628" id="modify_parentId"/>
+                                <input type="hidden" name="modifytype" value="2" id="modify_type"/>
+                            </td>
+                        </tr>  
                         <tr height="70">
                             <td colspan="2" align="center">
-                                <input type="button" value="修改信息" class="btn_tj" />
+                                <input type="button" value="修改信息" id="modtj"/>
                             </td>
                         </tr>
                     </table>
