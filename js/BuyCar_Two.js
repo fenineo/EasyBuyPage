@@ -256,7 +256,7 @@ $(document).on("click","#addAffirm",function name(){
     var email=$(".add_email").val();
     var dianhua=$("#add_phone").val();
     var xaddress=$(".add_xaddress").val();
-    var address=sheng+shi+qu;
+    var address=sheng+","+shi+","+qu;
     if(address!="" && consignee!="" && email!="" && dianhua!="" && xaddress!="" && sheng!="" && shi!="" && qu!="市辖区"){
       if(email_v(email)){
         if(dianhua.length==11){
@@ -355,6 +355,8 @@ function remove(id){
       XMLHttpRequest.setRequestHeader("token",token);
   },
      success: function(result){
+      var ress=result.address;
+      var arr=ress.split(",");
            $("#aaa").after(
                "<table border="+"0"+" class="+"add_tab"+" style="+"width:930px;"+"  cellspacing="+"0"+" cellpadding="+"0"+">"+
                      "<tr>"+
@@ -386,6 +388,12 @@ function remove(id){
            if($("select[name='sheng']").length>0){
                new PCAS("sheng","shi","qu","","","");
            }
+           
+          $("#shi").empty();
+          $("#shi").append("<option value="+arr[1]+">"+arr[1]+"</option>");
+          $("#qu").empty();
+          $("#qu").append("<option value="+arr[2]+">"+arr[2]+"</option>");
+          $("#sheng").first("option").val(arr[0]);
      }  
  })
  })

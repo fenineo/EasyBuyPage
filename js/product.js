@@ -8,15 +8,17 @@ var map3= null;
 jQuery(function(){
     getAll();
     $("#jia").hide();
+    getone();
  })
  /**
   * 分页查询
   */
  function getAll(pageIndex) {
+     var isDelete=0;
     jQuery.ajax({
         url:"/easybuy/products/getPageProduct",
         dataType: "json",
-        data:{"pageIndex":pageIndex},
+        data:{"pageIndex":pageIndex,"isDelete":isDelete},
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -147,11 +149,11 @@ function ercha(){
  * 添加商品的点击事件
  */
 jQuery(document).on("click","#addProduct",function name(){
-    alert("123");
     getone();   
     clean();
     $("#jia").show();
     $("#addProduct").hide();
+    $("#picture").hide();
 })  
 /**
  * 确认添加的点击事件
@@ -195,7 +197,6 @@ jQuery(document).on("click","#addProduct",function name(){
  * 修改的点击事件
  */
  $(document).on("click",".update",function name(){
-     alert("abc");
     var id=$(this).attr("name");
     getone();
     clean();
@@ -210,43 +211,90 @@ jQuery(document).on("click","#addProduct",function name(){
     $(".mem_tab").after(a);
     $("#cang").attr("value",id);
     var cang=$("#cang").val();
-    var categoryLevel1Id="";
+    var name="";
+    var price="";
+    var stock="";
+    var categoryLevel1Id=null;
     var categoryLevel2Id="";
     var categoryLevel3Id="";
-    $.ajax({
-        url:"/easybuy/products/getPById",
-        dataType: "json",
-        data:{"id":id,},
-        beforeSend:function (XMLHttpRequest){
-            XMLHttpRequest.setRequestHeader("token",token);
-        },
-        success: function(result){
-            for(var i=0;i<map1.length;i++){
-                if(map1[i].id==result.categoryLevel1Id){
-                    categoryLevel1Id=map1[i].id
-                }
-            }
-            for(var i=0;i<map2.length;i++){
-                if(map2[i].id==result.categoryLevel2Id){
-                    categoryLevel2Id=map2[i].id
-                }
-            }
-            for(var i=0;i<map3.length;i++){
-                if(map3[i].id==result.categoryLevel3Id){
-                    categoryLevel3Id=map3[i].id
-                }
-            }
-            $("#yi").first("option").val(categoryLevel1Id);
-            yicha();
-            $("#er").first("option").val(categoryLevel2Id);
-            ercha();
-            $("#san").first("option").val(categoryLevel3Id);
-            $("#shopName").val(result.name);
-            $("#shopPrice").val(result.price);
-            $("#shopStock").val(result.stock);
+    var fileName="";
+    for(var i=0;i<list.length;i++){
+        if(list[i].id==id){
+            categoryLevel1Id=list[i].categoryLevel1Id;
+            categoryLevel2Id=list[i].categoryLevel2Id;
+            categoryLevel3Id=list[i].categoryLevel3Id;
+            name=list[i].name;
+            price=list[i].price;
+            stock=list[i].stock;
+            fileName=list[i].fileName;
         }
-        })
+    }
+    $("#picture").attr("src","/img/"+fileName);
+    $("#shopName").val(name);
+    $("#shopPrice").val(price);
+    $("#shopStock").val(stock);
+    $("#yi").first("option").val(categoryLevel1Id);
+    yicha();
+    $("#er").first("option").val(categoryLevel2Id);
+    ercha();
+    $("#san").first("option").val(categoryLevel3Id);
     })
+//     /**
+//  * 修改的点击事件
+//  */
+//  $(document).on("click",".update",function name(){
+//     var id=$(this).attr("name");
+//     getone();
+//     clean();
+//     $("#jia").show();
+//     $("#addProduct").hide();
+//     $("#abc").hide();
+//     var a="<tr height=\"70\" id=\"abc\">" +
+//     "      <td colspan=\"2\" align=\"center\">" +
+//     "          <input type=\"button\" value=\"确认修改\" class=\"btn_tj\" id=\"gai\"/>" +
+//     "      </td>" +
+//     "    </tr>";
+//     $(".mem_tab").after(a);
+//     $("#cang").attr("value",id);
+//     var cang=$("#cang").val();
+//     var categoryLevel1Id="";
+//     var categoryLevel2Id="";
+//     var categoryLevel3Id="";
+//     $.ajax({
+//         url:"/easybuy/products/getPById",
+//         dataType: "json",
+//         data:{"id":id,},
+//         beforeSend:function (XMLHttpRequest){
+//             XMLHttpRequest.setRequestHeader("token",token);
+//         },
+//         success: function(result){
+//             for(var i=0;i<map1.length;i++){
+//                 if(map1[i].id==result.categoryLevel1Id){
+//                     categoryLevel1Id=map1[i].id
+//                 }
+//             }
+//             for(var i=0;i<map2.length;i++){
+//                 if(map2[i].id==result.categoryLevel2Id){
+//                     categoryLevel2Id=map2[i].id
+//                 }
+//             }
+//             for(var i=0;i<map3.length;i++){
+//                 if(map3[i].id==result.categoryLevel3Id){
+//                     categoryLevel3Id=map3[i].id
+//                 }
+//             }
+//             $("#yi").first("option").val(categoryLevel1Id);
+//             yicha();
+//             $("#er").first("option").val(categoryLevel2Id);
+//             ercha();
+//             $("#san").first("option").val(categoryLevel3Id);
+//             $("#shopName").val(result.name);
+//             $("#shopPrice").val(result.price);
+//             $("#shopStock").val(result.stock);
+//             $("#shopFileName").val("<img src='/img/"+result.fileName+"' width="+80+" height="+50+"/>");
+//         }
+//         })
+//     })
  /**
   * 确认修改的点击事件
   */
@@ -259,48 +307,55 @@ jQuery(document).on("click","#addProduct",function name(){
     var categoryLevel1Id=$("#yi").val();
     var categoryLevel2Id=$("#er").val();
     var categoryLevel3Id=$("#san").val();
-     if(name!="" && price!="" && stock!="" && fileName!="" && categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
-        $.ajax({
-            url:"/easybuy/products/modifyProduct",
-            type: "POST",
-            cache: false,
-            data: new FormData(jQuery('#jia')[0]),   //关键，将表单元素封装成FormData对象
-                processData: false,        //关键
-                contentType: false,        //关键
-            dataType: "json",
-            // data:{"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
-            beforeSend:function (XMLHttpRequest){
-                XMLHttpRequest.setRequestHeader("token",token);
-            },
-            success: function(result){
-                if (result == true) {
-                    alert("操作成功")
-                    window.location.href = "/Member_Safe.html";
-                } else {
-                    alert("操作失败")
+    var picture=$("#picture").attr("src");
+    
+     if(name!="" && price!="" && stock!="" &&  categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
+         if(fileName!="" || picture!=""){
+            $.ajax({
+                url:"/easybuy/products/modifyProduct",
+                type: "POST",
+                cache: false,
+                data: new FormData(jQuery('#jia')[0]),   //关键，将表单元素封装成FormData对象
+                    processData: false,        //关键
+                    contentType: false,        //关键
+                dataType: "json",
+                // data:{"name":name,"price":price,"stock":stock,"fileName":fileName,"categoryLevel1Id":categoryLevel1Id,"categoryLevel2Id":categoryLevel2Id,"categoryLevel3Id":categoryLevel3Id},
+                beforeSend:function (XMLHttpRequest){
+                    XMLHttpRequest.setRequestHeader("token",token);
+                },
+                success: function(result){
+                    if (result == true) {
+                        alert("操作成功")
+                        window.location.href = "/Member_Safe.html";
+                    } else {
+                        alert("操作失败")
+                    }
                 }
-            }
-            })
+                })
+         }
     }else{
         alert("请填写所有必选项");
     }
  })
  /**
-  * 删除的点击事件
+  * 下架的点击事件
   */
   $(document).on("click",".delete",function name(){
     var id=$(this).attr("name");
-    alert(id);
-    $.ajax({
-        url:"/easybuy/products/removeProduct",
-        dataType: "text",
-        data:{"id":id},
-        beforeSend:function (XMLHttpRequest){
-            XMLHttpRequest.setRequestHeader("token",token);
-        },
-        success: function(result){
-            alert("下架成功");
-            window.location.href = "/Member_Safe.html";
-        }
-        })
-  })
+    var flag=confirm("确定要下架吗");
+    if(flag){
+        $.ajax({
+            url:"/easybuy/products/removeProduct",
+            dataType: "text",
+            data:{"id":id},
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
+            success: function(result){
+                alert("下架成功");
+                window.location.href = "/Member_Safe.html";
+            }
+            })
+      }
+    }
+  )
