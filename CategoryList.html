@@ -459,82 +459,39 @@
     <!--End 筛选条件 End-->
     
     <div class="content mar_20">
-    	<div class="l_history">
-        	<div class="his_t">
-            	<span class="fl">浏览历史</span>
-<!--                <span class="fr"><a href="#">清空</a></span>-->
+        <div class="l_history">
+            <div class="his_t">
+                <span class="fl favoHide" style="color:#888888; font-size:14px;"><a href="Login.html" style="color:#ff4e00; font-size:16px;">登陆</a>显示收藏夹</span>
+                <span class="fl favoShow">收藏夹</span>
+                <span id="emptyFavo" class="fr"><a href="#">清空收藏夹</a></span>
             </div>
-<!--        	<ul>-->
-<!--            	<li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>368.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>768.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>680.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>368.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185" height="162" /></a></div>-->
-<!--                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>-->
-<!--                    <div class="price">-->
-<!--                    	<font>￥<span>368.00</span></font> &nbsp; 18R-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--        	</ul>-->
+            <!--收藏夹-->
+            <ul id="favorite" class="favoShow">
+            </ul>
         </div>
         <div class="l_list">
         	<div class="list_t">
-<!--            	<span class="fl list_or">-->
-<!--                	<a href="#" class="now">默认</a>-->
+            	<span class="fl list_or">
+                	<a href="#" class="now">默认</a>
 <!--                    <a href="#">-->
 <!--                    	<span class="fl">销量</span>                        -->
 <!--                        <span class="i_up">销量从低到高显示</span>-->
 <!--                        <span class="i_down">销量从高到低显示</span>                                                     -->
 <!--                    </a>-->
-<!--                    <a href="#">-->
-<!--                    	<span class="fl">价格</span>                        -->
-<!--                        <span class="i_up">价格从低到高显示</span>-->
-<!--                        <span class="i_down">价格从高到低显示</span>     -->
-<!--                    </a>-->
+                    <a href="#">
+                    	<span class="fl">价格</span>
+                        <span class="i_up">价格从低到高显示</span>
+                        <span class="i_down">价格从高到低显示</span>
+                    </a>
 <!--                    <a href="#">新品</a>-->
-<!--                </span>-->
+                </span>
                 <span class="fr">共发现<span id="totalCount">0</span>件</span>
             </div>
             <div class="list_c">
                 <input type="hidden" id="number" value="1"/>
                 <h1 id="nullProduct" style="display: none">没有发现相关商品，再找找其他的吧</h1>
                 <ul id="cate_list" class="cate_list">
-                	<li>
-                    	<div class="img"><a href="#"><img src="images/per_1.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
+
                 </ul>
                 <!--分页-->
                 <div class="pages">
@@ -545,25 +502,6 @@
         </div>
     </div>
 
-    <!--Begin 弹出层-登陆提示 Begin-->
-    <div id="fade3" class="black_overlay"></div>
-    <div id="MyDiv3" class="white_content">
-        <div class="white_d">
-            <div class="notice_t">
-                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
-            </div>
-            <div class="notice_c">
-                <table border="0" align="center" cellspacing="0" cellpadding="0">
-                    <tr height="50" valign="bottom">
-                        <td>&nbsp;</td>
-                        <td style="font-size: 18px">您还未登陆，请先<a href="Login.html" style="color: red;font-size: 20px">&nbsp;&nbsp;登陆</a></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!--End 弹出层-登陆提示 End-->
-
     <!--Begin 弹出层-收藏成功 Begin-->
     <div id="fade" class="black_overlay"></div>
     <div id="MyDiv" class="white_content">
@@ -573,17 +511,16 @@
             </div>
             <div class="notice_c">
 
-                <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
                     <tr valign="top">
                         <td width="40"><img src="images/suc.png" /></td>
                         <td>
                             <span style="color:#3e3e3e; font-size:18px; font-weight:bold;">您已成功收藏该商品</span><br />
-                            <a href="#">查看我的关注 >></a>
                         </td>
                     </tr>
                     <tr height="50" valign="bottom">
                         <td>&nbsp;</td>
-                        <td><a href="#" class="b_sure">确定</a></td>
+                        <td><a href="#" id="favo_y" class="b_sure">确定</a></td>
                     </tr>
                 </table>
 
@@ -619,7 +556,26 @@
         </div>
     </div>
     <!--End 弹出层-加入购物车 End-->
-    
+
+    <!--Begin 弹出层-登陆提示 Begin-->
+    <div id="fade3" class="black_overlay"></div>
+    <div id="MyDiv3" class="white_content">
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr close" style="margin-top:10px; cursor:pointer;"><img src="images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
+                    <tr height="50" valign="bottom">
+                        <td>&nbsp;</td>
+                        <td style="font-size: 18px">您还未登陆，请先<a href="Login.html" style="color: red;font-size: 20px">&nbsp;&nbsp;登陆</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--End 弹出层-登陆提示 End-->
+
     <!--Begin Footer Begin -->
     <div class="b_btm_bg bg_color">
         <div class="b_btm">

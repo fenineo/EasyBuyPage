@@ -1,3 +1,5 @@
+//订单提交第一页js
+
 var token = localStorage.getItem("token");
 var shoppingProduct = null;//商品集合
 var productId = 0;//删除商品id

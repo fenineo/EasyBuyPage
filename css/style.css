@@ -1298,7 +1298,7 @@ table.choice tr td.td_a a:hover, table.choice tr td.td_a a.now{
 }
 
 .l_history{
-	width:209px; overflow:hidden; float:left; border:1px solid #eaeaea;
+	width:209px; float:left; border:1px solid #eaeaea;
 }
 .his_t{
 	height:38px; line-height:38px; overflow:hidden; background:url(../images/h_t.gif) no-repeat 10px center; color:#ff4e00; font-size:16px; padding-left:22px; padding-right:10px; border-bottom:1px solid #eaeaea;
@@ -1307,7 +1307,7 @@ table.choice tr td.td_a a:hover, table.choice tr td.td_a a.now{
 	color:#888888; font-size:14px;
 }
 .l_history ul li{
-	height:240px; overflow:hidden; border-bottom:1px solid #eaeaea;
+	height:260px; overflow:hidden; border-bottom:1px solid #eaeaea;
 }
 .l_history ul li .img{
 	width:185px; height:162px; overflow:hidden; margin-top:10px;
