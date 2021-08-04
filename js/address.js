@@ -37,6 +37,9 @@ function findByUserId(userId){
        success: function(result){
            $(result.length).each(function(i){
                for(var i=0;i<result.length;i++){
+                var ress=result[i].address;
+                var arr=ress.split(",");
+                var address=arr[0]+arr[1]+arr[2];
                 $("#select").after(
                     "<div class="+"address"+">"+
                             "<div class="+"a_close"+"><a href="+"#"+" name="+result[i].id+" class='delete'><img src="+"images/a_close.png"+" /></a></div>"+
@@ -47,7 +50,7 @@ function findByUserId(userId){
                               "</tr>"+
                               "<tr>"+
                                 "<td align="+"right"+">配送区域：</td>"+
-                                "<td>"+result[i].address+"</td>"+
+                                "<td>"+address+"</td>"+
                               "</tr>"+
                               "<tr>"+
                                 "<td align="+"right"+">详细地址：</td>"+

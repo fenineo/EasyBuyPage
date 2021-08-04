@@ -36,21 +36,18 @@ function numberVerify(number,dom){
             //输入数据不能小于0
             number = 1;
             $(dom).val(1);
-        }else {
-            //数据正常
-            $(dom).val(number);
         }
     }else {
         //输入数据不是整数，强制变为1
         number = 1;
         $(dom).val(1);
     }
-    subtotal(number,dom);
+    //修改购物车中商品数量
+    var _productId = $(dom).attr("productId");
+    modifyShopping(_productId,number,dom);
 }
 //计算商品小计
 function subtotal(number,dom){
-    var _productId = $(dom).attr("productId");
-    modifyShopping(_productId,number);
     //计算小计并展示到页面
     var price = parseFloat($(dom).parent().parent().prev().text().replace("￥",""));
     var subtol = toDecimal2(numMulti(price,number));
@@ -105,6 +102,7 @@ function showShoppingProduct(shoppingProduct){
             "			<td align=\"center\"><a onclick=\"removeClick("+productId+")\" class=\"removeShopping\">删除</a></td>" +
             "		</tr>";
     }
+    $("#productEnd").prevAll(".product_tr").remove();
     $("#productEnd").before(shoppingDom);
 
     sum(shoppingProduct);
@@ -121,13 +119,14 @@ function showShoppingProduct(shoppingProduct){
         numberVerify(number,$(this).prev());
     });
     //为数量框动态绑定value值变化事件
-    $(".number").on("input propertychange",function (){
+    //input propertychange
+    $(".number").on("change",function (){
         var number = $(this).val();
         numberVerify(number,$(this));
     })
 }
 //修改购物车中商品的数量
-function modifyShopping(productId,number){
+function modifyShopping(productId,number,dom){
     $.ajax({
         url:"/easybuy/order/modifyShopping",
         type:"post",
@@ -136,9 +135,19 @@ function modifyShopping(productId,number){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
-            shoppingProduct = result.shoppingProduct;
-            sum(shoppingProduct);
-            showShopping(shoppingProduct);
+            if(result.flag){
+                //数据正常,修改页面显示数量
+                $(dom).val(number);
+                subtotal(number,dom);
+
+                shoppingProduct = result.shoppingProduct;
+                sum(shoppingProduct);
+                showShoppingProduct(shoppingProduct);
+            }else {
+                $(dom).val(1);
+                subtotal(1,dom);
+                alert("添加失败，购买数量不可超过商品库存");
+            }
         }
     });
 }

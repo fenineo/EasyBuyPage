@@ -33,33 +33,34 @@ function getAll(pageIndex) {
                 "</tr>"
             }
             jQuery("#first_tr").after(newsTable);
-            //分页框拼接
-            var pageBox = "<div class=\"page\" onclick=\"page(1)\">首页</div>";
-            if(result.pageIndex>1){
-                pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex-1)+")\">上一页</div>";
-            }
-            if(pageCount>5 && pageIndex>2){
-                for(var i = pageIndex-2;i<pageIndex+3;i++){
-                    if(i==pageIndex){
-                        pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }else{
-                        pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }
-                }
-            }else{
-                for(var i = 1;i<=pageCount;i++){
-                    if(i==pageIndex){
-                        pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }else{
-                        pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-                    }
-                }
-            }
-            if(result.pageIndex<pageCount){
-                pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex+1)+")\">下一页</div>";
-            }
-            pageBox += "<div class=\"page\" onclick=\"page("+pageCount+")\">尾页</div>";
-            jQuery("#pageBox").append(pageBox);
+            // //分页框拼接
+            // var pageBox = "<div class=\"page\" onclick=\"page(1)\">首页</div>";
+            // if(result.pageIndex>1){
+            //     pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex-1)+")\">上一页</div>";
+            // }
+            // if(pageCount>5 && pageIndex>2){
+            //     for(var i = pageIndex-2;i<pageIndex+3;i++){
+            //         if(i==pageIndex){
+            //             pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
+            //         }else{
+            //             pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
+            //         }
+            //     }
+            // }else{
+            //     for(var i = 1;i<=pageCount;i++){
+            //         if(i==pageIndex){
+            //             pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
+            //         }else{
+            //             pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
+            //         }
+            //     }
+            // }
+            // if(result.pageIndex<pageCount){
+            //     pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex+1)+")\">下一页</div>";
+            // }
+            // pageBox += "<div class=\"page\" onclick=\"page("+pageCount+")\">尾页</div>";
+            // jQuery("#pageBox").append(pageBox);
+            pageShow(result);
         }
     })
  }

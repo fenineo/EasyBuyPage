@@ -13,7 +13,7 @@ $(function (){
     }
 
     $.ajax({
-        url:"/easybuy/user/loginInfo",
+        url:"/easybuy/user/regist/loginInfo",
         type:"post",
         data:{"token":token},
         dataType:"JSON",

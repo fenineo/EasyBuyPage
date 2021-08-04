@@ -108,13 +108,13 @@ function addShopping(productId,number){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
-            shoppingProduct = result.shoppingProduct;
-            showShopping(shoppingProduct);
             if (result.flag){
+                shoppingProduct = result.shoppingProduct;
+                showShopping(shoppingProduct);
                 $("#MyDiv1").show();
                 $("#fade1").show();
             }else {
-                alert("添加失败");
+                alert("添加失败，购买数量不可超过商品库存");
             }
         }
     });

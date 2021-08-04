@@ -14,19 +14,22 @@ $(function(){
     shoppingShow();
     //点击确认订单，请求添加订单
     $("#toPay").click(function (){
-        var address = "鸟不拉屎村"    //用户地址
-        var sum = 100;           //总消费
-        addOrder(address,sum);
+        var sum = $("#amountPayable").text();   //总消费
+        //获取用户地址
+        var address = $("input:radio:checked").parent().parent().next().next().children("td:eq(1)").text();
+        if (address == "" || address == null){
+            alert("请选择收货地址");
+        }else {
+            addOrder(address,sum);
+        }
     })
  });
 
 //根据token查询购物车并展示
 function shoppingShow(){
     $.ajax({
-        url:"/easybuy/product/findShopping",
+        url:"/easybuy/order/findShopping",
         type:"post",
-        data:{"token":token},
-        dataType:"JSON",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
         },
@@ -201,7 +204,6 @@ function selectAll(result){
         XMLHttpRequest.setRequestHeader("token",token);
     },
       success: function(result){
-        alert(result);
         if(result.length<3){
           clean();
           $("#aaa").after(
