@@ -78,10 +78,11 @@ $(function (){
                                 "                <div class=\"price\">" +
                                 "                <font>￥<span>"+productList[k].price+"</span></font> &nbsp; 库存："+productList[k].stock +
                                 "                </div>" +
-                                "                <div class=\"img\"><a href=\"Product.html?id="+productList[k].id+"\"><img src=\"images/fre_1.jpg\" width=\"185\" height=\"155\" /></a></div>" +
+                                "                <div class=\"img\"><a href=\"Product.html?id="+productList[k].id+"\"><img src='/img/"+productList[k].fileName+"' width=\"185\" height=\"155\" /></a></div>" +
                                 "            </li>";
                             count++;
                         }
+                        
                     }
                 }
                 productDom +=
