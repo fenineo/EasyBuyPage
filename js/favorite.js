@@ -59,7 +59,7 @@ function showFavorite(favoriteList){
     for (var i = 0;i < favoriteList.length;i++){
         favoDom +=
             "	<li>\n" +
-            "		<div class=\"img\"><a href=\"Product.html?id="+favoriteList[i].id+"\"><img src=\"images/his_1.jpg\" width=\"185\" height=\"162\" /></a></div>\n" +
+            "		<div class=\"img\"><a href=\"Product.html?id="+favoriteList[i].id+"\"><img src='/img/"+favoriteList[i].fileName+"' width=\"185\" height=\"162\" /></a></div>\n" +
             "		<div class=\"name\"><a href=\"Product.html?id="+favoriteList[i].id+"\">"+favoriteList[i].name+"</a></div>\n" +
             "		<div class=\"price\">\n" +
             "			<font>￥<span>"+favoriteList[i].price+"</span></font> &nbsp; 库存："+favoriteList[i].stock+"\n" +

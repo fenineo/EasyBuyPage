@@ -25,7 +25,7 @@ function showFavorite(favoriteList){
         favoDom +=
             "	<tr>\n" +
             "		<td style=\"font-family:'宋体';\">\n" +
-            "			<div class=\"sm_img\"><img src=\"images/simg.jpg\" width=\"48\" height=\"48\" /></div>"+favoriteList[i].name+"\n" +
+            "			<div class=\"sm_img\"><img src='/img/"+favoriteList[i].fileName+"' width=\"48\" height=\"48\" /></div>"+favoriteList[i].name+"\n" +
             "		</td>\n" +
             "		<td align=\"center\">￥"+favoriteList[i].price+"</td>\n" +
             "		<td align=\"center\"><a href=\"#\" style=\"color:#ff4e00;\" productId=\""+favoriteList[i].id+"\" class=\"addShopping\">加入购物车</a>\n" +
