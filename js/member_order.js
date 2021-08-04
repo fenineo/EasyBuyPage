@@ -83,18 +83,18 @@ function page(pageIndex){
 }
 
 //请求支付宝支付,传入订单号参数
-// function toAlipay(orderId){
-//     $.ajax({
-//         url:"/easybuy/order/alipay",
-//         type:"post",
-//         data:{"orderId":orderId},
-//         beforeSend:function (XMLHttpRequest){
-//             XMLHttpRequest.setRequestHeader("token",token);
-//         },
-//         success:function(result){
-//             //跳转支付页面
-//             $('body').empty();
-//             $('body').html(result);
-//         }
-//     })
-// }
+function toAlipay(orderId){
+    $.ajax({
+        url:"/easybuy/order/alipay",
+        type:"post",
+        data:{"orderId":orderId},
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            //跳转支付页面
+            $('body').empty();
+            $('body').html(result);
+        }
+    })
+}
