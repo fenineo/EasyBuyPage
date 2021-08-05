@@ -53,7 +53,7 @@ function findOrderPage(pageIndex){
                         orderDom +=
                             "	<tr>" +
                             "		<td>"+orderDetailVoList[j].name+"</td>" +
-                            "		<td><img width=\"85px\" height=\"50px\" src=\"images/per_8.jpg\"/></td>" +
+                            "		<td><img width=\"85px\" height=\"50px\" src='/img/"+orderDetailVoList[j].fileName+"'/></td>" +
                             "		<td>"+orderDetailVoList[j].quantity+"</td>" +
                             "		<td>￥"+orderDetailVoList[j].cost+"</td>" +
                             "	</tr>";

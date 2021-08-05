@@ -44,7 +44,7 @@ function shoppingShow(){
                 productDom +=
                     "              <tr>" +
                     "                <td>" +
-                    "                    <div class=\"c_s_img\"><img src=\"images/c_1.jpg\" width=\"73\" height=\"73\" /></div>" +
+                    "                    <div class=\"c_s_img\"><img src='/img/"+shoppingProduct[i].fileName+"' width=\"73\" height=\"73\" /></div>" +
                     "                    "+shoppingProduct[i].name+"" +
                     "                </td>" +
                     "                <td align=\"center\">"+shoppingProduct[i].price+"</td>" +

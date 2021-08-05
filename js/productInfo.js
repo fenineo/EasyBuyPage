@@ -16,9 +16,11 @@ $(function (){
         dataType:"JSON",
         success:function(result){
             path = result.path;
-            $("#path").text(path);
+            $("#path").text(path); 
 
             product = result.product;
+            var filed = "/img/"+product.fileName;
+            $("#tuPian").attr("src",filed);
             $("#product_name").text(product.name);
             $("#product_description").text(product.description);
             $("#stock").text(product.stock);

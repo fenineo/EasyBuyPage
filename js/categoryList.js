@@ -39,7 +39,7 @@ function findPageByName(pageIndex,name,orderBy){
                     if(productList[i].isDelete == 0){
                         productDom +=
                             "<li>" +
-                            "	<div class=\"img\"><a href=\"Product.html?id="+productList[i].id+"\"><img src=\"images/per_3.jpg\" width=\"210\" height=\"185\" /></a></div>" +
+                            "	<div class=\"img\"><a href=\"Product.html?id="+productList[i].id+"\"><img src='/img/"+productList[i].fileName+"' width=\"210\" height=\"185\" /></a></div>" +
                             "	<div class=\"price\">" +
                             "		<font>￥<span>"+productList[i].price+"</span></font> &nbsp; 库存："+productList[i].stock+"" +
                             "	</div>" +

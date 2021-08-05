@@ -78,7 +78,7 @@ function showShopping(shoppingProduct) {
     for (var i = 0;i < shoppingProduct.length;i++){
         shoppingDom +=
             "			<li>" +
-            "				<div class=\"img\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\"><img src=\"images/car1.jpg\" width=\"58\" height=\"58\" /></a></div>" +
+            "				<div class=\"img\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\"><img src='/img/"+shoppingProduct[i].fileName+"' width=\"58\" height=\"58\" /></a></div>" +
             "				<div class=\"name\"><a href=\"Product.html?id="+shoppingProduct[i].id+"\">"+shoppingProduct[i].name+"</a></div>" +
             "				<div class=\"price\"><font color=\"#ff4e00\">￥"+shoppingProduct[i].price+"</font> X"+shoppingProduct[i].stock+"</div>" +
             "			</li>";

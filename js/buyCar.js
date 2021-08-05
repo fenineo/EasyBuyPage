@@ -88,7 +88,7 @@ function showShoppingProduct(shoppingProduct){
         shoppingDom +=
             "		<tr class=\"product_tr\">" +
             "			<td>" +
-            "				<div class=\"c_s_img\"><img src=\"images/c_1.jpg\" width=\"73\" height=\"73\" /></div>" +
+            "				<div class=\"c_s_img\"><img src='/img/"+shoppingProduct[i].fileName+"' width=\"73\" height=\"73\" /></div>" +
             "					"+productName+"" +
             "			</td>" +
             "			<td align=\"center\" id=\"abc\">￥"+productPrice+"</td>" +
