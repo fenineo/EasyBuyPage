@@ -10,8 +10,10 @@ function get(){
     var token = localStorage.getItem("token");
     $("#add").show();
     $.ajax({
-     url:"/easybuy/user/regist/loginInfo",
+     url:"/easybuy/user/loginInfo",
      type:"post",
+     dataType: "json",
+     data:{"token":token},
      beforeSend:function (XMLHttpRequest){
       XMLHttpRequest.setRequestHeader("token",token);
   },
@@ -39,7 +41,8 @@ function findByUserId(userId){
                 var ress=result[i].address;
                 var arr=ress.split(",");
                 var address=arr[0]+arr[1]+arr[2];
-                $("#select").after(
+                if(result[i].isDefault==1){
+                  $("#select").after(
                     "<div class="+"address"+">"+
                             "<div class="+"a_close"+"><a href="+"#"+" name="+result[i].id+" class='delete'><img src="+"images/a_close.png"+" /></a></div>"+
                             "<table border="+"0"+" class="+"add_t"+" align="+"center"+" style="+"width:98%; margin:10px auto;"+" cellspacing="+"0"+" cellpadding="+"0"+">"+
@@ -65,11 +68,45 @@ function findByUserId(userId){
                               "</tr>"+
                             "</table>"+
                             "<p align="+"right"+">"+
-                                "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='isDefault'>设为默认</a>&nbsp; &nbsp; &nbsp; &nbsp; "+
                                 "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='update'>编辑</a>&nbsp; &nbsp; &nbsp; &nbsp; "+
                             "</p>"+
                         "</div>"
-                    )
+                     )
+                }else{
+                  $("#select").after(
+                    "<div class="+"address"+">"+
+                            "<div class="+"a_close"+"><a href="+"#"+" name="+result[i].id+" class='delete'><img src="+"images/a_close.png"+" /></a></div>"+
+                            "<table border="+"0"+" class="+"add_t"+" align="+"center"+" style="+"width:98%; margin:10px auto;"+" cellspacing="+"0"+" cellpadding="+"0"+">"+
+                              "<tr>"+
+                                "<td align="+"right"+" width="+"80"+">收货人姓名：</td>"+
+                                "<td>"+result[i].consignee+"</td>"+
+                              "</tr>"+
+                              "<tr>"+
+                                "<td align="+"right"+">配送区域：</td>"+
+                                "<td>"+address+"</td>"+
+                              "</tr>"+
+                              "<tr>"+
+                                "<td align="+"right"+">详细地址：</td>"+
+                                "<td>"+result[i].xaddress+"</td>"+
+                              "</tr>"+
+                              "<tr>"+
+                                "<td align="+"right"+">手机：</td>"+
+                                "<td>"+result[i].phone+"</td>"+
+                              "</tr>"+
+                              "<tr>"+
+                                "<td align="+"right"+">电子邮箱：</td>"+
+                                "<td>"+result[i].email+"</td>"+
+                              "</tr>"+
+                            "</table>"+
+                            "<p align="+"right"+">"+
+                                "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='isDefault' id="+result[i].id+">设为默认</a>&nbsp; &nbsp; &nbsp; &nbsp; "+
+                                "<a href="+"#"+" style="+"color:#ff4e00;"+" name="+result[i].id+" class='update'>编辑</a>&nbsp; &nbsp; &nbsp; &nbsp; "+
+                            "</p>"+
+                        "</div>"
+                     )
+                }
+                
+                    
                }
            })
         }
@@ -343,6 +380,7 @@ function remove(id){
           data:{"id":id},
           success: function(result){
             alert("设置成功");
+            window.location.href = "/Member_Address.html";
           }})
 
       }})

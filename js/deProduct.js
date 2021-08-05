@@ -10,7 +10,7 @@ jQuery(function(){
   function getAll(pageIndex) {
     var isDelete=1;
    jQuery.ajax({
-       url:"/easybuy/products/getPageProduct",
+       url:"/easybuy/product/getPageProduct",
        dataType: "json",
        data:{"pageIndex":pageIndex,"isDelete":isDelete},
        beforeSend:function (XMLHttpRequest){
@@ -31,33 +31,9 @@ jQuery(function(){
                "</tr>";
            }
            jQuery("#first_tr").after(Product);
-           //分页框拼接
-           var pageBox = "<div class=\"page\" onclick=\"page(1)\">首页</div>";
-           if(result.pageIndex>1){
-               pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex-1)+")\">上一页</div>";
-           }
-           if(pageCount>5 && pageIndex>2){
-               for(var i = pageIndex-2;i<pageIndex+3;i++){
-                   if(i==pageIndex){
-                       pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-                   }else{
-                       pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-                   }
-               }
-           }else{
-               for(var i = 1;i<=pageCount;i++){
-                   if(i==pageIndex){
-                       pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-                   }else{
-                       pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-                   }
-               }
-           }
-           if(result.pageIndex<pageCount){
-               pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex+1)+")\">下一页</div>";
-           }
-           pageBox += "<div class=\"page\" onclick=\"page("+pageCount+")\">尾页</div>";
-           jQuery("#pageBox").append(pageBox);
+           //分页
+           pageShow(result);
+
        }})}
        //分页
 function page(pageIndex){
@@ -72,7 +48,7 @@ $(document).on("click",".update",function name(){
     var flag=confirm("确定要上架吗");
     if(flag){
         $.ajax({
-            url:"/easybuy/products/removeProduct",
+            url:"/easybuy/product/removeProduct",
             dataType: "text",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){

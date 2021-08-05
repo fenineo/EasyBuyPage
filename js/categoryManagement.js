@@ -1,5 +1,5 @@
 jQuery(function(){
-	jQuery.get("/easybuy/productCategory/tourist/twocategoryLevel2Id","a=1",succ3,"json");
+	jQuery.post("/easybuy/productCategory/tourist/twocategoryLevel2Id","a=1",succ3,"json");
 function succ3(list1) {
 	var i;
 	var u;
