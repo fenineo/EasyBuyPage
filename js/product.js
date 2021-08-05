@@ -16,7 +16,7 @@ jQuery(function(){
  function getAll(pageIndex) {
      var isDelete=0;
     jQuery.ajax({
-        url:"/easybuy/product/getPageProduct",
+        url:"/easybuy/product/admin/getPageProduct",
         dataType: "json",
         data:{"pageIndex":pageIndex,"isDelete":isDelete},
         beforeSend:function (XMLHttpRequest){
@@ -87,7 +87,7 @@ function clean(){
  */
 function getone(){
     $.ajax({
-        url: "/easybuy/product/getCategoryLevel",
+        url: "/easybuy/product/admin/getCategoryLevel",
         data: "json", //发送数据
         dataType : "json",
         beforeSend:function (XMLHttpRequest){
@@ -156,7 +156,7 @@ jQuery(document).on("click","#addProduct",function name(){
     var categoryLevel3Id=$("#san").val();
     if(name!="" && price!="" && stock!="" && fileName!="" && categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
         $.ajax({
-        url:"/easybuy/product/addProduct",
+        url:"/easybuy/product/admin/addProduct",
         type: "POST",
         cache: false,
         data: new FormData(jQuery('#jia')[0]),   //关键，将表单元素封装成FormData对象
@@ -168,7 +168,6 @@ jQuery(document).on("click","#addProduct",function name(){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success: function(result){
-            alert(result);
             if (result == true) {
                 alert("操作成功")
                 window.location.href = "/Member_Safe.html";
@@ -300,7 +299,7 @@ jQuery(document).on("click","#addProduct",function name(){
      if(name!="" && price!="" && stock!="" &&  categoryLevel1Id!="" && categoryLevel2Id!="" && categoryLevel3Id!=""){
          if(fileName!="" || picture!=""){
             $.ajax({
-                url:"/easybuy/product/modifyProduct",
+                url:"/easybuy/product/admin/modifyProduct",
                 type: "POST",
                 cache: false,
                 data: new FormData(jQuery('#jia')[0]),   //关键，将表单元素封装成FormData对象
@@ -333,7 +332,7 @@ jQuery(document).on("click","#addProduct",function name(){
     var flag=confirm("确定要下架吗");
     if(flag){
         $.ajax({
-            url:"/easybuy/product/removeProduct",
+            url:"/easybuy/product/admin/removeProduct",
             dataType: "text",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){

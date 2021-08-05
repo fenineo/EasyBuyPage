@@ -1,29 +1,37 @@
 var index = 0;
 var productList = null;
-var productDom =
-    "";
+var productName = "";
 
 $(function (){
     var name = window.location.search.substr(6)
     //解码字符串，获取中文参数
     name = decodeURI(name);
-    findPageByName(1,name)
+    findPageByName(1,name,"");
+
+    $("#ByAsc").click(function (){
+        findPageByName(index,productName,"0");
+    });
+    $("#ByDesc").click(function (){
+        findPageByName(index,productName,"1");
+    });
 });
 
-function findPageByName(pageIndex,name){
+function findPageByName(pageIndex,name,orderBy){
     $.ajax({
         url:"/easybuy/product/tourist/productInfoByName",
         type:"post",
-        data:{"pageIndex":pageIndex,"pageSize":20,"name":name},
+        data:{"pageIndex":pageIndex,"pageSize":20,"name":name,"orderBy":orderBy},
         dataType:"JSON",
         success:function(result){
             index = pageIndex;
+            productName = name;
             var pageCount = result.productPage.pageCount;
 
             totalCount = result.productPage.totalCount;
             $("#totalCount").text(totalCount);//设置总记录数
 
             productList = result.productPage.list;//保存商品集合
+            var productDom = "";
             if (productList.length > 0){
                 //遍历商品集合，拼接商品展示页面
                 for (var i = 0;i < productList.length;i++){
@@ -43,6 +51,7 @@ function findPageByName(pageIndex,name){
                             "</li>";
                     }
                 }
+                $("#cate_list").children().remove();
                 $("#cate_list").append(productDom);
 
                 //拼接分页
@@ -71,6 +80,7 @@ function findPageByName(pageIndex,name){
                     pageBox += "<a href=\"javascript:void(0);\" class=\"p_pre\" onclick=\"page("+(index+1)+")\">下一页</a>";
                 }
                 pageBox += "<a href=\"javascript:void(0);\" class=\"p_pre\" onclick=\"page("+pageCount+")\">尾页</a>";
+                $(".pages").children().remove();
                 $(".pages").append(pageBox);
             }else {
                 $("#nullProduct").show();
@@ -87,11 +97,21 @@ function findPageByName(pageIndex,name){
         }
     })
 }
+
+function sub(){
+    var name = $("#search").val();
+    var url = "CategoryList.html?name="+name;
+    //编码字符串，接收时解码可以获取中文参数
+    var searchUrl = encodeURI(url)
+    window.location.href = searchUrl;
+    return false;
+}
+
 //分页查询
 function page(pageIndex){
     if(pageIndex != pgIndex){
         $("#cate_list").empty();
         $(".pages").empty();
-        productByCategory(pageIndex,categoryId)
+        findPageByName(pageIndex,productName,"");
     }
 }

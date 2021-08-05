@@ -112,7 +112,7 @@ function remove(id) {
     var flag=confirm("确定要删除吗");
     if(flag){
         jQuery.ajax({
-            url:"/easybuy/News/removeNews",
+            url:"/easybuy/News/admin/removeNews",
             dataType: "json",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){
@@ -131,7 +131,7 @@ function remove(id) {
  */
 function addNews(title,content) {
     jQuery.ajax({
-        url:"/easybuy/News/addNews",
+        url:"/easybuy/News/admin/addNews",
         dataType: "json",
         data:{"title":title,"content":content},
         beforeSend:function (XMLHttpRequest){
@@ -149,7 +149,7 @@ function addNews(title,content) {
  */
 function modifyNews(id,title,content){
     jQuery.ajax({
-        url:"/easybuy/News/modifyNews",
+        url:"/easybuy/News/admin/modifyNews",
         dataType: "json",
         data:{"id":id,"title":title,"content":content},
         beforeSend:function (XMLHttpRequest){
@@ -217,7 +217,7 @@ jQuery(document).on("click",".delete",function name() {
     clean();
     var id=jQuery(this).attr("name");
     jQuery.ajax({
-        url:"/easybuy/News/findById",
+        url:"/easybuy/News/tourist/findById",
         dataType: "json",
         data:{"id":id},
         beforeSend:function (XMLHttpRequest){
@@ -256,7 +256,7 @@ jQuery(document).on("click",".btn_tj",function name(){
     var content=jQuery(".tx_txt").val();
     if(title!="" && content!=""){
         jQuery.ajax({
-            url:"/easybuy/News/getAllNews",
+            url:"/easybuy/News/tourist/getAllNews",
             dataType: "json",
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);

@@ -35,3 +35,12 @@ $(function (){
         }
     })
 })
+
+function sub(){
+    var name = $("#search").val();
+    var url = "CategoryList.html?name="+name;
+    //编码字符串，接收时解码可以获取中文参数
+    var searchUrl = encodeURI(url)
+    window.location.href = searchUrl;
+    return false;
+}

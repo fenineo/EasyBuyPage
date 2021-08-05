@@ -10,7 +10,7 @@ jQuery(function(){
   function getAll(pageIndex) {
     var isDelete=1;
    jQuery.ajax({
-       url:"/easybuy/product/getPageProduct",
+       url:"/easybuy/product/admin/getPageProduct",
        dataType: "json",
        data:{"pageIndex":pageIndex,"isDelete":isDelete},
        beforeSend:function (XMLHttpRequest){
@@ -48,7 +48,7 @@ $(document).on("click",".update",function name(){
     var flag=confirm("确定要上架吗");
     if(flag){
         $.ajax({
-            url:"/easybuy/product/removeProduct",
+            url:"/easybuy/product/admin/removeProduct",
             dataType: "text",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){
