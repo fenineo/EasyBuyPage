@@ -1,6 +1,10 @@
-
+var token = localStorage.getItem("token");
 
 $(function (){
+    if (token == null){
+        window.location.href = "BuyCar.html"
+    }
+
     //获取订单id
     var orderId = window.location.search.substr(4);
 

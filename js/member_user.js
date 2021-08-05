@@ -1,7 +1,7 @@
 var token = localStorage.getItem("token");
-var oldPwd = "";
-var sex = 0;
 var userId = 0;
+var loginName = "";
+var sex = 0;
 var type = 0;
 
 //密码正则
@@ -23,12 +23,13 @@ $(function (){
             XMLHttpRequest.setRequestHeader("token",token);
         },
         success:function(result){
+            loginName = result.loginName;
+            $("#modify_loginName").val(loginName);
             $("#modify_userName").val(result.userName);
             $("#modify_identityCode").val(result.identityCode);
             $("#modify_email").val(result.email);
             $("#modify_mobile").val(result.mobile);
             userId = result.id;
-            oldPwd = result.password;
             sex = result.sex;
             type = result.type;
         }
@@ -73,10 +74,11 @@ function modify_sub(){
         if (newPwd == ""){
             newPwd = null;
         }
+        alert(newPwd);
         $.ajax({
             url:"/easybuy/user/regist/userModify",
             type:"post",
-            data:{"id":userId,"userName":userName,"newPwd":newPwd,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
+            data:{"id":userId,"userName":userName,"password":newPwd,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
             },
@@ -96,15 +98,30 @@ function modify_sub(){
 
 //旧密码验证
 function oldpwd_v(pwd){
+    var flag = false;
     if (pwd == "" || pwd == null){
         $("#old_pwd").nextAll("span").hide();
         return true;
     }
-    if(pwd == oldPwd){
-        return true;
+    $.ajax({
+        url:"/easybuy/user/tourist/login",
+        type:"post",
+        data:{"loginName":loginName,"password":pwd},
+        async:false,
+        beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
+        success:function(result){
+            flag = result.flag;
+        }
+    })
+
+    if(flag){
+        $("#old_pwd").nextAll("span").hide();
+        return flag;
     }else {
         $("#old_pwd").nextAll("span").text("密码错误").show();
-        return false;
+        return flag;
     }
 }
 //密码格式验证
