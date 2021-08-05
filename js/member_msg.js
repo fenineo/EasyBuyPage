@@ -8,7 +8,7 @@ $(function (){
 //分页查询订单信息
 function findOrderPage(pageIndex){
     $.ajax({
-        url:"/easybuy/order/findOrderPage",
+        url:"/easybuy/order/admin/findOrderPage",
         type:"post",
         data:{"pageIndex":pageIndex},
         beforeSend:function (XMLHttpRequest){

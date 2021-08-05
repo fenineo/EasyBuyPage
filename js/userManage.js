@@ -63,7 +63,7 @@ $(function (){
 //查询用户集合
 function userList(pageIndex){
     $.ajax({
-        url:"/easybuy/user/userList",
+        url:"/easybuy/user/admin/userList",
         type:"post",
         data:{"pageIndex":pageIndex},
         dataType:"JSON",
@@ -166,7 +166,7 @@ function add_sub(){
     var type = $("#add_type").val();
     if(loginName_v(loginName) && pwd_v(password) && userName_v(userName) && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
         $.ajax({
-            url:"/easybuy/user/userAdd",
+            url:"/easybuy/user/admin/userAdd",
             type:"post",
             data:{"loginName":loginName,"password":password,"userName":userName,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){
@@ -195,7 +195,7 @@ function modify_sub(){
     var type = $("#modify_type").val();
     if(userName_v(userName) && identityCode_v(identityCode) && email_v(email) && mobile_v(mobile)){
         $.ajax({
-            url:"/easybuy/user/userModify",
+            url:"/easybuy/user/regist/userModify",
             type:"post",
             data:{"id":list[index].id,"userName":userName,"sex":list[index].sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){
@@ -219,7 +219,7 @@ function modify_sub(){
 function removeUser(id){
     var loginName = $("#modify_loginName").val();
     $.ajax({
-        url:"/easybuy/user/userRemove",
+        url:"/easybuy/user/admin/userRemove",
         type:"post",
         data:{"id":list[index].id},
         beforeSend:function (XMLHttpRequest){

@@ -10,9 +10,8 @@ function get(){
     var token = localStorage.getItem("token");
     $("#add").show();
     $.ajax({
-     url:"/easybuy/user/loginInfo",
-     dataType: "json",
-     data:{"token":token},
+     url:"/easybuy/user/regist/loginInfo",
+     type:"post",
      beforeSend:function (XMLHttpRequest){
       XMLHttpRequest.setRequestHeader("token",token);
   },
