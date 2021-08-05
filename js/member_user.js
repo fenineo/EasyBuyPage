@@ -17,7 +17,7 @@ var phoneReg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17([0-3]|[5-9]))|(18[0,
 
 $(function (){
     $.ajax({
-        url:"/easybuy/user/userInfoByToken",
+        url:"/easybuy/user/regist/userInfoByToken",
         type:"post",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -74,7 +74,7 @@ function modify_sub(){
             newPwd = null;
         }
         $.ajax({
-            url:"/easybuy/user/userModify",
+            url:"/easybuy/user/regist/userModify",
             type:"post",
             data:{"id":userId,"userName":userName,"newPwd":newPwd,"sex":sex,"identityCode":identityCode,"email":email,"mobile":mobile,"type":type},
             beforeSend:function (XMLHttpRequest){

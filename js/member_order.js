@@ -8,7 +8,7 @@ $(function (){
 //根据用户分页查询订单信息
 function findOrderPageByUser(pageIndex){
     $.ajax({
-        url:"/easybuy/order/findOrderPageByUser",
+        url:"/easybuy/order/regist/findOrderPageByUser",
         type:"post",
         data:{"pageIndex":pageIndex},
         beforeSend:function (XMLHttpRequest){
@@ -85,7 +85,7 @@ function page(pageIndex){
 //请求支付宝支付,传入订单号参数
 function toAlipay(orderId){
     $.ajax({
-        url:"/easybuy/order/alipay",
+        url:"/easybuy/order/regist/alipay",
         type:"post",
         data:{"orderId":orderId},
         beforeSend:function (XMLHttpRequest){

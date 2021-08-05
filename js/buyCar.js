@@ -7,6 +7,7 @@ var pageIndex = 1;//当前页
 var pageSize = 5;//页容量
 var pageCount = 0;//总页数
 var totalCount = 0;//总记录数
+var oldNumber = 0;//修改前商品数量
 
 $(function (){
     //查询购物车
@@ -64,7 +65,7 @@ function sum(shoppingProduct){
 //查询购物车
 function findShoppingProduct(){
     $.ajax({
-        url:"/easybuy/order/findShopping",
+        url:"/easybuy/order/regist/findShopping",
         type:"post",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -124,11 +125,14 @@ function showShoppingProduct(shoppingProduct){
         var number = $(this).val();
         numberVerify(number,$(this));
     })
+    $(".number").on("click",function (){
+        oldNumber = $(this).val();
+    })
 }
 //修改购物车中商品的数量
 function modifyShopping(productId,number,dom){
     $.ajax({
-        url:"/easybuy/order/modifyShopping",
+        url:"/easybuy/order/regist/modifyShopping",
         type:"post",
         data:{"productId":productId,"number":number},
         beforeSend:function (XMLHttpRequest){
@@ -144,8 +148,7 @@ function modifyShopping(productId,number,dom){
                 sum(shoppingProduct);
                 showShoppingProduct(shoppingProduct);
             }else {
-                $(dom).val(1);
-                subtotal(1,dom);
+                $(dom).val(oldNumber);
                 alert("添加失败，购买数量不可超过商品库存");
             }
         }
@@ -154,7 +157,7 @@ function modifyShopping(productId,number,dom){
 //删除购物车中的商品
 function removeShopping(productId){
     $.ajax({
-        url:"/easybuy/order/removeShopping",
+        url:"/easybuy/order/regist/removeShopping",
         type:"post",
         data:{"productId":productId},
         beforeSend:function (XMLHttpRequest){
@@ -179,7 +182,6 @@ function removeClick(id){
     $("#fade").show();
     $("#MyDiv").show();
 }
-
 
 //强制保留2位小数，如：2，会在2后面补上00.即2.00
 function toDecimal2(x) {

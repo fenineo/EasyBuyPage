@@ -21,14 +21,30 @@
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuyCar.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Category.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Cash.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Member.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Member_List.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Money_Pay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sell.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellDetails.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/BuyCar_Two.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/BuyCar_Two.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/address.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/address.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/adminVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/adminVerify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/buyCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/buyCar_Three.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar_Three.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/loginTypeVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loginTypeVerify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/member_msg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member_msg.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/member_order.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member_order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/pageBean.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/pageBean.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/member_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member_user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/shopping.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/shopping.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +157,8 @@
       <workItem from="1627895715251" duration="7282000" />
       <workItem from="1627951409391" duration="11260000" />
       <workItem from="1627973585522" duration="12619000" />
-      <workItem from="1628042041684" duration="11746000" />
+      <workItem from="1628042041684" duration="15798000" />
+      <workItem from="1628128029690" duration="4093000" />
     </task>
     <servers />
   </component>
@@ -161,6 +178,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1628133154950">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1628133154950" />
     <state x="267" y="294" key="FileChooserDialogImpl" timestamp="1627954514195">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

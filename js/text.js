@@ -112,7 +112,7 @@ function remove(id) {
     var flag=confirm("确定要删除吗");
     if(flag){
         jQuery.ajax({
-            url:"/easybuy/News/tourist/removeNews",
+            url:"/easybuy/News/removeNews",
             dataType: "json",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){
@@ -131,7 +131,7 @@ function remove(id) {
  */
 function addNews(title,content) {
     jQuery.ajax({
-        url:"/easybuy/News/tourist/addNews",
+        url:"/easybuy/News/addNews",
         dataType: "json",
         data:{"title":title,"content":content},
         beforeSend:function (XMLHttpRequest){
@@ -149,7 +149,7 @@ function addNews(title,content) {
  */
 function modifyNews(id,title,content){
     jQuery.ajax({
-        url:"/easybuy/News/tourist/modifyNews",
+        url:"/easybuy/News/modifyNews",
         dataType: "json",
         data:{"id":id,"title":title,"content":content},
         beforeSend:function (XMLHttpRequest){
@@ -217,7 +217,7 @@ jQuery(document).on("click",".delete",function name() {
     clean();
     var id=jQuery(this).attr("name");
     jQuery.ajax({
-        url:"/easybuy/News/tourist/findById",
+        url:"/easybuy/News/findById",
         dataType: "json",
         data:{"id":id},
         beforeSend:function (XMLHttpRequest){
@@ -255,7 +255,25 @@ jQuery(document).on("click",".btn_tj",function name(){
     var title=jQuery(".tx_ipt").val();
     var content=jQuery(".tx_txt").val();
     if(title!="" && content!=""){
-        addNews(title,content);
+        jQuery.ajax({
+            url:"/easybuy/News/getAllNews",
+            dataType: "json",
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
+            success: function(result){
+                var flag=false;
+                for(var i=0;i<result.length;i++){
+                    if(result[i].title==title){
+                        flag=true;
+                    }
+                }
+                if(!flag){
+                    addNews(title,content);
+                }else{
+                    alert("标题重复");
+                }
+            }})
     }else{
         alert("标题或者内容未填写")
     }

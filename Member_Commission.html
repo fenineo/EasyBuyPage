@@ -17,7 +17,6 @@
     <script type="text/javascript" src="js/select.js"></script>
 
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="js/pageBean.js"></script>
     <script type="text/javascript" src="js/categoryManage.js"></script>
      <script type="text/javascript" src="js/adminVerify.js"></script>
 
@@ -217,7 +216,6 @@
             </table>
             
             <div id="pageBox" class="pageBox">
-
             </div>
 
               <div id="add_box" style="display: none;">
@@ -228,20 +226,16 @@
 <!--                <form onsubmit="return getone()">-->
                     <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0" id="zxc">
                         <tr>
-                            <td class="tx_l"><font color="#ff4e00">*</font>分类名称</td>
-                            <td><input type="text" id="addname" class="txipt addname" required="required" onchange="changName()"/>
+                            <td class="tx_l">分类名称</td>
+                            <td><input type="text" id="addname" class="txipt addname" />
                                 <br/><span class="prompt"></span></td>
                                 <div
                                     id="tishi1"
-                                    style="color: red;display: inline-block;position: absolute;top: 270px;right: 35em;">分类名称不能为空
-                                </div>
-                                <div
-                                    id="tishi2"
-                                    style="color: red;display: inline-block;position: absolute;top: 315px;right: 42em;">分类级别不能为空
-                                </div>
+                                    style="color: red;display: inline-block;position: absolute;right: 36em;">名称不能为空
+                            </div>
                         </tr>
                         <tr id="addflpj">
-                            <td class="tx_l"><font color="#ff4e00">*</font>分类级别</td>
+                            <td class="tx_l">分类级别</td>
                             <td><select id="addtype" class="txipt addtype" maxlength="5" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" required="required" onchange="chang()">
                                 <option value="0">请选择</option>
                                 <option value="1">一级分类</option>

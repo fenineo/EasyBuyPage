@@ -28,7 +28,7 @@ $(function(){
 //根据token查询购物车并展示
 function shoppingShow(){
     $.ajax({
-        url:"/easybuy/order/findShopping",
+        url:"/easybuy/order/regist/findShopping",
         type:"post",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -67,7 +67,7 @@ function shoppingShow(){
 //请求添加订单
 function addOrder(address,sum){
     $.ajax({
-        url:"/easybuy/order/addOrder",
+        url:"/easybuy/order/regist/addOrder",
         type:"post",
         data:{"address":address,"sum":sum},
         beforeSend:function (XMLHttpRequest){
@@ -89,9 +89,8 @@ function addOrder(address,sum){
 function get(){
     $("#add").show();
     $.ajax({
-     url:"/easybuy/user/loginInfo",
-     dataType: "json",
-     data:{"token":token},
+     url:"/easybuy/user/regist/loginInfo",
+     type:"post",
      beforeSend:function (XMLHttpRequest){
       XMLHttpRequest.setRequestHeader("token",token);
   },
