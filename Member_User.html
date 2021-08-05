@@ -199,17 +199,21 @@
                 <form onsubmit="return modify_sub()">
                     <table border="0" class="mem_tab" style="width:930px; margin-bottom:30px;" cellspacing="0" cellpadding="0">
                         <tr>
+                            <td width="150" class="tx_l"><font color="#ff4e00">*</font>用户名</td>
+                            <td width="680"><input type="text" id="modify_loginName" class="tx_ipt" readonly="readonly" /></td>
+                        </tr>
+                        <tr>
                             <td class="tx_l"><font color="#ff4e00">*</font>真实姓名</td>
                             <td><input type="text" id="modify_userName" class="tx_ipt userName" required="required" /></td>
                         </tr>
                         <tr>
                             <td class="tx_l"><font color="#ff4e00" id="old_font"></font>旧密码</td>
-                            <td><input type="text" id="old_pwd" class="tx_ipt pwd" />
+                            <td><input type="password" id="old_pwd" class="tx_ipt pwd" />
                                 <br/><span class="prompt"></span></td>
                         </tr>
                         <tr>
                             <td class="tx_l">新密码</td>
-                            <td><input type="text" id="new_pwd" class="tx_ipt pwd" placeholder="6-10位数字+英文混合" />
+                            <td><input type="password" id="new_pwd" class="tx_ipt pwd" placeholder="6-10位数字+英文混合" />
                                 <br/><span class="prompt"></span></td>
                         </tr>
                         <tr>

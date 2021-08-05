@@ -21,30 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="ee92cd60-0039-45af-b067-e5976e25f44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brand.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Cash.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Member.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Member_List.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Money_Pay.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Member_Results.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sell.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellDetails.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/BuyCar_Two.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/BuyCar_Two.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/address.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/address.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/adminVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/adminVerify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/buyCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BrandList.html" beforeDir="false" afterPath="$PROJECT_DIR$/BrandList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuyCar_Three.html" beforeDir="false" afterPath="$PROJECT_DIR$/BuyCar_Three.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryList.html" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Member_User.html" beforeDir="false" afterPath="$PROJECT_DIR$/Member_User.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Product.html" beforeDir="false" afterPath="$PROJECT_DIR$/Product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/brandList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/brandList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/buyCar_Three.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/buyCar_Three.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/head.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/loginTypeVerify.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loginTypeVerify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/member_msg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member_msg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/member_order.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member_order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/categoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/categoryList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/member_user.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/member_user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/shopping.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/shopping.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/userManage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/productInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/productInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +145,7 @@
       <workItem from="1627951409391" duration="11260000" />
       <workItem from="1627973585522" duration="12619000" />
       <workItem from="1628042041684" duration="15798000" />
-      <workItem from="1628128029690" duration="4093000" />
+      <workItem from="1628128029690" duration="11632000" />
     </task>
     <servers />
   </component>
