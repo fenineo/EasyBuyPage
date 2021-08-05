@@ -60,32 +60,7 @@ function categorylist(pageIndex){
             }
             $("#first_tr").after(categoryTable);
             //分页框拼接
-            // var pageBox = "<div class=\"page\" onclick=\"page(1)\">首页</div>";
-            // if(result.pageIndex>1){
-            //     pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex-1)+")\">上一页</div>";
-            // }
-            // if(pageCount>5 && pageIndex>2){
-            //     for(var i = pageIndex-2;i<pageIndex+3;i++){
-            //         if(i==pageIndex){
-            //             pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-            //         }else{
-            //             pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-            //         }
-            //     }
-            // }else{
-            //     for(var i = 1;i<=pageCount;i++){
-            //         if(i==pageIndex){
-            //             pageBox += "<div class=\"page_ck\" onclick=\"page("+i+")\">"+i+"</div>";
-            //         }else{
-            //             pageBox += "<div class=\"page\" onclick=\"page("+i+")\">"+i+"</div>";
-            //         }
-            //     }
-            // }
-            // if(result.pageIndex<pageCount){
-            //     pageBox += "<div class=\"page\" onclick=\"page("+(result.pageIndex+1)+")\">下一页</div>";
-            // }
-            // pageBox += "<div class=\"page\" onclick=\"page("+pageCount+")\">尾页</div>";
-            // $("#pageBox").append(pageBox);
+            
             pageShow(result.categorypage);
             //动态绑定修改事件
             $(".modify_td").on("click",function (){
@@ -130,33 +105,6 @@ function page(pageIndex){
         $("#pageBox").empty();
         categorylist(pageIndex);
     }
-}
-
-
-
-
-//添加分类
-function add_sub(){
-    var name = $("#addname").val();
-    var parentId = $("#addparentId").val();
-    var type = $("#addtype").val();
-    $.ajax({
-        url:"/easybuy/productCategory/addProductCategory",
-        type:"post",
-        data:{"name":name,"parentId":parentId,"type":type},
-        dataType:"JSON",
-        beforeSend:function (XMLHttpRequest){
-            XMLHttpRequest.setRequestHeader("token",token);
-        },
-        success:function(result){
-            if(result){
-                alert("添加成功");
-                window.location.href = "/Member_Commission.html";
-            }else {
-                alert("添加失败,请检查添加信息是否按要求填写。");
-            }
-        }
-    })
 }
 
 
@@ -238,7 +186,7 @@ function removecate(id){
 
 
 
-//点击添加分类事件
+//点击添加分类按钮事件
 $(document).on("click","#add_cate",function name(){
     $("#right_head").nextAll().hide();
     $("#add_box").show();
@@ -261,6 +209,7 @@ function chang(){
         $("#addflpj").after(Splice);
         $.ajax({
             url:"/easybuy/productCategory/getCategoryLevel",
+            type:"post",
             dataType:"JSON",
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
@@ -274,9 +223,11 @@ function chang(){
             }
         })
     }else if(addtypes==3){
+        
         $("#addflpj").after(Splice);
         $.ajax({
             url:"/easybuy/productCategory/getCategoryLevel",
+            type:"post",
             dataType:"JSON",
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);
@@ -297,7 +248,6 @@ function chang(){
 $(document).on("click","#tjtj",function name(){
     var name = $("#addname").val();
     var type = $("#addtype").val();
-    alert("type==="+type);
     if(name==""){
         alert("请输入正确的分类名称");
         jQuery("#tishi1").show();
@@ -309,6 +259,7 @@ $(document).on("click","#tjtj",function name(){
         }
         // window.location.href = "/Member_Commission.html";
     }else if(name!=""){
+        //yz
         jQuery("#tishi1").hide();
         if (type==0) {
             alert("请选择的正确分类级别");
@@ -327,8 +278,6 @@ $(document).on("click","#tjtj",function name(){
                     success:function(result){
                         if(result){
                             alert("添加成功");
-                            // clean();
-                            // categorylist();
                             window.location.href = "/Member_Commission.html";
                         }else {
                             alert("添加失败,请检查添加信息是否按要求填写。");
@@ -380,3 +329,23 @@ $(document).on("click","#tjtj",function name(){
         }
     }
 })
+
+
+//分类名称验证是否存在
+function changName(){
+    var flag = false;
+    if(addname=="" && addname==0){
+        $.ajax({
+            url:"/easybuy/productCategory/verificationTypeName",
+            type:"post",
+            dataType:"JSON",
+            beforeSend:function (XMLHttpRequest){
+                XMLHttpRequest.setRequestHeader("token",token);
+            },
+            success:function(result){
+                alert(123);
+            }
+        })
+    }
+}
+
