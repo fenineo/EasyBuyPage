@@ -10,7 +10,7 @@ $(function (){
     }else {
         //用token请求用户信息
         $.ajax({
-            url:"/easybuy/user/loginInfo",
+            url:"/easybuy/user/regist/loginInfo",
             type:"post",
             beforeSend:function (XMLHttpRequest){
                 XMLHttpRequest.setRequestHeader("token",token);

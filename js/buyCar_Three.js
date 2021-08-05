@@ -14,7 +14,7 @@ $(function (){
 //请求支付宝支付,传入订单号参数
 function toAlipay(orderId){
     $.ajax({
-        url:"/easybuy/order/alipay",
+        url:"/easybuy/order/regist/alipay",
         type:"post",
         data:{"orderId":orderId},
         beforeSend:function (XMLHttpRequest){
@@ -31,7 +31,7 @@ function toAlipay(orderId){
 //根据订单id查询订单信息并展示到页面
 function findOrderInfo(orderId){
     $.ajax({
-        url:"/easybuy/order/findOrderInfo",
+        url:"/easybuy/order/regist/findOrderInfo",
         type:"post",
         data:{"orderId":orderId},
         beforeSend:function (XMLHttpRequest){

@@ -3,7 +3,7 @@ function sub(){
     var password = $("#password").val();
     $.ajax({
         url:"/easybuy/user/tourist/login",
-        type:"post",
+        type:"POST",
         data:{"loginName":loginName,"password":password},
         dataType:"JSON",
         success:function(result){

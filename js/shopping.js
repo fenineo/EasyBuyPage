@@ -55,7 +55,7 @@ $(function (){
 //查询购物车
 function findShopping(){
     $.ajax({
-        url:"/easybuy/order/findShopping",
+        url:"/easybuy/order/regist/findShopping",
         type:"post",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -101,7 +101,7 @@ function showShopping(shoppingProduct) {
 //向购物车添加商品
 function addShopping(productId,number){
     $.ajax({
-        url:"/easybuy/order/addShopping",
+        url:"/easybuy/order/regist/addShopping",
         type:"post",
         data:{"productId":productId,"number":number},
         beforeSend:function (XMLHttpRequest){

@@ -15,7 +15,7 @@ $(function (){
 
     //根据token获得用户信息
     $.ajax({
-        url:"/easybuy/user/loginInfo",
+        url:"/easybuy/user/regist/loginInfo",
         type:"post",
         data:{"token":token},
         dataType:"JSON",

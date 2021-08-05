@@ -65,7 +65,7 @@ function sum(shoppingProduct){
 //查询购物车
 function findShoppingProduct(){
     $.ajax({
-        url:"/easybuy/order/findShopping",
+        url:"/easybuy/order/regist/findShopping",
         type:"post",
         beforeSend:function (XMLHttpRequest){
             XMLHttpRequest.setRequestHeader("token",token);
@@ -132,7 +132,7 @@ function showShoppingProduct(shoppingProduct){
 //修改购物车中商品的数量
 function modifyShopping(productId,number,dom){
     $.ajax({
-        url:"/easybuy/order/modifyShopping",
+        url:"/easybuy/order/regist/modifyShopping",
         type:"post",
         data:{"productId":productId,"number":number},
         beforeSend:function (XMLHttpRequest){
@@ -157,7 +157,7 @@ function modifyShopping(productId,number,dom){
 //删除购物车中的商品
 function removeShopping(productId){
     $.ajax({
-        url:"/easybuy/order/removeShopping",
+        url:"/easybuy/order/regist/removeShopping",
         type:"post",
         data:{"productId":productId},
         beforeSend:function (XMLHttpRequest){
