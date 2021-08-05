@@ -1,5 +1,5 @@
 var userId=0;
-
+var token = localStorage.getItem("token");
 jQuery(function(){
     get();
  })
@@ -7,13 +7,10 @@ jQuery(function(){
   * 根据token拿用户id并且执行查询方法
   */
 function get(){
-    var token = localStorage.getItem("token");
     $("#add").show();
     $.ajax({
-     url:"/easybuy/user/loginInfo",
+     url:"/easybuy/user/regist/loginInfo",
      type:"post",
-     dataType: "json",
-     data:{"token":token},
      beforeSend:function (XMLHttpRequest){
       XMLHttpRequest.setRequestHeader("token",token);
   },
@@ -29,7 +26,7 @@ function get(){
  */
 function findByUserId(userId){
     $.ajax({
-       url:"/easybuy/UserAddress/findByUserId",
+       url:"/easybuy/UserAddress/regist/findByUserId",
        dataType: "json",
        data:{"userId":userId},
        beforeSend:function (XMLHttpRequest){
@@ -117,7 +114,7 @@ function findByUserId(userId){
  */
 $(document).on("click","#add",function name(){
   $.ajax({
-    url:"/easybuy/UserAddress/findByUserId",
+    url:"/easybuy/UserAddress/regist/findByUserId",
     dataType: "json",
     data:{"userId":userId},
     beforeSend:function (XMLHttpRequest){
@@ -182,7 +179,7 @@ $(document).on("click","#addAffirm",function name(){
       if(email_v(email)){
         if(dianhua.length==11){
           $.ajax({
-            url:"/easybuy/UserAddress/addUserAddress",
+            url:"/easybuy/UserAddress/regist/addUserAddress",
             dataType: "text",
             data:{"userId":userId,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
             beforeSend:function (XMLHttpRequest){
@@ -236,7 +233,7 @@ function remove(id){
     var flag=confirm("确定要删除吗");
     if(flag){
         jQuery.ajax({
-            url:"/easybuy/UserAddress/removeUserAddress",
+            url:"/easybuy/UserAddress/regist/removeUserAddress",
             dataType: "text",
             data:{"id":id},
             beforeSend:function (XMLHttpRequest){
@@ -267,7 +264,7 @@ function remove(id){
    clean();
   var id=jQuery(this).attr("name");
   jQuery.ajax({
-    url:"/easybuy/UserAddress/findById",
+    url:"/easybuy/UserAddress/regist/findById",
     dataType: "json",
     data:{"id":id},
     beforeSend:function (XMLHttpRequest){
@@ -333,7 +330,7 @@ function remove(id){
     if(email_v(email)){
       if(dianhua.length==11){
         $.ajax({
-          url:"/easybuy/UserAddress/modifyUserAddress",
+          url:"/easybuy/UserAddress/regist/modifyUserAddress",
           dataType: "text",
           data:{"id":id,"address":address,"consignee":consignee,"email":email,"phone":dianhua,"xaddress":xaddress},
           beforeSend:function (XMLHttpRequest){
@@ -367,7 +364,7 @@ function remove(id){
     if(flag){
     var id=jQuery(this).attr("name");
     $.ajax({
-      url:"/easybuy/UserAddress/allisDefault",
+      url:"/easybuy/UserAddress/regist/allisDefault",
       dataType: "text",
       data:{"userId":userId},
       beforeSend:function (XMLHttpRequest){
@@ -375,9 +372,12 @@ function remove(id){
     },
       success: function(result){
         $.ajax({
-          url:"/easybuy/UserAddress/isDefault",
+          url:"/easybuy/UserAddress/regist/isDefault",
           dataType: "text",
           data:{"id":id},
+          beforeSend:function (XMLHttpRequest){
+            XMLHttpRequest.setRequestHeader("token",token);
+        },
           success: function(result){
             alert("设置成功");
             window.location.href = "/Member_Address.html";
